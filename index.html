@@ -1,151 +1,112 @@
 <!doctype html>
 <html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>COZYSWAG</title>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>COZYSWAG</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Helvetica,Arial}
-body{background:#f7f5f2}
-header{position:sticky;top:0;z-index:99;background:#fff;border-bottom:1px solid #eee;padding:20px 40px;display:flex;justify-content:space-between;align-items:center}
-header b{letter-spacing:8px;font-size:26px}
-nav a{margin-left:24px;text-decoration:none;color:#111;font-size:12px;letter-spacing:2px;font-weight:700;cursor:pointer}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#000;font-family:serif}
+header{position:fixed;top:0;left:0;width:100%;z-index:100;padding:22px 30px;display:flex;justify-content:space-between;color:#fff}
+header b{letter-spacing:6px;font-family:Helvetica;font-size:14px}
+header span{font-family:Helvetica;font-size:12px;letter-spacing:2px;cursor:pointer;border:1px solid #fff;padding:8px 14px;border-radius:20px}
 
-/* INTRO WITH GIF */
-#intro{height:100vh;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;background:#000;color:#fff;text-align:center}
-#intro.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.55}
-#intro.content{position:relative;z-index:2}
-#intro h1{font-size:110px;letter-spacing:24px;font-weight:900;line-height:0.9}
-#intro p{margin-top:16px;letter-spacing:5px;color:#ddd;font-size:12px}
-.btn{margin-top:28px;background:#fff;color:#000;border:0;padding:18px 56px;border-radius:30px;letter-spacing:3px;font-weight:900;cursor:pointer}
+/* INTRO - GAYA NG SCREENSHOT MO */
+#intro{height:100vh;width:100%;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#000}
+#intro video, #intro img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.85}
+#intro.menu{position:relative;z-index:2;text-align:center;color:#fff}
+#intro.menu div{font-size:72px;line-height:0.95;letter-spacing:2px;font-weight:700;text-shadow:0 2px 10px rgba(0,0,0,.6);cursor:pointer;margin:8px 0;transition:.2s}
+#intro.menu div:hover{letter-spacing:8px}
+#intro.social{margin-top:30px;display:flex;flex-direction:column;align-items:center;gap:10px}
+#intro.icons{display:flex;gap:12px;align-items:center;justify-content:center}
+#intro.icons a{width:44px;height:44px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;font-family:Helvetica;font-weight:900;color:#000;font-size:22px}
+#intro.handle{font-family:serif;font-size:32px;letter-spacing:1px;margin-top:6px}
 
-/* SECTIONS */
-#store{padding:90px 40px;background:#f7f5f2}
-.top{display:flex;justify-content:space-between;align-items:end;margin-bottom:32px}
-.main{display:flex;align-items:center;justify-content:space-between}
-.arrow{width:66px;height:66px;background:#000;color:#fff;border-radius:50%;border:0;font-size:24px;cursor:pointer}
-.center{flex:1;display:flex;flex-direction:column;align-items:center}
-#imgBox{width:560px;height:560px;background:#fff;display:flex;align-items:center;justify-content:center}
-#imgBox img{width:100%;height:100%;object-fit:contain;transition:.3s}
-.dots{display:flex;gap:8px;justify-content:center;margin-top:16px;flex-wrap:wrap;max-width:340px}
-.dot{width:8px;height:8px;border-radius:50%;border:1px solid #000;cursor:pointer}
-.dot.active{background:#000;width:22px}
-.info{text-align:center;margin-top:16px}
-.cart{background:#000;color:#fff;border:0;padding:16px 44px;border-radius:28px;margin-top:14px;width:320px;font-weight:700;cursor:pointer}
-
-#collection{padding:90px 40px;background:#fff}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:30px}
-.card{background:#f5f5f3;height:400px;display:flex;align-items:center;justify-content:center}
+/* OTHER SECTIONS PABABA */
+section.white{padding:90px 40px;background:#f7f5f2}
+section.black{padding:90px 40px;background:#111;color:#fff}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:30px}
+.card{background:#fff;height:400px;display:flex;align-items:center;justify-content:center}
 .card img{width:100%;height:100%;object-fit:contain}
-
-#gallery{padding:90px 40px;background:#111;color:#fff}
-.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:30px}
-.gallery-grid div{height:300px;background:#222}
-.gallery-grid img{width:100%;height:100%;object-fit:cover}
-
-#story{padding:90px 40px;background:#fff;display:flex;gap:60px;align-items:center}
-#story.left{flex:1}
-#story.right{flex:1;height:520px;background:#f5f5f3;display:flex;align-items:center;justify-content:center}
-#story img{width:100%;height:100%;object-fit:cover}
-#story h2{font-size:56px;letter-spacing:4px;line-height:1}
-#story p{margin-top:20px;color:#666;line-height:1.7;max-width:500px}
-
-#musicBtn{position:fixed;bottom:22px;right:22px;background:#000;color:#fff;border:1px solid #333;padding:16px 24px;border-radius:30px;z-index:999;cursor:pointer;font-size:12px;letter-spacing:2px;font-weight:700}
-footer{padding:40px;text-align:center;font-size:11px;letter-spacing:3px;color:#888;background:#fff;border-top:1px solid #eee}
+#store{display:flex;align-items:center;gap:20px}
+#imgBox{flex:1;height:560px;background:#fff;display:flex;align-items:center;justify-content:center}
+#imgBox img{width:100%;height:100%;object-fit:contain}
+.arrow{width:66px;height:66px;background:#000;color:#fff;border-radius:50%;border:0;font-size:24px;cursor:pointer}
+#musicBtn{position:fixed;bottom:20px;right:20px;background:#fff;color:#000;padding:14px 22px;border-radius:30px;border:0;z-index:999;font-weight:900;letter-spacing:1px;cursor:pointer}
+@media(max-width:700px){#intro.menu div{font-size:48px}.grid{grid-template-columns:repeat(2,1fr)}#store{flex-direction:column}}
 </style>
 </head>
 <body>
 
-<header>
-<b>COZYSWAG</b>
-<nav>
-<a onclick="document.getElementById('store').scrollIntoView({behavior:'smooth'})">STORE</a>
-<a onclick="document.getElementById('collection').scrollIntoView({behavior:'smooth'})">COLLECTION</a>
-<a onclick="document.getElementById('gallery').scrollIntoView({behavior:'smooth'})">GALLERY</a>
-<a onclick="document.getElementById('story').scrollIntoView({behavior:'smooth'})">STORY</a>
-</nav>
-</header>
+<header><b>COZYSWAG</b><span id="playBtn" onclick="toggleMusic()">♪ PLAY SORRY</span></header>
 
-<!-- INTRO WITH YOUR GIF -->
+<!-- INTRO GAYA NG PIC MO -->
 <section id="intro">
-<img class="bg" src="https://i.imgur.com/wIQrNXl.gif" alt="intro gif">
-<div class="content">
-<h1>COZYSWAG</h1>
-<p>COZY BUT MAKE IT SWAG — SORRY ON LOOP</p>
-<button class="btn" onclick="startMusicAndGo()">ENTER STORE — PLAY SORRY</button>
+<!-- GIF MO -->
+<img class="bg" src="https://i.imgur.com/wIQrNXl.gif" alt="cozyswag gif">
+<div class="menu">
+<div onclick="document.getElementById('collection').scrollIntoView({behavior:'smooth'}); tryPlay()">COLLECTION</div>
+<div onclick="document.getElementById('gallery').scrollIntoView({behavior:'smooth'}); tryPlay()">GALLERY</div>
+<div onclick="document.getElementById('story').scrollIntoView({behavior:'smooth'}); tryPlay()">STORY</div>
+<div style="font-size:18px;margin-top:10px;font-family:Helvetica;letter-spacing:6px;cursor:pointer" onclick="document.getElementById('store').scrollIntoView({behavior:'smooth'}); tryPlay()">STORE →</div>
+
+<div class="social">
+<div class="icons">
+<a href="https://facebook.com" target="_blank">f</a>
+<a href="https://instagram.com/cozyswag.ph" target="_blank" style="background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);color:#fff">◎</a>
+<a href="https://tiktok.com/@cozyswag.ph" target="_blank" style="background:#000;color:#fff">♪</a>
+</div>
+<div class="handle">cozyswag.ph</div>
+</div>
 </div>
 </section>
 
-<!-- STORE PABABA -->
-<section id="store">
-<div class="top"><h2 style="font-size:52px;font-weight:900;letter-spacing:2px">STORE</h2><p style="color:#888;letter-spacing:2px;font-size:12px">8 TEES • FRONT ONLY • ARROW TO SWITCH</p></div>
-<div class="main">
+<section class="white" id="store">
 <button class="arrow" onclick="prev()">←</button>
-<div class="center">
 <div id="imgBox"><img id="pImg"></div>
-<div class="dots" id="dots"></div>
-<div class="info"><h2 id="pName" style="font-size:18px;letter-spacing:2px"></h2><p id="pPrice" style="color:#888;margin-top:6px"></p><button class="cart">ADD TO CART — <span id="p2"></span></button></div>
-</div>
 <button class="arrow" onclick="next()">→</button>
-</div>
+<div style="width:300px"><h2 id="pName" style="font-family:Helvetica;letter-spacing:1px"></h2><p id="pPrice" style="color:#888;margin-top:8px;font-family:Helvetica"></p><p style="margin-top:20px;font-family:Helvetica;font-size:12px;letter-spacing:2px">FRONT ONLY • CLICK ARROW</p></div>
 </section>
 
-<!-- COLLECTION PABABA -->
-<section id="collection"><h2 style="font-size:52px;font-weight:900">COLLECTION 01</h2><p style="color:#888;letter-spacing:2px;margin-top:8px">ALL 8 TEES</p><div class="grid" id="collGrid"></div></section>
+<section class="white" id="collection"><h2 style="font-size:50px;font-family:Helvetica;font-weight:900">COLLECTION</h2><div class="grid" id="collGrid"></div></section>
+<section class="black" id="gallery"><h2 style="font-size:50px;font-family:Helvetica;font-weight:900">GALLERY</h2><div class="grid" id="galGrid"></div></section>
+<section class="white" id="story"><h2 style="font-size:50px;font-family:Helvetica;font-weight:900">STORY</h2><p style="margin-top:20px;max-width:600px;line-height:1.7;font-family:Helvetica;color:#555">COZYSWAG — Cozy but make it swag. Manila 2026. Minimal tees, heavy vibe. We stay cozy, we stay swagged. Sorry on loop.</p><img src="https://i.imgur.com/wIQrNXl.gif" style="width:100%;max-width:600px;margin-top:30px"></section>
 
-<!-- GALLERY PABABA -->
-<section id="gallery"><h2 style="font-size:52px;font-weight:900">GALLERY</h2><p style="color:#777;letter-spacing:2px;margin-top:8px">LOOKBOOK</p><div class="gallery-grid" id="galGrid"></div></section>
-
-<!-- STORY PABABA -->
-<section id="story">
-<div class="left">
-<h2>OUR STORY</h2>
-<p>COZYSWAG started as a cozy idea in Manila — comfy tees but with swag. Minimal, black & white, but loud when you wear it. Each tee is designed for everyday hustle, for people who stay cozy but never basic.<br><br>We loop SORRY while you shop because cozy sometimes means sorry not sorry.</p>
-<p style="margin-top:30px;letter-spacing:4px;font-size:11px;font-weight:700">EST. 2026 • MANILA</p>
-</div>
-<div class="right"><img src="https://i.imgur.com/rM9FnTG.png"></div>
-</section>
-
-<footer>© 2026 COZYSWAG — PLAY SORRY ON LOOP</footer>
-
-<!-- MUSIC - FIXED NA -->
-<audio id="bgMusic" loop preload="auto">
+<!-- MUSIC FIX - DALAWANG SOURCE PARA SURE -->
+<audio id="bgMusic" loop preload="auto" playsinline>
 <source src="./music.mp3" type="audio/mpeg">
+<source src="./SORRY%20-%20(320%20Kbps).mp3" type="audio/mpeg">
 </audio>
-<button id="musicBtn" onclick="toggleMusic()">♪ PLAY SORRY</button>
+
+<button id="musicBtn" onclick="toggleMusic()">♪ PLAY SORRY — CLICK TO PLAY</button>
 
 <script>
 const products=[
-{name:"COZYSWAG TEE 01",price:"₱850",img:"https://i.imgur.com/rM9FnTG.png"},
-{name:"COZYSWAG TEE 02",price:"₱850",img:"https://i.imgur.com/y1bwuFF.png"},
-{name:"COZYSWAG TEE 03",price:"₱850",img:"https://i.imgur.com/TYSYmj1.png"},
-{name:"COZYSWAG TEE 04",price:"₱850",img:"https://i.imgur.com/7tNmDFO.png"},
-{name:"COZYSWAG TEE 05",price:"₱900",img:"https://i.imgur.com/CDKuXxt.png"},
-{name:"COZYSWAG TEE 06",price:"₱900",img:"https://i.imgur.com/e6rIBlV.png"},
-{name:"COZYSWAG TEE 07",price:"₱900",img:"https://i.imgur.com/ty9cyvl.png"},
-{name:"COZYSWAG TEE 08",price:"₱950",img:"https://i.imgur.com/HOqhErH.png"}
+{ name:"TEE 01", price:"₱850", img:"https://i.imgur.com/rM9FnTG.png" },
+{ name:"TEE 02", price:"₱850", img:"https://i.imgur.com/y1bwuFF.png" },
+{ name:"TEE 03", price:"₱850", img:"https://i.imgur.com/TYSYmj1.png" },
+{ name:"TEE 04", price:"₱850", img:"https://i.imgur.com/7tNmDFO.png" },
+{ name:"TEE 05", price:"₱900", img:"https://i.imgur.com/CDKuXxt.png" },
+{ name:"TEE 06", price:"₱900", img:"https://i.imgur.com/e6rIBlV.png" },
+{ name:"TEE 07", price:"₱900", img:"https://i.imgur.com/ty9cyvl.png" },
+{ name:"TEE 08", price:"₱950", img:"https://i.imgur.com/HOqhErH.png" }
 ];
-let i=0;
-const pImg=document.getElementById("pImg"),pName=document.getElementById("pName"),pPrice=document.getElementById("pPrice"),p2=document.getElementById("p2"),dots=document.getElementById("dots");
-function dotRender(){dots.innerHTML="";products.forEach((_,k)=>{let d=document.createElement("div");d.className="dot"+(k==i?" active":"");d.onclick=()=>{i=k;up()};dots.appendChild(d)})}
-function up(){pImg.style.opacity=0;setTimeout(()=>{pImg.src=products[i].img;pName.innerText=products[i].name;pPrice.innerText=products[i].price;p2.innerText=products[i].price;pImg.style.opacity=1;dotRender()},150)}
-function next(){i=(i+1)%products.length;up()}function prev(){i=(i-1+products.length)%products.length;up()}up();
-let cg=document.getElementById("collGrid"),gg=document.getElementById("galGrid");
-products.forEach(p=>{cg.innerHTML+=`<div class="card"><img src="${p.img}"></div>`;gg.innerHTML+=`<div><img src="${p.img}"></div>`});
+let idx=0; const pImg=document.getElementById("pImg"),pName=document.getElementById("pName"),pPrice=document.getElementById("pPrice");
+function up(){pImg.src=products[idx].img;pName.innerText=products[idx].name;pPrice.innerText=products[idx].price}
+function next(){idx=(idx+1)%products.length;up()} function prev(){idx=(idx-1+products.length)%products.length;up()} up();
+document.getElementById("collGrid").innerHTML=products.map(p=>`<div class="card"><img src="${p.img}"></div>`).join("");
+document.getElementById("galGrid").innerHTML=products.map(p=>`<div class="card" style="background:#222"><img src="${p.img}" style="object-fit:cover"></div>`).join("");
 
-// MUSIC FIX
 let playing=false;
+function tryPlay(){
+ let m=document.getElementById("bgMusic");
+ m.volume=1;
+ m.play().then(()=>{playing=true;document.getElementById("musicBtn").innerText="II PAUSE SORRY";document.getElementById("playBtn").innerText="II PAUSE";}).catch(()=>{});
+}
 function toggleMusic(){
- let m=document.getElementById('bgMusic'),b=document.getElementById('musicBtn');
- if(!playing){m.volume=0.9; m.play().then(()=>{b.innerText="II PAUSE SORRY";playing=true}).catch(e=>{alert("Click mo ulit - browser nag block. Pero after nito tutugtog na!");});}
- else{m.pause();b.innerText="♪ PLAY SORRY";playing=false}
+ let m=document.getElementById("bgMusic");
+ if(!playing){ m.volume=1; m.play().then(()=>{playing=true;document.getElementById("musicBtn").innerText="II PAUSE SORRY";document.getElementById("playBtn").innerText="II PAUSE";}).catch(()=>{alert("Boss, i-allow mo sound sa browser mo tapos click ulit PLAY!");}); }
+ else{ m.pause(); playing=false; document.getElementById("musicBtn").innerText="♪ PLAY SORRY — CLICK TO PLAY"; document.getElementById("playBtn").innerText="♪ PLAY SORRY"; }
 }
-function startMusicAndGo(){
- let m=document.getElementById('bgMusic');
- m.volume=0.9;
- m.play().then(()=>{playing=true;document.getElementById('musicBtn').innerText="II PAUSE SORRY";}).catch(()=>{});
- document.getElementById('store').scrollIntoView({behavior:'smooth'});
-}
+// auto try on first click anywhere
+document.addEventListener('click', function firstClick(){ tryPlay(); document.removeEventListener('click', firstClick); }, {once:true});
 </script>
 </body>
 </html>
