@@ -6,81 +6,111 @@
 <title>COZYSWAG</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#000;color:#fff;font-family:Helvetica;overflow:hidden}
-#gate{position:fixed;inset:0;z-index:999;display:flex;align-items:center;justify-content:center;background:#000;cursor:pointer}
-#gate img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-#gate::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.5)}
-.menu{position:relative;z-index:2;text-align:center}
-.menu div{font-family:serif;font-size:82px;font-weight:900;margin:14px 0}
+body{background:#f2f2f2;color:#111;font-family:Helvetica;overflow:hidden}
+#gate{position:fixed;inset:0;z-index:999;display:flex;align-items:center;justify-content:center;background:#000;cursor:pointer;overflow:hidden}
+#gate video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#gate::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.45)}
+.menu{position:relative;z-index:2;text-align:center;color:#fff}
+.menu div{font-family:serif;font-size:78px;font-weight:900;margin:12px 0;cursor:pointer}
 .menu div:hover{letter-spacing:10px}
 #gate.out{transform:translateY(-100%);transition:.8s}
-#main{display:none;background:#f7f5f2;color:#111;min-height:100vh}
+#main{display:none;background:#f2f2f2;min-height:100vh}
 #main.show{display:block}
-header{padding:22px 40px;background:#fff;display:flex;justify-content:space-between;position:sticky;top:0}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:20px}
-.card{background:#fff;height:420px;display:flex;align-items:center;justify-content:center;position:relative}
-.card img{width:100%;height:100%;object-fit:contain}
-.card span{position:absolute;bottom:10px;left:10px;font-size:10px;background:#000;color:#fff;padding:4px 8px;letter-spacing:2px}
-#musicBtn{position:fixed;bottom:20px;right:20px;padding:12px 22px;border-radius:30px;border:0;background:#000;color:#fff;font-weight:900;cursor:pointer;z-index:99}
+header{padding:18px 22px;background:#f2f2f2;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:20}
+.logo-gif-wrap{text-align:center;padding:30px 0 10px;background:#f2f2f2}
+.logo-gif-wrap img{width:220px;max-width:70%;height:auto}
+.title{text-align:center;font-size:22px;font-weight:900;letter-spacing:4px;margin:20px 0 10px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.card{background:#f2f2f2;padding:22px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:.2s}
+.card:hover{background:#eaeaea;transform:translateY(-3px)}
+.card img{width:100%;max-width:260px;height:auto;object-fit:contain}
+.card p{font-size:11px;letter-spacing:2px;margin-top:12px;text-align:center;font-weight:700}
+#modal{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;padding:20px}
+#modal.show{display:flex}
+.modal-box{background:#f2f2f2;width:100%;max-width:400px;padding:24px;text-align:center}
+.modal-box img{width:100%;max-width:320px}
 </style>
 </head>
 <body>
 
 <div id="gate" onclick="enterSite('store')">
-<img src="https://i.imgur.com/wIQrNXl.gif">
+<video autoplay loop muted playsinline>
+<source src="https://i.imgur.com/ML8T7V0.mp4" type="video/mp4">
+</video>
 <div class="menu">
 <div onclick="event.stopPropagation();enterSite('store')">STORE</div>
-<div onclick="event.stopPropagation();enterSite('collection')">COLLECTION</div>
 <div onclick="event.stopPropagation();enterSite('gallery')">GALLERY</div>
-<p style="font-size:11px;letter-spacing:4px;margin-top:20px">COZYSWAG.PH — CLICK TO ENTER</p>
+<p style="font-size:11px;letter-spacing:4px;margin-top:22px">COZYSWAG.PH — CLICK TO ENTER</p>
 </div>
 </div>
 
 <div id="main">
-<header><b style="letter-spacing:8px">COZYSWAG</b><nav><a onclick="goTo('store')">STORE</a> <a onclick="goTo('collection')">COLLECTION</a> <a onclick="goTo('gallery')">GALLERY</a></nav></header>
-<section style="padding:60px 40px"><h1 style="font-family:serif;font-size:50px">STORE — 8 TEES</h1><div class="grid" id="storeGrid"></div></section>
-<section id="collection" style="padding:60px 40px;background:#fff"><h1 style="font-family:serif;font-size:50px">COLLECTION</h1><div class="grid" id="collGrid"></div></section>
-<section id="gallery" style="padding:60px 40px;background:#111;color:#fff"><h1 style="font-family:serif;font-size:50px">GALLERY</h1><div class="grid" id="galGrid"></div></section>
+<header>
+<div style="font-size:22px">☰</div>
+<div style="font-weight:900;letter-spacing:6px">COZYSWAG</div>
+<div style="display:flex;gap:16px">⌕ 🛒</div>
+</header>
 
-<button id="musicBtn" onclick="toggleMusic()">♪ PLAY SORRY</button>
-<!-- SORRY.MP3 NA GAMIT NATIN -->
+<div class="logo-gif-wrap">
+<img src="https://i.imgur.com/ML8T7V0.gif" id="topLogo" alt="logo">
+</div>
+
+<div class="title">NEW COLLECTION</div>
+
+<section id="store">
+<div class="grid" id="storeGrid"></div>
+</section>
+
+<section id="gallery" style="padding-top:30px">
+<div class="title">GALLERY</div>
+<div class="grid" id="galleryGrid"></div>
+</section>
+
+<!-- MUSIC - TUTUGTOG PARIN PERO WALANG BUTTON -->
 <audio id="audio" loop preload="auto">
 <source src="./sorry.mp3" type="audio/mpeg">
 <source src="https://cdn.jsdelivr.net/gh/rafstunnerz/cozyswag@main/sorry.mp3" type="audio/mpeg">
 </audio>
+
+<div id="modal" onclick="closeModal()">
+<div class="modal-box" onclick="event.stopPropagation()">
+<img id="modalImg" src="">
+<h2 id="modalName" style="margin:16px 0 6px;font-size:16px;letter-spacing:2px"></h2>
+<p style="font-size:11px;opacity:.6">₱1,200 — FREE SHIPPING</p>
+<button onclick="closeModal()" style="margin-top:14px;width:100%;padding:14px;background:#000;color:#fff;border:0;letter-spacing:3px;font-weight:900;cursor:pointer">CLOSE</button>
+</div>
+</div>
 </div>
 
 <script>
 const tees=[
-{img:"https://i.imgur.com/rM9FnTG.png",name:"TEE 01"},
-{img:"https://i.imgur.com/y1bwuFF.png",name:"TEE 02"},
-{img:"https://i.imgur.com/TYSYmj1.png",name:"TEE 03"},
-{img:"https://i.imgur.com/7tNmDFO.png",name:"TEE 04"},
-{img:"https://i.imgur.com/CDKuXxt.png",name:"TEE 05"},
-{img:"https://i.imgur.com/e6rIBlV.png",name:"TEE 06"},
-{img:"https://i.imgur.com/ty9cyvl.png",name:"TEE 07"},
-{img:"https://i.imgur.com/HOqhErH.png",name:"TEE 08"},
+{img:"https://i.imgur.com/rM9FnTG.png",name:"COZY TEE BLACK"},
+{img:"https://i.imgur.com/y1bwuFF.png",name:"COZY TEE WHITE"},
+{img:"https://i.imgur.com/TYSYmj1.png",name:"COZY SHORTS BLACK"},
+{img:"https://i.imgur.com/7tNmDFO.png",name:"COZY SHORTS WHITE"},
+{img:"https://i.imgur.com/CDKuXxt.png",name:"COZY TEE GREY"},
+{img:"https://i.imgur.com/e6rIBlV.png",name:"COZY TEE CREAM"},
+{img:"https://i.imgur.com/ty9cyvl.png",name:"COZY HOODIE BLACK"},
+{img:"https://i.imgur.com/HOqhErH.png",name:"COZY HOODIE WHITE"},
 ];
-const html=tees.map(t=>`<div class="card"><img src="${t.img}"><span>${t.name}</span></div>`).join("");
-document.getElementById('storeGrid').innerHTML=html;
-document.getElementById('collGrid').innerHTML=html;
-document.getElementById('galGrid').innerHTML=html;
-
-let playing=false;
+function makeGrid(id){
+document.getElementById(id).innerHTML=tees.map(t=>`
+<div class="card" onclick="openProduct('${t.img}','${t.name}')">
+<img src="${t.img}" loading="lazy"><p>${t.name}</p></div>`).join("");
+}
+makeGrid('storeGrid');makeGrid('galleryGrid');
+function openProduct(img,name){
+document.getElementById('modalImg').src=img;
+document.getElementById('modalName').innerText=name;
+document.getElementById('modal').classList.add('show');
+}
+function closeModal(){document.getElementById('modal').classList.remove('show');}
 function enterSite(id){
 document.getElementById('gate').classList.add('out');
 document.getElementById('main').classList.add('show');
 document.body.style.overflow='auto';
 setTimeout(()=>document.getElementById(id).scrollIntoView({behavior:'smooth'}),700);
-let a=document.getElementById('audio');
-a.volume=1;
-a.play().then(()=>{playing=true;document.getElementById('musicBtn').innerText="II PAUSE SORRY";}).catch(()=>{});
-}
-function goTo(id){document.getElementById(id).scrollIntoView({behavior:'smooth'})}
-function toggleMusic(){
-let a=document.getElementById('audio');
-if(!playing){a.play();playing=true;document.getElementById('musicBtn').innerText="II PAUSE SORRY";}
-else{a.pause();playing=false;document.getElementById('musicBtn').innerText="♪ PLAY SORRY";}
+let a=document.getElementById('audio');a.volume=1;a.play().catch(()=>{});
 }
 </script>
 </body>
