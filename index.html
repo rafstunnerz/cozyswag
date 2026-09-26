@@ -10,9 +10,10 @@ body{background:#f2f2f2;color:#111;font-family:Helvetica;overflow:hidden}
 #gate{position:fixed;inset:0;z-index:999;display:flex;align-items:center;justify-content:center;background:#000;overflow:hidden}
 #gate video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 #gate::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.55)}
-.menu{position:relative;z-index:2;text-align:center;color:#fff;display:flex;flex-direction:column;align-items:center;width:100%;padding:20px}
-.menu .top-logo{width:320px;max-width:80vw;margin-bottom:22px}
-.menu div.link{font-family:serif;font-size:72px;font-weight:900;margin:10px 0;cursor:pointer;letter-spacing:1px}
+.menu{position:relative;z-index:2;text-align:center;color:#fff;display:flex;flex-direction:column;align-items:center}
+.menu .top-logo{width:320px;max-width:80vw;margin-bottom:18px}
+.menu div.link{font-family:serif;font-size:72px;font-weight:900;margin:10px 0;cursor:pointer}
+.menu div.link:hover{letter-spacing:10px}
 #gate.out{transform:translateY(-100%);transition:.7s}
 #main{display:none;background:#f2f2f2;min-height:100vh}
 #main.show{display:block}
@@ -20,37 +21,50 @@ body{background:#f2f2f2;color:#111;font-family:Helvetica;overflow:hidden}
 .page.active{display:block}
 header{padding:16px 18px;background:#f2f2f2;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:20;border-bottom:1px solid #e5e5e5}
 .back{cursor:pointer;font-size:11px;letter-spacing:3px;font-weight:900;padding:8px 14px;border:1px solid #111;border-radius:20px}
-.title{text-align:center;font-size:18px;font-weight:900;letter-spacing:4px;margin:24px 0 12px;padding:0 20px}
+.title{text-align:center;font-size:18px;font-weight:900;letter-spacing:4px;margin:24px 0 12px}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#e5e5e5}
-.card{background:#f2f2f2;padding:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer}
+.card{background:#f2f2f2;padding:16px;display:flex;flex-direction:column;align-items:center;cursor:pointer}
 .card img{width:100%;max-width:100%;height:180px;object-fit:contain}
 .card p{font-size:10px;letter-spacing:1.5px;margin-top:10px;font-weight:700;text-align:center}
 .gallery-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#e5e5e5}
 .gallery-card{aspect-ratio:4/5;background:#000;overflow:hidden;cursor:pointer}
 .gallery-card img{width:100%;height:100%;object-fit:cover}
-#modal{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;padding:0}
-#modal.show{display:flex}
-.modal-box{width:100%;height:100%;display:flex;align-items:center;justify-content:center;position:relative;padding:20px}
-.modal-box img{max-width:100%;max-height:85vh;width:auto;height:auto;object-fit:contain}
-.close{position:absolute;top:16px;right:16px;background:#fff;color:#000;padding:8px 14px;font-size:11px;letter-spacing:2px;font-weight:900;border-radius:20px;cursor:pointer}
 
-/* CP OPTIMIZED */
-@media(max-width:600px){
-.menu div.link{font-size:56px}
-.menu .top-logo{width:260px}
-.title{font-size:16px;letter-spacing:3px}
-.card{padding:12px}
-.card img{height:150px}
-.gallery-card{aspect-ratio:3/4}
+/* PRODUCT PAGE - TULAD NG DOSMIL */
+#productPage{position:fixed;inset:0;z-index:90;background:#f2f2f2;display:none;overflow:auto}
+#productPage.show{display:block}
+.p-header{padding:18px 22px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e5e5e5;background:#f2f2f2;position:sticky;top:0}
+.p-body{display:grid;grid-template-columns:1.1fr .9fr;min-height:calc(100vh - 60px)}
+.p-img{padding:40px;display:flex;align-items:center;justify-content:center;background:#efefef}
+.p-img img{width:100%;max-width:520px;height:auto;object-fit:contain}
+.p-info{padding:40px 36px}
+.p-info h1{font-size:32px;font-weight:800;line-height:1.1;margin-bottom:14px}
+.p-info .price{font-size:13px;opacity:.7;margin-bottom:22px;letter-spacing:1px}
+.p-info .label{font-size:12px;font-weight:700;margin:18px 0 8px;letter-spacing:1px}
+.sizes{display:flex;gap:8px;flex-wrap:wrap}
+.size{border:1px solid #111;border-radius:20px;padding:8px 16px;font-size:12px;cursor:pointer;min-width:44px;text-align:center}
+.size.active{background:#111;color:#fff}
+.qty{display:flex;align-items:center;border:1px solid #ccc;border-radius:8px;width:fit-content;overflow:hidden;margin-top:6px}
+.qty button{width:40px;height:38px;border:0;background:#fff;cursor:pointer;font-size:16px}
+.qty span{width:40px;text-align:center;font-size:13px}
+.btn{width:100%;padding:14px;border-radius:30px;border:0;font-weight:900;letter-spacing:1px;cursor:pointer;margin-top:14px;font-size:13px}
+.btn-black{background:#111;color:#fff}
+.btn-black2{background:#111;color:#fff;display:flex;align-items:center;justify-content:center;gap:10px}
+#modal{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center}
+#modal.show{display:flex}
+@media(max-width:700px){
+.p-body{grid-template-columns:1fr}
+.p-img{padding:20px}
+.p-info{padding:24px 18px}
+.p-info h1{font-size:24px}
+.menu div.link{font-size:52px}
 }
 </style>
 </head>
 <body>
 
 <div id="gate">
-<video autoplay loop muted playsinline>
-<source src="https://i.imgur.com/ML8T7V0.mp4" type="video/mp4">
-</video>
+<video autoplay loop muted playsinline><source src="https://i.imgur.com/ML8T7V0.mp4" type="video/mp4"></video>
 <div class="menu">
 <img class="top-logo" src="https://i.imgur.com/CGvaEJO.gif">
 <div class="link" onclick="enterStore()">STORE</div>
@@ -62,30 +76,43 @@ header{padding:16px 18px;background:#f2f2f2;display:flex;justify-content:space-b
 <header>
 <div class="back" onclick="goHome()">← BACK</div>
 <div style="font-weight:900;letter-spacing:5px;font-size:14px">COZYSWAG</div>
-<div style="font-size:18px">🛒</div>
+<div>🛒</div>
 </header>
-
-<div id="storePage" class="page">
-<div class="title">NEW COLLECTION</div>
-<div class="grid2" id="storeGrid"></div>
+<div id="storePage" class="page"><div class="title">NEW COLLECTION</div><div class="grid2" id="storeGrid"></div></div>
+<div id="galleryPage" class="page"><div class="title">GALLERY — COZYSWAG FAM</div><div class="gallery-grid" id="galleryGrid"></div></div>
+<audio id="audio" loop preload="auto"><source src="./sorry.mp3" type="audio/mpeg"></audio>
 </div>
 
-<div id="galleryPage" class="page">
-<div class="title">GALLERY — COZYSWAG FAM</div>
-<div class="gallery-grid" id="galleryGrid"></div>
+<!-- PRODUCT DETAIL PAGE - GAYA NG PIC MO -->
+<div id="productPage">
+<div class="p-header">
+<div class="back" onclick="closeProduct()">← BACK</div>
+<div style="font-weight:900;letter-spacing:5px">COZYSWAG</div>
+<div>🛒</div>
+</div>
+<div class="p-body">
+<div class="p-img"><img id="pImg" src=""></div>
+<div class="p-info">
+<h1 id="pName">COZY TEE</h1>
+<div class="price">₱900.00 PHP</div>
+<div class="label">Size</div>
+<div class="sizes" id="sizeBox">
+<div class="size active" onclick="pickSize(this)">S</div>
+<div class="size" onclick="pickSize(this)">M</div>
+<div class="size" onclick="pickSize(this)">L</div>
+<div class="size" onclick="pickSize(this)">XL</div>
+<div class="size" onclick="pickSize(this)">2XL</div>
+</div>
+<div class="label">Quantity</div>
+<div class="qty"><button onclick="changeQty(-1)">−</button><span id="qty">1</span><button onclick="changeQty(1)">+</button></div>
+<button class="btn btn-black" onclick="addCart()">ADD TO CART</button>
+<button class="btn btn-black2" onclick="addCart()">🛒 BUY WITH CASH ON DELIVERY</button>
+<div style="margin-top:28px;font-size:12px;opacity:.7">• White Tee<br>• 100% Cotton<br>• Cozyswag Original</div>
+</div>
+</div>
 </div>
 
-<audio id="audio" loop preload="auto">
-<source src="./sorry.mp3" type="audio/mpeg">
-</audio>
-
-<div id="modal" onclick="closeModal()">
-<div class="modal-box" onclick="event.stopPropagation()">
-<img id="modalImg" src="">
-<div class="close" onclick="closeModal()">CLOSE X</div>
-</div>
-</div>
-</div>
+<div id="modal" onclick="this.classList.remove('show')"><img id="modalImg" style="max-width:95%;max-height:90vh"></div>
 
 <script>
 const tees=[
@@ -98,27 +125,17 @@ const tees=[
 {img:"https://i.imgur.com/ty9cyvl.png",name:"COZY HOODIE BLACK"},
 {img:"https://i.imgur.com/HOqhErH.png",name:"COZY HOODIE WHITE"},
 ];
+const galleryPics=["https://i.imgur.com/ZUE63Du.jpeg","https://i.imgur.com/S33CFqt.jpeg","https://i.imgur.com/mrPv4Lg.jpeg","https://i.imgur.com/385oIll.jpeg","https://i.imgur.com/mk4Xksn.jpeg","https://i.imgur.com/zX2LkBM.jpeg","https://i.imgur.com/YpA5yF8.jpeg","https://i.imgur.com/rHxWn1O.jpeg","https://i.imgur.com/hRAzh46.jpeg","https://i.imgur.com/jk0Tq8L.jpeg","https://i.imgur.com/3RptbR7.jpeg","https://i.imgur.com/FwGlaZ4.jpeg"];
 
-const galleryPics=[
-"https://i.imgur.com/ZUE63Du.jpeg",
-"https://i.imgur.com/S33CFqt.jpeg",
-"https://i.imgur.com/mrPv4Lg.jpeg",
-"https://i.imgur.com/385oIll.jpeg",
-"https://i.imgur.com/mk4Xksn.jpeg",
-"https://i.imgur.com/zX2LkBM.jpeg",
-"https://i.imgur.com/YpA5yF8.jpeg",
-"https://i.imgur.com/rHxWn1O.jpeg",
-"https://i.imgur.com/hRAzh46.jpeg",
-"https://i.imgur.com/jk0Tq8L.jpeg",
-"https://i.imgur.com/3RptbR7.jpeg",
-"https://i.imgur.com/FwGlaZ4.jpeg",
-];
+document.getElementById('storeGrid').innerHTML=tees.map(t=>`<div class="card" onclick="openProduct('${t.img}','${t.name}')"><img src="${t.img}" loading="lazy"><p>${t.name}</p></div>`).join("");
+document.getElementById('galleryGrid').innerHTML=galleryPics.map(p=>`<div class="gallery-card" onclick="openGallery('${p}')"><img src="${p}" loading="lazy"></div>`).join("");
 
-document.getElementById('storeGrid').innerHTML=tees.map(t=>`<div class="card" onclick="openProduct('${t.img}')"><img src="${t.img}" loading="lazy"><p>${t.name}</p></div>`).join("");
-document.getElementById('galleryGrid').innerHTML=galleryPics.map(p=>`<div class="gallery-card" onclick="openProduct('${p}')"><img src="${p}" loading="lazy"></div>`).join("");
-
-function openProduct(img){document.getElementById('modalImg').src=img;document.getElementById('modal').classList.add('show');}
-function closeModal(){document.getElementById('modal').classList.remove('show');}
+function openProduct(img,name){document.getElementById('pImg').src=img;document.getElementById('pName').innerText=name;document.getElementById('productPage').classList.add('show');document.body.style.overflow='hidden';}
+function closeProduct(){document.getElementById('productPage').classList.remove('show');document.body.style.overflow='auto';}
+function openGallery(p){document.getElementById('modalImg').src=p;document.getElementById('modal').classList.add('show');}
+function pickSize(el){document.querySelectorAll('.size').forEach(s=>s.classList.remove('active'));el.classList.add('active');}
+let q=1;function changeQty(d){q=Math.max(1,q+d);document.getElementById('qty').innerText=q;}
+function addCart(){alert('Added to cart! — Size: '+document.querySelector('.size.active').innerText+' Qty: '+q);}
 function playMusic(){let a=document.getElementById('audio');a.volume=1;a.play().catch(()=>{});}
 function enterStore(){document.getElementById('gate').classList.add('out');document.getElementById('main').classList.add('show');document.getElementById('storePage').classList.add('active');document.getElementById('galleryPage').classList.remove('active');document.body.style.overflow='auto';playMusic();}
 function enterGallery(){document.getElementById('gate').classList.add('out');document.getElementById('main').classList.add('show');document.getElementById('galleryPage').classList.add('active');document.getElementById('storePage').classList.remove('active');document.body.style.overflow='auto';playMusic();}
