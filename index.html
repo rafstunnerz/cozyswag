@@ -1,31 +1,49 @@
 <!doctype html>
 <html>
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>COZYSWAG</title>
-<style>*{margin:0;padding:0;box-sizing:border-box;font-family:Helvetica,Arial}body{background:#f7f5f2}header{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid #eee;padding:22px 40px;display:flex;justify-content:space-between;align-items:center}header b{letter-spacing:8px;font-size:30px}nav a{margin-left:28px;text-decoration:none;color:#111;font-size:13px;letter-spacing:2px;font-weight:700;cursor:pointer}#intro{height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff;text-align:center}#intro h1{font-size:92px;letter-spacing:22px;font-weight:900}#intro p{margin-top:14px;letter-spacing:4px;color:#888;font-size:12px}.btn{margin-top:36px;background:#000;color:#fff;border:0;padding:18px 54px;border-radius:30px;letter-spacing:2px;font-weight:700;cursor:pointer}#store{min-height:100vh;padding:60px 40px;background:#f7f5f2}.top{display:flex;justify-content:space-between;align-items:end;margin-bottom:30px}.main{display:flex;align-items:center;justify-content:space-between}.arrow{width:66px;height:66px;background:#000;color:#fff;border-radius:50%;border:0;font-size:24px;cursor:pointer}.center{flex:1;display:flex;flex-direction:column;align-items:center}#imgBox{width:520px;height:520px;background:#fff;display:flex;align-items:center;justify-content:center}#imgBox img{width:100%;height:100%;object-fit:contain;transition:.3s}.info{text-align:center;margin-top:18px}.dots{display:flex;gap:8px;justify-content:center;margin-top:14px}.dot{width:8px;height:8px;border-radius:50%;border:1px solid #000;cursor:pointer}.dot.active{background:#000;width:22px}.cart{background:#000;color:#fff;border:0;padding:15px 40px;border-radius:28px;margin-top:14px;width:300px;font-weight:700;cursor:pointer}#collection{padding:80px 40px;background:#fff}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}.card{background:#f5f5f3;height:420px;display:flex;align-items:center;justify-content:center;position:relative}.card img{width:100%;height:100%;object-fit:cover}#gallery{padding:80px 40px;background:#111;color:#fff}.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:30px}.gallery-grid div{height:280px;background:#222}.gallery-grid img{width:100%;height:100%;object-fit:cover}#musicBtn{position:fixed;bottom:22px;right:22px;background:#000;color:#fff;border:1px solid #333;padding:14px 20px;border-radius:30px;z-index:99;cursor:pointer;font-size:12px;letter-spacing:2px}footer{padding:40px;text-align:center;font-size:11px;letter-spacing:3px;color:#888;background:#fff}</style>
+<style>*{margin:0;padding:0;box-sizing:border-box;font-family:Helvetica,Arial}body{background:#f7f5f2}header{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid #eee;padding:22px 40px;display:flex;justify-content:space-between;align-items:center}header b{letter-spacing:8px;font-size:30px}nav a{margin-left:28px;text-decoration:none;color:#111;font-size:13px;letter-spacing:2px;font-weight:700;cursor:pointer}
+#intro{height:95vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff;text-align:center}#intro img.gif{width:380px;height:380px;object-fit:cover;margin-bottom:18px;border-radius:8px}
+#intro h1{font-size:92px;letter-spacing:22px;font-weight:900}#intro p{margin-top:14px;letter-spacing:4px;color:#888;font-size:12px}.btn{margin-top:24px;background:#000;color:#fff;border:0;padding:18px 54px;border-radius:30px;letter-spacing:2px;font-weight:700;cursor:pointer}
+#store{min-height:100vh;padding:60px 40px;background:#f7f5f2}.top{display:flex;justify-content:space-between;align-items:end;margin-bottom:30px}.main{display:flex;align-items:center;justify-content:space-between}.arrow{width:66px;height:66px;background:#000;color:#fff;border-radius:50%;border:0;font-size:24px;cursor:pointer}.center{flex:1;display:flex;flex-direction:column;align-items:center}#imgBox{width:520px;height:520px;background:#fff;display:flex;align-items:center;justify-content:center}#imgBox img{width:100%;height:100%;object-fit:contain;transition:.3s}.info{text-align:center;margin-top:18px}.dots{display:flex;gap:8px;justify-content:center;margin-top:14px;flex-wrap:wrap;max-width:300px}.dot{width:8px;height:8px;border-radius:50%;border:1px solid #000;cursor:pointer}.dot.active{background:#000;width:22px}.cart{background:#000;color:#fff;border:0;padding:15px 40px;border-radius:28px;margin-top:14px;width:300px;font-weight:700;cursor:pointer}#collection{padding:80px 40px;background:#fff}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:30px}.card{background:#f5f5f3;height:380px;display:flex;align-items:center;justify-content:center}.card img{width:100%;height:100%;object-fit:contain}#gallery{padding:80px 40px;background:#111;color:#fff}.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:30px}.gallery-grid div{height:280px;background:#222}.gallery-grid img{width:100%;height:100%;object-fit:cover}#musicBtn{position:fixed;bottom:22px;right:22px;background:#000;color:#fff;border:1px solid #333;padding:14px 20px;border-radius:30px;z-index:99;cursor:pointer;font-size:12px;letter-spacing:2px}footer{padding:40px;text-align:center;font-size:11px;letter-spacing:3px;color:#888;background:#fff}</style>
 </head>
 <body>
 <header><b>COZYSWAG</b><nav><a onclick="document.getElementById('store').scrollIntoView({behavior:'smooth'})">STORE</a><a onclick="document.getElementById('collection').scrollIntoView({behavior:'smooth'})">COLLECTION</a><a onclick="document.getElementById('gallery').scrollIntoView({behavior:'smooth'})">GALLERY</a></nav></header>
 
-<section id="intro"><h1>COZYSWAG</h1><p>MINIMAL STREETWEAR — SORRY LOOP</p><button class="btn" onclick="document.getElementById('store').scrollIntoView({behavior:'smooth'})">SHOP NOW</button></section>
+<section id="intro">
+<img class="gif" src="https://i.imgur.com/wIQrNXl.gif">
+<h1>COZYSWAG</h1>
+<p>MINIMAL STREETWEAR — SORRY LOOP • 8 TEES</p>
+<button class="btn" onclick="document.getElementById('store').scrollIntoView({behavior:'smooth'})">SHOP NOW</button>
+</section>
 
-<section id="store"><div class="top"><h2 style="font-size:48px">STORE</h2><p style="color:#888">FRONT ONLY • ARROW TO SWITCH</p></div><div class="main"><button class="arrow" onclick="prev()">←</button><div class="center"><div id="imgBox"><img id="pImg"></div><div class="dots" id="dots"></div><div class="info"><h2 id="pName"></h2><p id="pPrice"></p><button class="cart">ADD TO CART — <span id="p2"></span></button></div></div><button class="arrow" onclick="next()">→</button></div></section>
+<section id="store"><div class="top"><h2 style="font-size:48px">STORE</h2><p style="color:#888">FRONT ONLY • ARROW TO SWITCH • 8 TEES</p></div><div class="main"><button class="arrow" onclick="prev()">←</button><div class="center"><div id="imgBox"><img id="pImg"></div><div class="dots" id="dots"></div><div class="info"><h2 id="pName"></h2><p id="pPrice"></p><button class="cart">ADD TO CART — <span id="p2"></span></button></div></div><button class="arrow" onclick="next()">→</button></div></section>
 
-<section id="collection"><h2 style="font-size:48px">COLLECTION 01</h2><div class="grid"><div class="card"><img src="./black.jpg"></div><div class="card"><img src="./white.jpg"></div><div class="card"><img src="./glitter.jpg"></div><div class="card"><img src="./beanie.jpg"></div><div class="card"><img src="./pendant.jpg"></div><div class="card" style="background:#000;color:#fff;display:flex;align-items:center;justify-content:center;font-size:28px;letter-spacing:4px">COZYSWAG</div></div></section>
+<section id="collection"><h2 style="font-size:48px">COLLECTION 01 — 8 TEES</h2><div class="grid" id="collGrid"></div></section>
 
-<section id="gallery"><h2 style="font-size:48px">GALLERY</h2><div class="gallery-grid"><div><img src="./black.jpg"></div><div><img src="./white.jpg"></div><div><img src="./glitter.jpg"></div><div><img src="./beanie.jpg"></div></div></section>
+<section id="gallery"><h2 style="font-size:48px">GALLERY</h2><div class="gallery-grid" id="galGrid"></div></section>
 
-<!-- MUSIC - SORRY LOOP -->
 <audio id="bgMusic" loop><source src="./music.mp3" type="audio/mpeg"></audio>
 <button id="musicBtn" onclick="toggleMusic()">♪ PLAY SORRY</button>
 
-<footer>COZYSWAG</footer>
+<footer>© 2026 COZYSWAG — COZY BUT MAKE IT SWAG</footer>
 
 <script>
-const products=[{name:"COZYSWAG BLACK LOGO TEE",price:"₱850",img:"./black.jpg"},{name:"COZYSWAG WHITE LOGO TEE",price:"₱850",img:"./white.jpg"},{name:"COZYSWAG GLITTER TEE",price:"₱900",img:"./glitter.jpg"},{name:"COZYSWAG BEANIE",price:"₱550",img:"./beanie.jpg"},{name:"COZYSWAG PENDANT",price:"₱650",img:"./pendant.jpg"}];
+const products=[
+{name:"COZYSWAG TEE 01",price:"₱850",img:"https://i.imgur.com/rM9FnTG.png"},
+{name:"COZYSWAG TEE 02",price:"₱850",img:"https://i.imgur.com/y1bwuFF.png"},
+{name:"COZYSWAG TEE 03",price:"₱850",img:"https://i.imgur.com/TYSYmj1.png"},
+{name:"COZYSWAG TEE 04",price:"₱850",img:"https://i.imgur.com/7tNmDFO.png"},
+{name:"COZYSWAG TEE 05",price:"₱900",img:"https://i.imgur.com/CDKuXxt.png"},
+{name:"COZYSWAG TEE 06",price:"₱900",img:"https://i.imgur.com/e6rIBlV.png"},
+{name:"COZYSWAG TEE 07",price:"₱900",img:"https://i.imgur.com/ty9cyvl.png"},
+{name:"COZYSWAG TEE 08",price:"₱950",img:"https://i.imgur.com/HOqhErH.png"}
+];
 let i=0;const pImg=document.getElementById("pImg"),pName=document.getElementById("pName"),pPrice=document.getElementById("pPrice"),p2=document.getElementById("p2"),dots=document.getElementById("dots");
 function dotRender(){dots.innerHTML="";products.forEach((_,k)=>{let d=document.createElement("div");d.className="dot"+(k==i?" active":"");d.onclick=()=>{i=k;up()};dots.appendChild(d)})}
 function up(){pImg.style.opacity=0;setTimeout(()=>{pImg.src=products[i].img;pName.innerText=products[i].name;pPrice.innerText=products[i].price;p2.innerText=products[i].price;pImg.style.opacity=1;dotRender()},150)}
 function next(){i=(i+1)%products.length;up()}function prev(){i=(i-1+products.length)%products.length;up()}up();
+// collection & gallery
+let cg=document.getElementById("collGrid"),gg=document.getElementById("galGrid");products.forEach(p=>{cg.innerHTML+=`<div class="card"><img src="${p.img}"></div>`;gg.innerHTML+=`<div><img src="${p.img}"></div>`});
 let playing=false;function toggleMusic(){let m=document.getElementById('bgMusic'),b=document.getElementById('musicBtn');if(!playing){m.play();b.innerText="II PAUSE SORRY";playing=true}else{m.pause();b.innerText="♪ PLAY SORRY";playing=false}}
 </script>
 </body>
