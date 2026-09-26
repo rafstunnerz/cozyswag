@@ -1,89 +1,79 @@
 <!doctype html>
 <html>
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>COZYSWAG</title>
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>COZYSWAG</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#f7f5f2;font-family:Helvetica,Arial;overflow:hidden}
-/* INTRO NA PAMPASOK - YUNG GUSTO MO */
-#enter{position:fixed;inset:0;background:#000;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:all.8s ease}
-#enter img.logo{width:420px;max-width:80vw;filter:brightness(0) invert(1);animation:pulse 2s infinite}
-#enter p{color:#555;font-size:11px;letter-spacing:5px;margin-top:30px;font-family:Helvetica}
-@keyframes pulse{0%,100%{transform:scale(1);opacity:.9}50%{transform:scale(1.05);opacity:1}}
-#enter.hide{transform:translateY(-100%);opacity:0;pointer-events:none}
-
-/* MAIN SITE - NAKATAGO HANGGANG MA-CLICK INTRO */
-#main{opacity:0;pointer-events:none;transition:opacity.6s}
+body{font-family:Helvetica,Arial;background:#000;overflow:hidden}
+#enter{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:#000;cursor:pointer}
+#enter img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#enter.overlay{position:absolute;inset:0;background:rgba(0,0,0,.4)}
+#enter.menu{position:relative;z-index:2;text-align:center;color:#fff}
+#enter.menu div{font-family:serif;font-size:82px;font-weight:700;line-height:.95;letter-spacing:2px;margin:12px 0;text-shadow:0 4px 30px rgba(0,0,0,.9);transition:.2s;cursor:pointer}
+#enter.menu div:hover{letter-spacing:10px;transform:scale(1.05)}
+#enter.menu small{font-family:Helvetica;font-size:11px;letter-spacing:5px;opacity:.8;display:block;margin-top:30px}
+#enter.hide{transform:translateY(-100%);transition:.8s ease;opacity:0;pointer-events:none}
+#main{opacity:0;pointer-events:none;transition:.6s}
 #main.show{opacity:1;pointer-events:auto}
-body.entered{overflow:auto}
-
-header{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid #eee;padding:20px 40px;display:flex;justify-content:space-between}
+body.entered{overflow:auto;background:#f7f5f2}
+header{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid #eee;padding:18px 40px;display:flex;justify-content:space-between}
 nav a{margin-left:20px;text-decoration:none;color:#111;font-size:12px;letter-spacing:2px;font-weight:700;cursor:pointer}
-
-/* SECTIONS PABABA */
-.hero{height:90vh;position:relative;display:flex;align-items:center;justify-content:center;background:#000;overflow:hidden}
-.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.6}
-.hero.center{position:relative;z-index:2;color:#fff;text-align:center}
-.hero h1{font-size:90px;letter-spacing:20px;font-weight:900}
-.hero.menu div{font-size:56px;font-family:serif;cursor:pointer;line-height:1.1;margin:6px 0}
-.hero.menu div:hover{letter-spacing:6px}
-
 .white{padding:80px 40px;background:#f7f5f2}
 .black{padding:80px 40px;background:#111;color:#fff}
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:30px}
-.card{background:#fff;height:380px;display:flex;align-items:center;justify-content:center}
+.card{background:#fff;height:400px;display:flex;align-items:center;justify-content:center}
 .card img{width:100%;height:100%;object-fit:contain}
-.store{display:flex;align-items:center;gap:20px}
+.storeWrap{display:flex;align-items:center;gap:20px;margin-top:20px}
 .imgBox{flex:1;height:560px;background:#fff;display:flex;align-items:center;justify-content:center}
 .imgBox img{width:100%;height:100%;object-fit:contain}
 .arrow{width:64px;height:64px;background:#000;color:#fff;border-radius:50%;border:0;font-size:22px;cursor:pointer}
-#musicBtn{position:fixed;bottom:20px;right:20px;background:#000;color:#fff;padding:14px 22px;border-radius:30px;border:1px solid #333;z-index:99;cursor:pointer;font-weight:700;font-size:12px;letter-spacing:2px}
+#musicBtn{position:fixed;bottom:20px;right:20px;background:#fff;color:#000;padding:14px 22px;border-radius:30px;border:0;z-index:99;font-weight:900;letter-spacing:2px;font-size:12px;cursor:pointer}
+@media(max-width:700px){#enter.menu div{font-size:48px}.grid{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
 
-<!-- INTRO NA CLICK TO ENTER - YAN YUNG NASA PIC MO -->
-<div id="enter" onclick="enterSite()">
-<img class="logo" src="https://i.imgur.com/ty9cyvl.png" style="filter:none;width:500px;object-fit:contain" onerror="this.style.display='none'">
-<!-- Kung wala yung logo image, text nalang -->
-<h1 style="color:#fff;font-family:cursive;font-size:80px;font-weight:400;transform:rotate(-5deg)">Cozyswag</h1>
-<p>CLICK TO ENTER — SORRY WILL PLAY</p>
-</div>
-
-<!-- MAIN SITE - LALABAS LANG PAG NA-CLICK INTRO -->
-<div id="main">
-<header><b style="letter-spacing:8px">COZYSWAG</b><nav><a onclick="go('store')">STORE</a><a onclick="go('collection')">COLLECTION</a><a onclick="go('gallery')">GALLERY</a><a onclick="go('story')">STORY</a></nav></header>
-
-<section class="hero">
-<img src="https://i.imgur.com/wIQrNXl.gif">
-<div class="center">
+<!-- INTRO - GIF MO -->
+<div id="enter" onclick="enterSite('store')">
+<img class="bg" src="https://i.imgur.com/wIQrNXl.gif">
+<div class="overlay"></div>
 <div class="menu">
-<div onclick="go('collection')">COLLECTION</div>
-<div onclick="go('gallery')">GALLERY</div>
-<div onclick="go('story')">STORY</div>
-<div style="font-size:14px;font-family:Helvetica;letter-spacing:6px;margin-top:20px" onclick="go('store')">STORE →</div>
-<div style="margin-top:30px;font-family:Helvetica;font-size:13px;letter-spacing:3px">FB • IG • TIKTOK<br>cozyswag.ph</div>
+<div onclick="event.stopPropagation(); enterSite('store')">STORE</div>
+<div onclick="event.stopPropagation(); enterSite('collection')">COLLECTION</div>
+<div onclick="event.stopPropagation(); enterSite('gallery')">GALLERY</div>
+<small>cozyswag.ph • CLICK TO ENTER • SORRY WILL PLAY</small>
 </div>
 </div>
-</section>
 
-<section class="white" id="store"><h2 style="font-size:46px;font-weight:900">STORE</h2><div class="store" style="margin-top:20px"><button class="arrow" onclick="prev()">←</button><div class="imgBox"><img id="pImg"></div><button class="arrow" onclick="next()">→</button><div style="width:280px"><h3 id="pName"></h3><p id="pPrice" style="color:#888;margin-top:6px"></p></div></div></section>
-<section class="white" id="collection"><h2 style="font-size:46px;font-weight:900">COLLECTION</h2><div class="grid" id="collGrid"></div></section>
-<section class="black" id="gallery"><h2 style="font-size:46px;font-weight:900">GALLERY</h2><div class="grid" id="galGrid"></div></section>
-<section class="white" id="story"><h2 style="font-size:46px;font-weight:900">STORY</h2><p style="max-width:600px;margin-top:20px;line-height:1.7;color:#666">COZYSWAG - Cozy but make it swag. Manila 2026. Minimal but heavy.</p></section>
+<div id="main">
+<header><b style="letter-spacing:8px">COZYSWAG</b><nav><a onclick="go('store')">STORE</a><a onclick="go('collection')">COLLECTION</a><a onclick="go('gallery')">GALLERY</a></nav></header>
 
-<audio id="bgMusic" loop preload="auto"><source src="./music.mp3" type="audio/mpeg"><source src="./SORRY%20-%20(320%20Kbps).mp3" type="audio/mpeg"></audio>
+<section class="white" id="store"><h2 style="font-size:48px;font-weight:900">STORE — 8 TEES</h2>
+<div class="storeWrap"><button class="arrow" onclick="prev()">←</button><div class="imgBox"><img id="pImg"></div><button class="arrow" onclick="next()">→</button><div style="width:260px"><h3 id="pName"></h3><p id="pPrice" style="color:#888;margin-top:6px"></p></div></div></section>
+
+<section class="white" id="collection"><h2 style="font-size:48px;font-weight:900">COLLECTION</h2><div class="grid" id="collGrid"></div></section>
+<section class="black" id="gallery"><h2 style="font-size:48px;font-weight:900">GALLERY</h2><div class="grid" id="galGrid"></div></section>
+
+<!-- FIXED AUDIO - GAMIT RAW LINK MO NA GUMAGANA -->
+<audio id="bgMusic" loop preload="auto" playsinline>
+<source src="https://raw.githubusercontent.com/rafstunnerz/cozyswag/refs/heads/main/music.mp3" type="audio/mpeg">
+</audio>
 <button id="musicBtn" onclick="toggleMusic()">♪ PLAY SORRY</button>
 </div>
 
 <script>
-function enterSite(){
+function enterSite(sec){
  document.getElementById('enter').classList.add('hide');
  document.getElementById('main').classList.add('show');
  document.body.classList.add('entered');
- // PLAY MUSIC PAG PASOK
+ setTimeout(()=>{document.getElementById(sec).scrollIntoView({behavior:'smooth'})},500);
  let m=document.getElementById('bgMusic');
  m.volume=1;
- m.play().then(()=>{document.getElementById('musicBtn').innerText="II PAUSE SORRY"; playing=true}).catch(()=>{});
+ m.play().then(()=>{playing=true;document.getElementById('musicBtn').innerText="II PAUSE SORRY"}).catch(e=>{
+   alert('Click PLAY SORRY sa baba boss, na-block ng browser first time!');
+   console.log(e);
+ });
 }
 function go(id){document.getElementById(id).scrollIntoView({behavior:'smooth'})}
 
@@ -97,16 +87,18 @@ const products=[
 { name:"TEE 07", price:"₱900", img:"https://i.imgur.com/ty9cyvl.png" },
 { name:"TEE 08", price:"₱950", img:"https://i.imgur.com/HOqhErH.png" }
 ];
-let idx=0; const pImg=document.getElementById("pImg"),pName=document.getElementById("pName"),pPrice=document.getElementById("pPrice");
+let idx=0;
+const pImg=document.getElementById("pImg"),pName=document.getElementById("pName"),pPrice=document.getElementById("pPrice");
 function up(){pImg.src=products[idx].img;pName.innerText=products[idx].name;pPrice.innerText=products[idx].price}
 function next(){idx=(idx+1)%products.length;up()} function prev(){idx=(idx-1+products.length)%products.length;up()} up();
 document.getElementById("collGrid").innerHTML=products.map(p=>`<div class="card"><img src="${p.img}"></div>`).join("");
 document.getElementById("galGrid").innerHTML=products.map(p=>`<div class="card" style="background:#222"><img src="${p.img}" style="object-fit:cover"></div>`).join("");
+
 let playing=false;
 function toggleMusic(){
- let m=document.getElementById("bgMusic");
- if(!playing){m.play().then(()=>{playing=true;document.getElementById("musicBtn").innerText="II PAUSE"}).catch(()=>{});}
- else{m.pause();playing=false;document.getElementById("musicBtn").innerText="♪ PLAY SORRY";}
+ let m=document.getElementById('bgMusic');
+ if(!playing){m.play().then(()=>{playing=true;document.getElementById('musicBtn').innerText="II PAUSE SORRY"});}
+ else{m.pause();playing=false;document.getElementById('musicBtn').innerText="♪ PLAY SORRY";}
 }
 </script>
 </body>
