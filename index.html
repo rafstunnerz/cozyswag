@@ -1,4 +1,4 @@
-]<!doctype html>
+<!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
@@ -11,8 +11,7 @@ body{background:#f2f2f2;color:#111;font-family:Helvetica;overflow:hidden}
 #gate video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 #gate::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.55)}
 .menu{position:relative;z-index:2;text-align:center;color:#fff;display:flex;flex-direction:column;align-items:center}
-.menu.top-logo{width:110px;max-width:32vw;margin-bottom:16px}
-.menu div.link{font-family:serif;font-size:52px;font-weight:900;margin:6px 0;cursor:pointer;line-height:1;letter-spacing:1px}
+.menu div.link{font-family:serif;font-size:46px;font-weight:900;margin:6px 0;cursor:pointer;line-height:1;letter-spacing:1px}
 #gate.out{transform:translateY(-100%);pointer-events:none}
 #main{display:none;background:#f2f2f2;min-height:100vh}
 #main.show{display:block}
@@ -20,23 +19,22 @@ body{background:#f2f2f2;color:#111;font-family:Helvetica;overflow:hidden}
 header{padding:12px 20px;background:#f2f2f2;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:30}
 .header-left{display:flex;align-items:center}
 .header-center{position:absolute;left:50%;transform:translateX(-50%)}
-.header-right{display:flex;align-items:center;gap:22px}
-.nav-link{font-size:12px;letter-spacing:3px;font-weight:800;cursor:pointer;opacity:.6;padding:8px 0;border-bottom:2px solid transparent}
+.header-right{display:flex;align-items:center;gap:18px}
+.nav-link{font-size:11px;letter-spacing:2px;font-weight:800;cursor:pointer;opacity:.6;padding:8px 0;border-bottom:2px solid transparent}
 .nav-link.active{opacity:1;border-bottom:2px solid #111}
 .icon-btn{width:24px;height:24px;cursor:pointer;position:relative;display:flex;align-items:center;justify-content:center}
 .icon-btn svg{width:22px;height:22px;stroke:#111;stroke-width:1.8;fill:none}
 .back{cursor:pointer;font-size:11px;letter-spacing:3px;font-weight:900;padding:10px 20px;border:1px solid #111;border-radius:30px;display:flex;align-items:center;gap:8px}
 .header-logo{height:58px;cursor:pointer}
 .title{text-align:center;font-size:18px;font-weight:900;letter-spacing:4px;padding:24px 0 12px}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:0;background:transparent}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:0}
 .card{background:#f2f2f2;padding:20px 16px 32px;display:flex;flex-direction:column;align-items:center;cursor:pointer;position:relative}
 .card img{width:100%;height:280px;object-fit:contain}
 .card p{font-size:12px;letter-spacing:1.5px;margin-top:14px;font-weight:800;text-align:center}
 .soldout-pill{position:absolute;bottom:52px;left:50%;transform:translateX(-50%);border:1px solid #111;border-radius:20px;padding:6px 18px;font-size:11px;letter-spacing:1px;font-weight:700;background:#fff;white-space:nowrap}
-.gallery-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;background:transparent}
+.gallery-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
 .gallery-card{aspect-ratio:4/5;background:#000;overflow:hidden;cursor:pointer}
 .gallery-card img{width:100%;height:100%;object-fit:cover}
-/* STORY PAGE */
 .story-wrap{max-width:700px;margin:0 auto;padding:40px 20px;text-align:center}
 .story-wrap h1{font-size:32px;letter-spacing:5px;font-weight:900;margin-bottom:20px}
 .story-wrap p{font-size:14px;line-height:1.8;letter-spacing:.5px;opacity:.8;margin-bottom:16px;text-align:left}
@@ -46,7 +44,7 @@ header{padding:12px 20px;background:#f2f2f2;display:flex;justify-content:space-b
 .search-top input{flex:1;border:none;background:transparent;font-size:16px;letter-spacing:1px;outline:none;font-weight:600}
 .search-results{flex:1;overflow:auto;padding:20px}
 .search-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
-.empty-search{text-align:center;padding:60px 20px;opacity:.5;font-size:13px;letter-spacing:1px}
+.empty-search{text-align:center;padding:60px 20px;opacity:.5;font-size:13px}
 #productPage{position:fixed;inset:0;z-index:90;background:#f2f2f2;display:none;overflow:auto}
 #productPage.show{display:block}
 .p-header{padding:12px 20px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:#f2f2f2;z-index:5}
@@ -83,50 +81,43 @@ header{padding:12px 20px;background:#f2f2f2;display:flex;justify-content:space-b
 #loader img{width:70px;height:70px;animation:spin.9s linear infinite}
 @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 #loader p{margin-top:14px;font-size:10px;letter-spacing:4px;font-weight:900;opacity:.6}
-@media(max-width:800px){.p-body{grid-template-columns:1fr}.p-img-main{min-height:400px;padding:24px}.menu.top-logo{width:90px}.menu div.link{font-size:36px;margin:5px 0}.header-logo{height:44px}.card img{height:220px}.header-right{gap:12px}.nav-link{font-size:10px;letter-spacing:1.5px}.back{padding:8px 14px;font-size:10px}}
+@media(max-width:800px){.p-body{grid-template-columns:1fr}.p-img-main{min-height:400px;padding:24px}.menu div.link{font-size:34px;margin:5px 0}.header-logo{height:44px}.card img{height:220px}.header-right{gap:10px}.nav-link{font-size:9px;letter-spacing:1px}.back{padding:8px 14px;font-size:10px}}
 </style>
 </head>
 <body>
 <div id="gate">
 <video autoplay loop muted playsinline><source src="https://i.imgur.com/ML8T7V0.mp4" type="video/mp4"></video>
 <div class="menu">
-<img class="top-logo" src="https://i.imgur.com/CGvaEJO.gif">
+<img src="https://i.imgur.com/cvLNJry.gif" style="width:150px;max-width:48vw;max-height:30vh;object-fit:contain;margin-bottom:18px;">
 <div class="link" onclick="enterStore()">STORE</div>
 <div class="link" onclick="enterGallery()">GALLERY</div>
-<div class="link" onclick="enterStory()">STORY</div>
+<div class="link" onclick="window.open('https://www.facebook.com/profile.php?id=61553410621994','_blank')">STORY</div>
+<div style="display:flex;gap:16px;margin-top:22px;">
+<a href="https://www.instagram.com/cozyswag_ph" target="_blank" style="width:30px;height:30px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#000"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.2 5.2 0 0 1-5.2 5.2H7.8C4.6 22 2 19.4 2 16.2V7.8A5.2 5.2 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5M12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10m0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg></a>
+<a href="https://www.tiktok.com/@cozyswag.ph" target="_blank" style="width:30px;height:30px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#000"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a>
+<a href="https://www.facebook.com/profile.php?id=61553410621994" target="_blank" style="width:30px;height:30px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#000"><path d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.15 16.45 6.15V8.62H15.19C13.95 8.62 13.56 9.39 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96A10 10 0 0 0 22 12.06C22 6.53 17.5 2.04 12 2.04Z"/></svg></a>
+</div>
 </div>
 </div>
 
 <div id="main">
 <header>
-<div class="header-left"><div class="back" id="mainBackBtn" onclick="handleBack()">← BACK</div></div>
+<div class="header-left"><div class="back" onclick="handleBack()">← BACK</div></div>
 <div class="header-center"><img class="header-logo" src="https://i.imgur.com/cvLNJry.gif" onclick="handleBack()"></div>
 <div class="header-right">
 <span id="navStore" class="nav-link active" onclick="showStoreTab()">STORE</span>
 <span id="navGallery" class="nav-link" onclick="showGalleryTab()">GALLERY</span>
-<span id="navStory" class="nav-link" onclick="showStoryTab()">STORY</span>
+<span id="navStory" class="nav-link" onclick="window.open('https://www.facebook.com/profile.php?id=61553410621994','_blank')">STORY</span>
 <div class="icon-btn" onclick="openSearch()"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M16 16L20 20"/></svg></div>
-<div class="icon-btn"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg></div>
 <div class="icon-btn" onclick="openCart()"><svg viewBox="0 0 24 24"><path d="M4 6h16l-1.5 12h-13z"/><path d="M8 6V4a4 4 0 0 1 8 0v2"/></svg><div id="badge" class="cart-badge" style="display:none">0</div></div>
 </div>
 </header>
-<div id="storePage" class="page"><div class="title">NEW COLLECTION</div><div class="grid2" id="storeGrid"></div></div>
-<div id="galleryPage" class="page"><div class="title">GALLERY — COZYSWAG FAM</div><div class="gallery-grid" id="galleryGrid"></div></div>
-<div id="storyPage" class="page">
-<div class="story-wrap">
-<h1>OUR STORY</h1>
-<img src="https://i.imgur.com/cvLNJry.gif" style="width:120px;margin:20px auto;display:block">
-<p>COZYSWAG started from the streets of Caloocan — hindi lang basta damit, lifestyle namin to. Gusto namin yung cozy pero may swag pa rin, yung pwede mo suotin kahit saan — tambay, gig, school, lahat.</p>
-<p>Every piece is made with love, from the tee to the shorts to the chain. Hindi kami fast fashion — limited drops lang, kaya pag na-sold out, sold out na talaga like COZY TEE BLACK natin ngayon.</p>
-<p>Thank you sa lahat ng sumusuporta since day 1. This is just the beginning. More drops, more stories, more cozy swag.</p>
-<p style="text-align:center;font-weight:900;margin-top:30px;letter-spacing:3px">COZY BOYS CLUB 🖤</p>
-</div>
-</div>
+<div id="storePage" class="page"><div class="title">COLLECTION</div><div class="grid2" id="storeGrid"></div></div>
+<div id="galleryPage" class="page"><div class="title">GALLERY — COZYSWAG</div><div class="gallery-grid" id="galleryGrid"></div></div>
 <audio id="audio" loop preload="auto"><source src="./sorry.mp3" type="audio/mpeg"></audio>
 </div>
 
 <div id="loader"><img src="https://i.imgur.com/cvLNJry.gif"><p>LOADING</p></div>
-
 <div id="searchOverlay">
 <div class="search-top"><div style="cursor:pointer;font-weight:900" onclick="closeSearch()">✕</div><input id="searchInput" type="text" placeholder="Search for tee, chain, skullcap..." oninput="doSearch(this.value)"></div>
 <div class="search-results"><div id="searchGrid" class="search-grid"></div><div id="searchEmpty" class="empty-search" style="display:none">Walang nahanap boss 😓</div></div>
@@ -139,7 +130,7 @@ header{padding:12px 20px;background:#f2f2f2;display:flex;justify-content:space-b
 <div class="header-right">
 <span class="nav-link" onclick="backFromProduct(); setTimeout(()=>showStoreTab(),100)">STORE</span>
 <span class="nav-link" onclick="backFromProduct(); setTimeout(()=>showGalleryTab(),100)">GALLERY</span>
-<span class="nav-link" onclick="backFromProduct(); setTimeout(()=>showStoryTab(),100)">STORY</span>
+<span class="nav-link" onclick="window.open('https://www.facebook.com/profile.php?id=61553410621994','_blank')">STORY</span>
 <div class="icon-btn" onclick="openSearch()"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M16 16L20 20"/></svg></div>
 <div class="icon-btn" onclick="openCart()"><svg viewBox="0 0 24 24"><path d="M4 6h16l-1.5 12h-13z"/><path d="M8 6V4a4 4 0 0 1 8 0v2"/></svg><div id="badge2" class="cart-badge" style="display:none">0</div></div>
 </div>
@@ -169,43 +160,18 @@ const tees=[
 {img:"https://i.imgur.com/TYSYmj1.png",name:"COZY CHAIN SILVER",price:650,images:["https://i.imgur.com/TYSYmj1.png"],chart:null,soldout:false},
 ];
 const galleryPics=["https://i.imgur.com/ZUE63Du.jpeg","https://i.imgur.com/S33CFqt.jpeg","https://i.imgur.com/mrPv4Lg.jpeg","https://i.imgur.com/385oIll.jpeg","https://i.imgur.com/mk4Xksn.jpeg","https://i.imgur.com/zX2LkBM.jpeg","https://i.imgur.com/YpA5yF8.jpeg","https://i.imgur.com/rHxWn1O.jpeg","https://i.imgur.com/hRAzh46.jpeg","https://i.imgur.com/jk0Tq8L.jpeg","https://i.imgur.com/3RptbR7.jpeg","https://i.imgur.com/FwGlaZ4.jpeg"];
-let current=null,currentIdx=0,cart=[],q=1;
-let currentPage='store'; // track kung nasan
+let current=null,currentIdx=0,cart=[],q=1,currentPage='store';
 function renderStore(list){document.getElementById('storeGrid').innerHTML=list.map((t)=>{let realIndex=tees.indexOf(t);return `<div class="card" onclick="openProduct(${realIndex})"><img src="${t.img}"><p>${t.name}</p>${t.soldout?'<div class="soldout-pill">Sold out</div>':''}</div>`}).join("");}
 renderStore(tees);
 document.getElementById('galleryGrid').innerHTML=galleryPics.map(p=>`<div class="gallery-card" onclick="openGallery('${p}')"><img src="${p}"></div>`).join("");
 function showLoaderThen(cb){document.getElementById('loader').classList.add('show');setTimeout(()=>{document.getElementById('loader').classList.remove('show');cb();},800);}
-function showStoreTab(){currentPage='store';showLoaderThen(()=>{document.getElementById('storePage').classList.add('active');document.getElementById('galleryPage').classList.remove('active');document.getElementById('storyPage').classList.remove('active');document.getElementById('navStore').classList.add('active');document.getElementById('navGallery').classList.remove('active');document.getElementById('navStory').classList.remove('active');window.scrollTo(0,0);});}
-function showGalleryTab(){currentPage='gallery';showLoaderThen(()=>{document.getElementById('galleryPage').classList.add('active');document.getElementById('storePage').classList.remove('active');document.getElementById('storyPage').classList.remove('active');document.getElementById('navGallery').classList.add('active');document.getElementById('navStore').classList.remove('active');document.getElementById('navStory').classList.remove('active');window.scrollTo(0,0);});}
-function showStoryTab(){currentPage='story';showLoaderThen(()=>{document.getElementById('storyPage').classList.add('active');document.getElementById('storePage').classList.remove('active');document.getElementById('galleryPage').classList.remove('active');document.getElementById('navStory').classList.add('active');document.getElementById('navStore').classList.remove('active');document.getElementById('navGallery').classList.remove('active');window.scrollTo(0,0);});}
-function showStoreTabWithoutLoader(){currentPage='store';document.getElementById('storePage').classList.add('active');document.getElementById('galleryPage').classList.remove('active');document.getElementById('storyPage').classList.remove('active');document.getElementById('navStore').classList.add('active');document.getElementById('navGallery').classList.remove('active');document.getElementById('navStory').classList.remove('active');}
-function showGalleryTabWithoutLoader(){currentPage='gallery';document.getElementById('galleryPage').classList.add('active');document.getElementById('storePage').classList.remove('active');document.getElementById('storyPage').classList.remove('active');document.getElementById('navGallery').classList.add('active');document.getElementById('navStore').classList.remove('active');document.getElementById('navStory').classList.remove('active');}
-function showStoryTabWithoutLoader(){currentPage='story';document.getElementById('storyPage').classList.add('active');document.getElementById('storePage').classList.remove('active');document.getElementById('galleryPage').classList.remove('active');document.getElementById('navStory').classList.add('active');document.getElementById('navStore').classList.remove('active');document.getElementById('navGallery').classList.remove('active');}
-
-// BAGO BOSS - BACK LOGIC
-function handleBack(){
-  // kung nasa store page ka na, punta ka na sa intro
-  if(currentPage==='store'){
-    goToIntro();
-  } else if(currentPage==='gallery' || currentPage==='story'){
-    // kung nasa gallery/story ka, punta muna sa store
-    showStoreTab();
-  } else {
-    goToIntro();
-  }
-}
-function backFromProduct(){
-  document.getElementById('productPage').classList.remove('show');
-  showStoreTabWithoutLoader();
-  document.getElementById('storePage').classList.add('active');
-  window.scrollTo(0,0);
-}
-function goToIntro(){
-  document.getElementById('gate').classList.remove('out');
-  document.getElementById('main').classList.remove('show');
-  document.body.style.overflow='hidden';
-  document.getElementById('audio').pause();
-}
+function showStoreTab(){currentPage='store';showLoaderThen(()=>{document.getElementById('storePage').classList.add('active');document.getElementById('galleryPage').classList.remove('active');document.getElementById('navStore').classList.add('active');document.getElementById('navGallery').classList.remove('active');window.scrollTo(0,0);});}
+function showGalleryTab(){currentPage='gallery';showLoaderThen(()=>{document.getElementById('galleryPage').classList.add('active');document.getElementById('storePage').classList.remove('active');document.getElementById('navGallery').classList.add('active');document.getElementById('navStore').classList.remove('active');window.scrollTo(0,0);});}
+function showStoreTabWithoutLoader(){currentPage='store';document.getElementById('storePage').classList.add('active');document.getElementById('galleryPage').classList.remove('active');document.getElementById('navStore').classList.add('active');document.getElementById('navGallery').classList.remove('active');}
+function showGalleryTabWithoutLoader(){currentPage='gallery';document.getElementById('galleryPage').classList.add('active');document.getElementById('storePage').classList.remove('active');document.getElementById('navGallery').classList.add('active');document.getElementById('navStore').classList.remove('active');}
+function handleBack(){if(currentPage==='store'){goToIntro();}else{showStoreTab();}}
+function backFromProduct(){document.getElementById('productPage').classList.remove('show');showStoreTabWithoutLoader();document.getElementById('storePage').classList.add('active');window.scrollTo(0,0);}
+function goToIntro(){document.getElementById('gate').classList.remove('out');document.getElementById('main').classList.remove('show');document.body.style.overflow='hidden';document.getElementById('audio').pause();}
 function openProduct(i){current=tees[i];currentIdx=0;q=1;document.getElementById('qty').innerText=q;document.getElementById('pName').innerText=current.name;document.getElementById('pImg').src=current.images[0];document.getElementById('thumbs').innerHTML=current.images.map((im,idx)=>`<div class="thumb ${idx===0?'active':''}" onclick="goToImg(${idx})"><img src="${im}"></div>`).join("");if(current.chart){document.getElementById('sizeChartImg').src=current.chart;document.getElementById('chartBtn').style.display='block';}else{document.getElementById('chartBtn').style.display='none';}let addBtn=document.getElementById('addBtn');let codBtn=document.getElementById('codBtn');if(current.soldout){addBtn.innerText='SOLD OUT';addBtn.style.background='#ccc';addBtn.style.color='#666';addBtn.disabled=true;codBtn.innerText='SOLD OUT';codBtn.style.background='#ccc';codBtn.style.color='#666';codBtn.disabled=true;}else{addBtn.innerText='ADD TO CART';addBtn.style.background='#111';addBtn.style.color='#fff';addBtn.disabled=false;codBtn.innerHTML='🛒 BUY WITH CASH ON DELIVERY';codBtn.style.background='#111';codBtn.style.color='#fff';codBtn.disabled=false;}document.getElementById('productPage').classList.add('show');}
 function goToImg(idx){currentIdx=idx;document.getElementById('pImg').src=current.images[currentIdx];document.querySelectorAll('.thumb').forEach((t,i)=>t.classList.toggle('active',i===currentIdx));}
 function nextImg(){currentIdx=(currentIdx+1)%current.images.length;goToImg(currentIdx);}
@@ -225,7 +191,6 @@ function doSearch(val){let v=val.toLowerCase().trim();let filtered=v===""?tees:t
 function playMusic(){let a=document.getElementById('audio');a.volume=1;a.play().catch(()=>{});}
 function enterStore(){document.getElementById('gate').classList.add('out');document.getElementById('main').classList.add('show');document.getElementById('loader').classList.add('show');setTimeout(()=>{document.getElementById('loader').classList.remove('show');showStoreTabWithoutLoader();document.getElementById('storePage').classList.add('active');},900);document.body.style.overflow='auto';playMusic();}
 function enterGallery(){document.getElementById('gate').classList.add('out');document.getElementById('main').classList.add('show');document.getElementById('loader').classList.add('show');setTimeout(()=>{document.getElementById('loader').classList.remove('show');showGalleryTabWithoutLoader();document.getElementById('galleryPage').classList.add('active');},900);document.body.style.overflow='auto';playMusic();}
-function enterStory(){document.getElementById('gate').classList.add('out');document.getElementById('main').classList.add('show');document.getElementById('loader').classList.add('show');setTimeout(()=>{document.getElementById('loader').classList.remove('show');showStoryTabWithoutLoader();document.getElementById('storyPage').classList.add('active');},900);document.body.style.overflow='auto';playMusic();}
 </script>
 </body>
 </html>
