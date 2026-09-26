@@ -11,15 +11,15 @@ body{background:#f2f2f2;color:#111;font-family:Helvetica;overflow:hidden}
 #gate video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 #gate::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.55)}
 .menu{position:relative;z-index:2;text-align:center;color:#fff;display:flex;flex-direction:column;align-items:center}
-.menu.top-logo{width:320px;max-width:80vw;margin-bottom:18px}
+.menu.top-logo{width:180px;max-width:55vw;margin-bottom:28px}
 .menu div.link{font-family:serif;font-size:72px;font-weight:900;margin:10px 0;cursor:pointer}
 #gate.out{transform:translateY(-100%);transition:.7s}
 #main{display:none;background:#f2f2f2;min-height:100vh}
 #main.show{display:block}
 .page{display:none}.page.active{display:block}
-header{padding:12px 18px;background:#f2f2f2;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:20;border-bottom:1px solid #e5e5e5}
+header{padding:10px 18px;background:#f2f2f2;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:20;border-bottom:1px solid #e5e5e5}
 .back{cursor:pointer;font-size:11px;letter-spacing:3px;font-weight:900;padding:8px 14px;border:1px solid #111;border-radius:20px}
-.header-logo{height:28px;cursor:pointer}
+.header-logo{height:56px;cursor:pointer}
 .title{text-align:center;font-size:18px;font-weight:900;letter-spacing:4px;margin:24px 0 12px}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#e5e5e5}
 .card{background:#f2f2f2;padding:16px;display:flex;flex-direction:column;align-items:center;cursor:pointer}
@@ -28,19 +28,24 @@ header{padding:12px 18px;background:#f2f2f2;display:flex;justify-content:space-b
 .gallery-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#e5e5e5}
 .gallery-card{aspect-ratio:4/5;background:#000;overflow:hidden;cursor:pointer}
 .gallery-card img{width:100%;height:100%;object-fit:cover}
+
+/* PRODUCT WITH ARROWS */
 #productPage{position:fixed;inset:0;z-index:90;background:#f2f2f2;display:none;overflow:auto}
 #productPage.show{display:block}
-.p-header{padding:12px 22px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e5e5e5;position:sticky;top:0;background:#f2f2f2;z-index:5}
+.p-header{padding:10px 22px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e5e5e5;position:sticky;top:0;background:#f2f2f2;z-index:5}
 .p-body{display:grid;grid-template-columns:1.2fr.8fr;min-height:calc(100vh - 60px)}
-.p-img-side{background:#efefef;display:flex;flex-direction:column}
-.p-img-main{flex:1;padding:40px;display:flex;align-items:center;justify-content:center;min-height:520px}
-.p-img-main img{width:100%;max-width:520px;height:auto;object-fit:contain}
+.p-img-side{background:#efefef;display:flex;flex-direction:column;position:relative}
+.p-img-main{flex:1;padding:40px;display:flex;align-items:center;justify-content:center;min-height:520px;position:relative}
+.p-img-main img{width:100%;max-width:520px;object-fit:contain}
+.arrow{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;background:#fff;border:1px solid #111;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;font-weight:900;z-index:2}
+.arrow.left{left:16px}
+.arrow.right{right:16px}
 .thumbs{display:flex;gap:8px;padding:12px 20px;background:#f2f2f2;border-top:1px solid #e5e5e5;overflow:auto}
-.thumb{width:86px;height:86px;min-width:86px;border:2px solid transparent;background:#fff;cursor:pointer;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.thumb{width:86px;height:86px;min-width:86px;border:2px solid transparent;background:#fff;cursor:pointer}
 .thumb.active{border-color:#111}
 .thumb img{width:100%;height:100%;object-fit:cover}
 .p-info{padding:36px 32px}
-.p-info h1{font-size:30px;font-weight:800;line-height:1.1;margin-bottom:10px}
+.p-info h1{font-size:30px;font-weight:800;margin-bottom:10px}
 .price{font-size:13px;opacity:.7;margin-bottom:20px}
 .label{font-size:12px;font-weight:700;margin:18px 0 8px}
 .sizes{display:flex;gap:8px;flex-wrap:wrap}
@@ -52,6 +57,10 @@ header{padding:12px 18px;background:#f2f2f2;display:flex;justify-content:space-b
 .btn{width:100%;padding:14px;border-radius:30px;border:0;font-weight:900;letter-spacing:1px;cursor:pointer;margin-top:14px;font-size:13px}
 .btn-black{background:#111;color:#fff}
 .btn-black2{background:#111;color:#fff;display:flex;align-items:center;justify-content:center;gap:10px}
+.sizechart-btn{margin-top:14px;font-size:11px;letter-spacing:2px;text-decoration:underline;cursor:pointer;opacity:.8;font-weight:700}
+#sizeChartModal{position:fixed;inset:0;z-index:400;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;padding:20px}
+#sizeChartModal.show{display:flex}
+#sizeChartModal img{max-width:90vw;max-height:85vh;background:#fff;padding:10px}
 #cartOverlay{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:200;display:none}
 #cartOverlay.show{display:block}
 #cartDrawer{position:fixed;top:0;right:0;width:420px;max-width:92vw;height:100%;background:#f2f2f2;z-index:201;transform:translateX(100%);transition:.4s;display:flex;flex-direction:column}
@@ -61,7 +70,7 @@ header{padding:12px 18px;background:#f2f2f2;display:flex;justify-content:space-b
 .cart-item{display:grid;grid-template-columns:60px 1fr auto;gap:12px;padding:18px 0;border-bottom:1px solid #eee;align-items:center}
 .cart-foot{padding:22px;border-top:1px solid #e5e5e5}
 .cart-badge{position:absolute;top:-6px;right:-6px;background:#111;color:#fff;font-size:9px;width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center}
-@media(max-width:800px){.p-body{grid-template-columns:1fr}.p-img-main{min-height:400px;padding:24px}.p-info{padding:22px 18px}.menu div.link{font-size:52px}.header-logo{height:22px}}
+@media(max-width:800px){.p-body{grid-template-columns:1fr}.p-img-main{min-height:400px;padding:24px}.p-info{padding:22px 18px}.menu div.link{font-size:52px}.menu.top-logo{width:140px}.header-logo{height:42px}.arrow{width:36px;height:36px}}
 </style>
 </head>
 <body>
@@ -94,7 +103,11 @@ header{padding:12px 18px;background:#f2f2f2;display:flex;justify-content:space-b
 </div>
 <div class="p-body">
 <div class="p-img-side">
-<div class="p-img-main"><img id="pImg" src=""></div>
+<div class="p-img-main">
+<div class="arrow left" onclick="prevImg()">‹</div>
+<img id="pImg" src="">
+<div class="arrow right" onclick="nextImg()">›</div>
+</div>
 <div class="thumbs" id="thumbs"></div>
 </div>
 <div class="p-info">
@@ -106,7 +119,16 @@ header{padding:12px 18px;background:#f2f2f2;display:flex;justify-content:space-b
 <div class="qty"><button onclick="changeQty(-1)">−</button><span id="qty">1</span><button onclick="changeQty(1)">+</button></div>
 <button class="btn btn-black" onclick="addToCart()">ADD TO CART</button>
 <button class="btn btn-black2" onclick="addToCart()">🛒 BUY WITH CASH ON DELIVERY</button>
+<div class="sizechart-btn" onclick="openSizeChart()">VIEW SIZE CHART →</div>
 </div>
+</div>
+</div>
+
+<!-- SIZE CHART MODAL - SEPARATE NA -->
+<div id="sizeChartModal" onclick="closeSizeChart()">
+<div style="position:relative">
+<img src="https://i.imgur.com/0y5JNJr.jpeg">
+<div style="position:absolute;top:-10px;right:-10px;background:#fff;color:#000;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;cursor:pointer" onclick="closeSizeChart()">X</div>
 </div>
 </div>
 
@@ -123,29 +145,34 @@ header{padding:12px 18px;background:#f2f2f2;display:flex;justify-content:space-b
 <script>
 const SIZE_CHART="https://i.imgur.com/0y5JNJr.jpeg";
 const tees=[
-{img:"https://i.imgur.com/rM9FnTG.png",name:"COZY TEE BLACK",price:900,images:["https://i.imgur.com/rM9FnTG.png","https://i.imgur.com/IW3vnNm.jpeg",SIZE_CHART]},
-{img:"https://i.imgur.com/y1bwuFF.png",name:"COZY TEE WHITE",price:900,images:["https://i.imgur.com/y1bwuFF.png","https://i.imgur.com/ZUE63Du.jpeg",SIZE_CHART]},
-{img:"https://i.imgur.com/TYSYmj1.png",name:"COZY SHORTS BLACK",price:900,images:["https://i.imgur.com/TYSYmj1.png",SIZE_CHART]},
-{img:"https://i.imgur.com/7tNmDFO.png",name:"COZY SHORTS WHITE",price:900,images:["https://i.imgur.com/7tNmDFO.png",SIZE_CHART]},
-{img:"https://i.imgur.com/CDKuXxt.png",name:"COZY TEE GREY",price:900,images:["https://i.imgur.com/CDKuXxt.png",SIZE_CHART]},
-{img:"https://i.imgur.com/e6rIBlV.png",name:"COZY TEE CREAM",price:900,images:["https://i.imgur.com/e6rIBlV.png",SIZE_CHART]},
-{img:"https://i.imgur.com/ty9cyvl.png",name:"COZY HOODIE BLACK",price:1200,images:["https://i.imgur.com/ty9cyvl.png",SIZE_CHART]},
-{img:"https://i.imgur.com/HOqhErH.png",name:"COZY HOODIE WHITE",price:1200,images:["https://i.imgur.com/HOqhErH.png",SIZE_CHART]},
+{img:"https://i.imgur.com/rM9FnTG.png",name:"COZY TEE BLACK",price:900,images:["https://i.imgur.com/rM9FnTG.png","https://i.imgur.com/IW3vnNm.jpeg"]},
+{img:"https://i.imgur.com/y1bwuFF.png",name:"COZY TEE WHITE",price:900,images:["https://i.imgur.com/y1bwuFF.png","https://i.imgur.com/ZUE63Du.jpeg"]},
+{img:"https://i.imgur.com/TYSYmj1.png",name:"COZY SHORTS BLACK",price:900,images:["https://i.imgur.com/TYSYmj1.png"]},
+{img:"https://i.imgur.com/7tNmDFO.png",name:"COZY SHORTS WHITE",price:900,images:["https://i.imgur.com/7tNmDFO.png"]},
+{img:"https://i.imgur.com/CDKuXxt.png",name:"COZY TEE GREY",price:900,images:["https://i.imgur.com/CDKuXxt.png"]},
+{img:"https://i.imgur.com/e6rIBlV.png",name:"COZY TEE CREAM",price:900,images:["https://i.imgur.com/e6rIBlV.png"]},
+{img:"https://i.imgur.com/ty9cyvl.png",name:"COZY HOODIE BLACK",price:1200,images:["https://i.imgur.com/ty9cyvl.png"]},
+{img:"https://i.imgur.com/HOqhErH.png",name:"COZY HOODIE WHITE",price:1200,images:["https://i.imgur.com/HOqhErH.png"]},
 ];
 const galleryPics=["https://i.imgur.com/ZUE63Du.jpeg","https://i.imgur.com/S33CFqt.jpeg","https://i.imgur.com/mrPv4Lg.jpeg","https://i.imgur.com/385oIll.jpeg","https://i.imgur.com/mk4Xksn.jpeg","https://i.imgur.com/zX2LkBM.jpeg","https://i.imgur.com/YpA5yF8.jpeg","https://i.imgur.com/rHxWn1O.jpeg","https://i.imgur.com/hRAzh46.jpeg","https://i.imgur.com/jk0Tq8L.jpeg","https://i.imgur.com/3RptbR7.jpeg","https://i.imgur.com/FwGlaZ4.jpeg"];
 
-let current=null,cart=[],q=1;
+let current=null,currentIdx=0,cart=[],q=1;
 document.getElementById('storeGrid').innerHTML=tees.map((t,i)=>`<div class="card" onclick="openProduct(${i})"><img src="${t.img}"><p>${t.name}</p></div>`).join("");
 document.getElementById('galleryGrid').innerHTML=galleryPics.map(p=>`<div class="gallery-card" onclick="openGallery('${p}')"><img src="${p}"></div>`).join("");
 
 function openProduct(i){
-current=tees[i];q=1;document.getElementById('qty').innerText=q;
+current=tees[i];currentIdx=0;q=1;
+document.getElementById('qty').innerText=q;
 document.getElementById('pName').innerText=current.name;
 document.getElementById('pImg').src=current.images[0];
-document.getElementById('thumbs').innerHTML=current.images.map((im,idx)=>`<div class="thumb ${idx===0?'active':''}" onclick="switchImg(this,'${im}')"><img src="${im}" style="${im===SIZE_CHART?'object-fit:contain':''}"></div>`).join("");
+document.getElementById('thumbs').innerHTML=current.images.map((im,idx)=>`<div class="thumb ${idx===0?'active':''}" onclick="goToImg(${idx})"><img src="${im}"></div>`).join("");
 document.getElementById('productPage').classList.add('show');
 }
-function switchImg(el,src){document.getElementById('pImg').src=src;document.querySelectorAll('.thumb').forEach(t=>t.classList.remove('active'));el.classList.add('active');}
+function goToImg(idx){currentIdx=idx;document.getElementById('pImg').src=current.images[currentIdx];document.querySelectorAll('.thumb').forEach((t,i)=>t.classList.toggle('active',i===currentIdx));}
+function nextImg(){currentIdx=(currentIdx+1)%current.images.length;goToImg(currentIdx);}
+function prevImg(){currentIdx=(currentIdx-1+current.images.length)%current.images.length;goToImg(currentIdx);}
+function openSizeChart(){document.getElementById('sizeChartModal').classList.add('show');}
+function closeSizeChart(){document.getElementById('sizeChartModal').classList.remove('show');}
 function closeProduct(){document.getElementById('productPage').classList.remove('show');}
 function openGallery(p){document.getElementById('modalImg').src=p;document.getElementById('modal').style.display='flex';}
 function pickSize(el){document.querySelectorAll('.size').forEach(s=>s.classList.remove('active'));el.classList.add('active');}
