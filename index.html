@@ -7,12 +7,13 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#f2f2f2;color:#111;font-family:Helvetica;overflow:hidden}
-#gate{position:fixed;inset:0;z-index:999;display:flex;align-items:center;justify-content:center;background:#000;overflow:hidden;transition:.7s}
+#gate{position:fixed;inset:0;z-index:999;display:flex;align-items:center;justify-content:center;background:#000;overflow:hidden;transition:.7s ease}
 #gate video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-#gate::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.45)}
-.menu{position:relative;z-index:2;text-align:center;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;padding:20px}
+#gate::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.45);z-index:1;pointer-events:none}
+.menu{position:relative;z-index:3;text-align:center;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;padding:20px}
 .menu-gif{width:380px;max-width:70vw;max-height:38vh;object-fit:contain;margin-bottom:10px;filter:drop-shadow(0 2px 10px rgba(0,0,0,.5))}
 .menu div.link{font-family:'Times New Roman', serif;font-size:58px;font-weight:900;margin:6px 0;cursor:pointer;line-height:.95;letter-spacing:2px;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.8)}
+.menu div.link:hover{opacity:.8;transform:scale(1.02);transition:.2s}
 #gate.out{transform:translateY(-100%);pointer-events:none}
 #main{display:none;background:#f2f2f2;min-height:100vh}
 #main.show{display:block}
@@ -147,30 +148,35 @@ header{padding:12px 20px;background:#f2f2f2;display:flex;justify-content:space-b
 
 <script>
 const tees=[
-{img:"https://i.imgur.com/rM9FnTG.png",name:'CS MESH LONGSLEEVE",price:900,images:["https://i.imgur.com/rM9FnTG.png","https://i.imgur.com/IW3vnNm.jpeg"],chart:"https://i.imgur.com/0y5JNJr.jpeg",soldout:true},
-{img:"https://i.imgur.com/y1bwuFF.png",name:"CS SWEATSHORT",price:850,images:["https://i.imgur.com/y1bwuFF.png","https://i.imgur.com/ch2Pxg3.jpeg"],chart:"https://i.imgur.com/sd2QwtY.jpeg",soldout:false},
-{img:"https://i.imgur.com/TYSYmj1.png",name:"CS ALFOMBRA",price:600,images:["https://i.imgur.com/TYSYmj1.png","https://i.imgur.com/f0rMVGu.jpeg"],chart:"https://i.imgur.com/VPjDjjM.jpeg",soldout:false},
-{img:"https://i.imgur.com/7tNmDFO.png",name:"CS EMBLEM TEE BLACK",price:600,images:["https://i.imgur.com/7tNmDFO.png","https://i.imgur.com/X4A2kot.jpeg"],chart:"https://i.imgur.com/2HEDqwe.jpeg",soldout:false},
-{img:"https://i.imgur.com/CDKuXxt.png",name:"CS EMBLEM TEE WHITE",price:600,images:["https://i.imgur.com/CDKuXxt.png","https://i.imgur.com/Hbr1wFd.jpeg"],chart:"https://i.imgur.com/AUSAh7R.jpeg",soldout:false},
-{img:"https://i.imgur.com/e6rIBlV.png",name:"CS SKULLCAP",price:400,images:["https://i.imgur.com/e6rIBlV.png","https://i.imgur.com/srf1dOA.jpeg"],chart:null,soldout:false},
-{img:"https://i.imgur.com/ty9cyvl.png",name:"CS OG EMBLEM CHAIN",price:600,images:["https://i.imgur.com/ty9cyvl.png","https://i.imgur.com/IWqEKkJ.jpeg"],chart:null,soldout:false},
-{img:"https://i.imgur.com/HOqhErH.png",name:"CS CROPTOP GILTTERS",price:550,images:["https://i.imgur.com/HOqhErH.png","https://i.imgur.com/o1UOJrQ.jpeg"],chart:"https://i.imgur.com/qT2BtWm.jpeg",soldout:false},
-{img:"https://i.imgur.com/rM9FnTG.png",name:"COZY SKULLCAP BLACK",price:450,images:["https://i.imgur.com/rM9FnTG.png"],chart:null,soldout:false},
-{img:"https://i.imgur.com/TYSYmj1.png",name:"COZY CHAIN SILVER",price:650,images:["https://i.imgur.com/TYSYmj1.png"],chart:null,soldout:false},
-];
+{img:"https://i.imgur.com/rM9FnTG.png",name:"COZY TEE BLACK",price:900,images:["https://i.imgur.com/rM9FnTG.png","https://i.imgur.com/IW3vnNm.jpeg"],chart:"https://i.imgur.com/0y5JNJr.jpeg",soldout:true},
+{img:"https://i.imgur.com/y1bwuFF.png",name:"COZY TEE WHITE",price:900,images:["https://i.imgur.com/y1bwuFF.png","https://i.imgur.com/ch2Pxg3.jpeg"],chart:"https://i.imgur.com/sd2QwtY.jpeg",soldout:false},
+{img:"https://i.imgur.com/TYSYmj1.png",name:"COZY SHORTS BLACK",price:900,images:["https://i.imgur.com/TYSYmj1.png","https://i.imgur.com/f0rMVGu.jpeg"],chart:"https://i.imgur.com/VPjDjjM.jpeg",soldout:false},
+{img:"https://i.imgur.com/7tNmDFO.png",name:"COZY SHORTS WHITE",price:900,images:["https://i.imgur.com/7tNmDFO.png","https://i.imgur.com/X4A2kot.jpeg"],chart:"https://i.imgur.com/2HEDqwe.jpeg",soldout:false},
+{img:"https://i.imgur.com/CDKuXxt.png",name:"COZY TEE GREY",price:900,images:["https://i.imgur.com/CDKuXxt.png","https://i.imgur.com/Hbr1wFd.jpeg"],chart:"https://i.imgur.com/AUSAh7R.jpeg",soldout:false},
+{img:"https://i.imgur.com/e6rIBlV.png",name:"COZY TEE CREAM",price:900,images:["https://i.imgur.com/e6rIBlV.png","https://i.imgur.com/srf1dOA.jpeg"],chart:null,soldout:false},
+{img:"https://i.imgur.com/ty9cyvl.png",name:"COZY HOODIE BLACK",price:1200,images:["https://i.imgur.com/ty9cyvl.png","https://i.imgur.com/IWqEKkJ.jpeg"],chart:null,soldout:false},
+{img:"https://i.imgur.com/HOqhErH.png",name:"COZY HOODIE WHITE",price:1200,images:["https://i.imgur.com/HOqhErH.png","https://i.imgur.com/o1UOJrQ.jpeg"],chart:"https://i.imgur.com/qT2BtWm.jpeg",soldout:false},
+
 const galleryPics=["https://i.imgur.com/ZUE63Du.jpeg","https://i.imgur.com/S33CFqt.jpeg","https://i.imgur.com/mrPv4Lg.jpeg","https://i.imgur.com/385oIll.jpeg","https://i.imgur.com/mk4Xksn.jpeg","https://i.imgur.com/zX2LkBM.jpeg","https://i.imgur.com/YpA5yF8.jpeg","https://i.imgur.com/rHxWn1O.jpeg","https://i.imgur.com/hRAzh46.jpeg","https://i.imgur.com/jk0Tq8L.jpeg","https://i.imgur.com/3RptbR7.jpeg","https://i.imgur.com/FwGlaZ4.jpeg"];
 let current=null,currentIdx=0,cart=[],q=1,currentPage='store';
 function renderStore(list){document.getElementById('storeGrid').innerHTML=list.map((t)=>{let realIndex=tees.indexOf(t);return `<div class="card" onclick="openProduct(${realIndex})"><img src="${t.img}"><p>${t.name}</p>${t.soldout?'<div class="soldout-pill">Sold out</div>':''}</div>`}).join("");}
 renderStore(tees);
 document.getElementById('galleryGrid').innerHTML=galleryPics.map(p=>`<div class="gallery-card" onclick="openGallery('${p}')"><img src="${p}"></div>`).join("");
-function showLoaderThen(cb){document.getElementById('loader').classList.add('show');setTimeout(()=>{document.getElementById('loader').classList.remove('show');cb();},800);}
+function showLoaderThen(cb){document.getElementById('loader').classList.add('show');setTimeout(()=>{document.getElementById('loader').classList.remove('show');cb();},600);}
 function showStoreTab(){currentPage='store';showLoaderThen(()=>{document.getElementById('storePage').classList.add('active');document.getElementById('galleryPage').classList.remove('active');document.getElementById('navStore').classList.add('active');document.getElementById('navGallery').classList.remove('active');window.scrollTo(0,0);});}
 function showGalleryTab(){currentPage='gallery';showLoaderThen(()=>{document.getElementById('galleryPage').classList.add('active');document.getElementById('storePage').classList.remove('active');document.getElementById('navGallery').classList.add('active');document.getElementById('navStore').classList.remove('active');window.scrollTo(0,0);});}
 function showStoreTabWithoutLoader(){currentPage='store';document.getElementById('storePage').classList.add('active');document.getElementById('galleryPage').classList.remove('active');document.getElementById('navStore').classList.add('active');document.getElementById('navGallery').classList.remove('active');}
 function showGalleryTabWithoutLoader(){currentPage='gallery';document.getElementById('galleryPage').classList.add('active');document.getElementById('storePage').classList.remove('active');document.getElementById('navGallery').classList.add('active');document.getElementById('navStore').classList.remove('active');}
 function handleBack(){if(currentPage==='store'){goToIntro();}else{showStoreTab();}}
 function backFromProduct(){document.getElementById('productPage').classList.remove('show');showStoreTabWithoutLoader();document.getElementById('storePage').classList.add('active');window.scrollTo(0,0);}
-function goToIntro(){document.getElementById('gate').classList.remove('out');document.getElementById('main').classList.remove('show');document.body.style.overflow='hidden';document.getElementById('audio').pause();}
+function goToIntro(){
+  let gate = document.getElementById('gate');
+  gate.style.display='flex';
+  setTimeout(()=>{ gate.classList.remove('out'); },20);
+  document.getElementById('main').classList.remove('show');
+  document.body.style.overflow='hidden';
+  try{document.getElementById('audio').pause();}catch(e){}
+}
 function openProduct(i){current=tees[i];currentIdx=0;q=1;document.getElementById('qty').innerText=q;document.getElementById('pName').innerText=current.name;document.getElementById('pImg').src=current.images[0];document.getElementById('thumbs').innerHTML=current.images.map((im,idx)=>`<div class="thumb ${idx===0?'active':''}" onclick="goToImg(${idx})"><img src="${im}"></div>`).join("");if(current.chart){document.getElementById('sizeChartImg').src=current.chart;document.getElementById('chartBtn').style.display='block';}else{document.getElementById('chartBtn').style.display='none';}let addBtn=document.getElementById('addBtn');let codBtn=document.getElementById('codBtn');if(current.soldout){addBtn.innerText='SOLD OUT';addBtn.style.background='#ccc';addBtn.style.color='#666';addBtn.disabled=true;codBtn.innerText='SOLD OUT';codBtn.style.background='#ccc';codBtn.style.color='#666';codBtn.disabled=true;}else{addBtn.innerText='ADD TO CART';addBtn.style.background='#111';addBtn.style.color='#fff';addBtn.disabled=false;codBtn.innerHTML='🛒 BUY WITH CASH ON DELIVERY';codBtn.style.background='#111';codBtn.style.color='#fff';codBtn.disabled=false;}document.getElementById('productPage').classList.add('show');}
 function goToImg(idx){currentIdx=idx;document.getElementById('pImg').src=current.images[currentIdx];document.querySelectorAll('.thumb').forEach((t,i)=>t.classList.toggle('active',i===currentIdx));}
 function nextImg(){currentIdx=(currentIdx+1)%current.images.length;goToImg(currentIdx);}
@@ -187,9 +193,37 @@ function closeCart(){document.getElementById('cartDrawer').classList.remove('sho
 function openSearch(){document.getElementById('searchOverlay').classList.add('show');document.getElementById('searchInput').focus();doSearch(document.getElementById('searchInput').value);}
 function closeSearch(){document.getElementById('searchOverlay').classList.remove('show');}
 function doSearch(val){let v=val.toLowerCase().trim();let filtered=v===""?tees:tees.filter(t=>t.name.toLowerCase().includes(v));let grid=document.getElementById('searchGrid');let empty=document.getElementById('searchEmpty');if(filtered.length===0){grid.innerHTML="";empty.style.display="block";}else{empty.style.display="none";grid.innerHTML=filtered.map(t=>{let realIndex=tees.indexOf(t);return `<div class="card" onclick="closeSearch(); openProduct(${realIndex})"><img src="${t.img}"><p>${t.name}</p>${t.soldout?'<div class="soldout-pill">Sold out</div>':''}</div>`;}).join("");}}
-function playMusic(){let a=document.getElementById('audio');a.volume=1;a.play().catch(()=>{});}
-function enterStore(){document.getElementById('gate').classList.add('out');document.getElementById('main').classList.add('show');document.getElementById('loader').classList.add('show');setTimeout(()=>{document.getElementById('loader').classList.remove('show');showStoreTabWithoutLoader();document.getElementById('storePage').classList.add('active');},900);document.body.style.overflow='auto';playMusic();}
-function enterGallery(){document.getElementById('gate').classList.add('out');document.getElementById('main').classList.add('show');document.getElementById('loader').classList.add('show');setTimeout(()=>{document.getElementById('loader').classList.remove('show');showGalleryTabWithoutLoader();document.getElementById('galleryPage').classList.add('active');},900);document.body.style.overflow='auto';playMusic();}
+function playMusic(){try{let a=document.getElementById('audio');a.volume=1;a.play().catch(()=>{});}catch(e){}}
+function enterStore(){
+  let gate = document.getElementById('gate');
+  let main = document.getElementById('main');
+  gate.classList.add('out');
+  main.classList.add('show');
+  document.getElementById('loader').classList.add('show');
+  document.body.style.overflow='auto';
+  setTimeout(()=>{
+    document.getElementById('loader').classList.remove('show');
+    gate.style.display='none';
+    showStoreTabWithoutLoader();
+    document.getElementById('storePage').classList.add('active');
+  },700);
+  playMusic();
+}
+function enterGallery(){
+  let gate = document.getElementById('gate');
+  let main = document.getElementById('main');
+  gate.classList.add('out');
+  main.classList.add('show');
+  document.getElementById('loader').classList.add('show');
+  document.body.style.overflow='auto';
+  setTimeout(()=>{
+    document.getElementById('loader').classList.remove('show');
+    gate.style.display='none';
+    showGalleryTabWithoutLoader();
+    document.getElementById('galleryPage').classList.add('active');
+  },700);
+  playMusic();
+}
 </script>
 </body>
 </html>
