@@ -18,38 +18,20 @@ body{background:#f2f2f2;color:#111;font-family:Helvetica;overflow:hidden}
 #main.show{display:block}
 .page{display:none}.page.active{display:block}
 
-/* STORE WITH BG */
-#storePage{
-  background-image:url('https://i.imgur.com/oiJc3Kd.jpeg');
-  background-size:cover;
-  background-position:center;
-  background-attachment:fixed;
-  background-color:#000;
-  min-height:100vh;
-  position:relative;
-}
-#storePage::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:rgba(255,255,255,.88);
-  z-index:0;
-}
-#storePage.title, #storePage.grid2{
-  position:relative;
-  z-index:1;
-}
-
+/* HEADER LIKE YOUR PIC */
 header{padding:10px 18px;background:#f2f2f2;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:20;border-bottom:1px solid #e5e5e5}
+.header-left{display:flex;align-items:center;gap:12px}
+.header-right{display:flex;align-items:center;gap:18px}
+.icon-btn{width:26px;height:26px;cursor:pointer;position:relative;display:flex;align-items:center;justify-content:center}
+.icon-btn svg{width:24px;height:24px;stroke:#111;stroke-width:1.8;fill:none}
 .back{cursor:pointer;font-size:11px;letter-spacing:3px;font-weight:900;padding:8px 14px;border:1px solid #111;border-radius:20px}
 .header-logo{height:56px;cursor:pointer}
 .title{text-align:center;font-size:18px;font-weight:900;letter-spacing:4px;margin:0;padding:24px 0 12px}
-
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(0,0,0,.1)}
-.card{background:rgba(242,242,242,.92);padding:20px 16px 24px;display:flex;flex-direction:column;align-items:center;cursor:pointer;transition:.2s}
-.card:hover{background:#fff}
-.card img{width:100%;height:280px;object-fit:contain} /* PINALAKI BOSS 280PX */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#e5e5e5}
+.card{background:#f2f2f2;padding:20px 16px 24px;display:flex;flex-direction:column;align-items:center;cursor:pointer;position:relative}
+.card img{width:100%;height:280px;object-fit:contain}
 .card p{font-size:12px;letter-spacing:1.5px;margin-top:14px;font-weight:800;text-align:center}
+.soldout-pill{position:absolute;bottom:52px;left:50%;transform:translateX(-50%);border:1px solid #111;border-radius:20px;padding:6px 18px;font-size:11px;letter-spacing:1px;font-weight:700;background:#fff;white-space:nowrap}
 
 .gallery-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#e5e5e5}
 .gallery-card{aspect-ratio:4/5;background:#000;overflow:hidden;cursor:pointer}
@@ -82,16 +64,8 @@ header{padding:10px 18px;background:#f2f2f2;display:flex;justify-content:space-b
 #cartDrawer.show{transform:translateX(0)}
 .cart-head{padding:22px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e5e5e5}
 .cart-items{flex:1;overflow:auto;padding:0 22px}
-.cart-badge{position:absolute;top:-6px;right:-6px;background:#111;color:#fff;font-size:9px;width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center}
-@media(max-width:800px){
-.p-body{grid-template-columns:1fr}
-.p-img-main{min-height:400px;padding:24px}
-.menu.top-logo{width:90px}
-.menu div.link{font-size:42px;margin:6px 0}
-.header-logo{height:42px}
-.card img{height:220px} /* SA CP 220PX PARA MALAKI PA RIN */
-#storePage{background-attachment:scroll}
-}
+.cart-badge{position:absolute;top:-2px;right:-4px;background:#111;color:#fff;font-size:9px;min-width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;padding:0 3px;font-weight:800}
+@media(max-width:800px){.p-body{grid-template-columns:1fr}.p-img-main{min-height:400px;padding:24px}.menu.top-logo{width:90px}.menu div.link{font-size:42px;margin:6px 0}.header-logo{height:42px}.card img{height:220px}}
 </style>
 </head>
 <body>
@@ -103,21 +77,35 @@ header{padding:10px 18px;background:#f2f2f2;display:flex;justify-content:space-b
 <div class="link" onclick="enterGallery()">GALLERY</div>
 </div>
 </div>
+
 <div id="main">
 <header>
+<div class="header-left">
 <div class="back" onclick="goHome()">← BACK</div>
 <img class="header-logo" src="https://i.imgur.com/cvLNJry.gif" onclick="goHome()">
-<div style="position:relative;cursor:pointer" onclick="openCart()">🛒<div id="badge" class="cart-badge" style="display:none">0</div></div>
+</div>
+<div class="header-right">
+<div class="icon-btn" onclick="alert('Search soon')"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M16 16L20 20"/></svg></div>
+<div class="icon-btn"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg></div>
+<div class="icon-btn" onclick="openCart()"><svg viewBox="0 0 24 24"><path d="M4 6h16l-1.5 12h-13z"/><path d="M8 6V4a4 4 0 0 1 8 0v2"/><circle cx="9" cy="20" r="1.5" fill="#111"/><circle cx="16" cy="20" r="1.5" fill="#111"/></svg><div id="badge" class="cart-badge" style="display:none">0</div></div>
+</div>
 </header>
 <div id="storePage" class="page"><div class="title">NEW COLLECTION</div><div class="grid2" id="storeGrid"></div></div>
 <div id="galleryPage" class="page"><div class="title">GALLERY — COZYSWAG FAM</div><div class="gallery-grid" id="galleryGrid"></div></div>
 <audio id="audio" loop preload="auto"><source src="./sorry.mp3" type="audio/mpeg"></audio>
 </div>
+
 <div id="productPage">
 <div class="p-header">
+<div class="header-left">
 <div class="back" onclick="closeProduct()">← BACK</div>
 <img class="header-logo" src="https://i.imgur.com/cvLNJry.gif" onclick="closeProduct()">
-<div style="position:relative;cursor:pointer" onclick="openCart()">🛒<div class="cart-badge" id="badge2" style="display:none">0</div></div>
+</div>
+<div class="header-right">
+<div class="icon-btn"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M16 16L20 20"/></svg></div>
+<div class="icon-btn"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg></div>
+<div class="icon-btn" onclick="openCart()"><svg viewBox="0 0 24 24"><path d="M4 6h16l-1.5 12h-13z"/><path d="M8 6V4a4 4 0 0 1 8 0v2"/></svg><div id="badge2" class="cart-badge" style="display:none">0</div></div>
+</div>
 </div>
 <div class="p-body">
 <div class="p-img-side">
@@ -127,34 +115,34 @@ header{padding:10px 18px;background:#f2f2f2;display:flex;justify-content:space-b
 <div class="p-info">
 <h1 id="pName">COZY TEE</h1>
 <div class="price">₱900.00 PHP</div>
-<div class="label">Size</div>
 <div class="sizes"><div class="size active" onclick="pickSize(this)">S</div><div class="size" onclick="pickSize(this)">M</div><div class="size" onclick="pickSize(this)">L</div><div class="size" onclick="pickSize(this)">XL</div><div class="size" onclick="pickSize(this)">2XL</div></div>
-<div class="label">Quantity</div>
-<div class="qty" style="display:flex;border:1px solid #ccc;border-radius:8px;width:fit-content;margin-top:6px;overflow:hidden"><button onclick="changeQty(-1)" style="width:40px;height:38px;border:0;background:#fff">−</button><span id="qty" style="width:40px;text-align:center;line-height:38px">1</span><button onclick="changeQty(1)" style="width:40px;height:38px;border:0;background:#fff">+</button></div>
+<div class="qty" style="display:flex;border:1px solid #ccc;border-radius:8px;width:fit-content;margin-top:12px;overflow:hidden"><button onclick="changeQty(-1)" style="width:40px;height:38px;border:0;background:#fff">−</button><span id="qty" style="width:40px;text-align:center;line-height:38px">1</span><button onclick="changeQty(1)" style="width:40px;height:38px;border:0;background:#fff">+</button></div>
 <button class="btn btn-black" onclick="addToCart()">ADD TO CART</button>
 <button class="btn btn-black2" onclick="addToCart()">🛒 BUY WITH CASH ON DELIVERY</button>
 <div id="chartBtn" class="sizechart-btn" onclick="openSizeChart()">VIEW SIZE CHART →</div>
 </div>
 </div>
 </div>
+
 <div id="sizeChartModal" onclick="closeSizeChart()"><div style="position:relative"><img id="sizeChartImg" src=""><div style="position:absolute;top:-10px;right:-10px;background:#fff;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;cursor:pointer">X</div></div></div>
 <div id="cartOverlay" onclick="closeCart()"></div>
 <div id="cartDrawer"><div class="cart-head"><h2>Your cart</h2><span onclick="closeCart()" style="cursor:pointer">X</span></div><div class="cart-items" id="cartItems"></div><div style="padding:22px;border-top:1px solid #e5e5e5"><div style="display:flex;justify-content:space-between;font-weight:800"><span>Subtotal</span><span id="subtotal">₱0.00 PHP</span></div><button class="btn btn-black2" style="margin-top:12px">🛒 BUY WITH CASH ON DELIVERY</button><button class="btn btn-black" style="margin-top:8px">CHECK OUT</button></div></div>
 <div id="modal" onclick="this.style.display='none'" style="position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center"><img id="modalImg" style="max-width:95%;max-height:90vh"></div>
+
 <script>
 const tees=[
-{img:"https://i.imgur.com/rM9FnTG.png",name:"COZY TEE BLACK",price:900,images:["https://i.imgur.com/rM9FnTG.png","https://i.imgur.com/IW3vnNm.jpeg"],chart:"https://i.imgur.com/0y5JNJr.jpeg"},
-{img:"https://i.imgur.com/y1bwuFF.png",name:"COZY TEE WHITE",price:900,images:["https://i.imgur.com/y1bwuFF.png","https://i.imgur.com/ch2Pxg3.jpeg"],chart:"https://i.imgur.com/sd2QwtY.jpeg"},
-{img:"https://i.imgur.com/TYSYmj1.png",name:"COZY SHORTS BLACK",price:900,images:["https://i.imgur.com/TYSYmj1.png","https://i.imgur.com/f0rMVGu.jpeg"],chart:"https://i.imgur.com/VPjDjjM.jpeg"},
-{img:"https://i.imgur.com/7tNmDFO.png",name:"COZY SHORTS WHITE",price:900,images:["https://i.imgur.com/7tNmDFO.png","https://i.imgur.com/X4A2kot.jpeg"],chart:"https://i.imgur.com/2HEDqwe.jpeg"},
-{img:"https://i.imgur.com/CDKuXxt.png",name:"COZY TEE GREY",price:900,images:["https://i.imgur.com/CDKuXxt.png","https://i.imgur.com/Hbr1wFd.jpeg"],chart:"https://i.imgur.com/AUSAh7R.jpeg"},
-{img:"https://i.imgur.com/e6rIBlV.png",name:"COZY TEE CREAM",price:900,images:["https://i.imgur.com/e6rIBlV.png","https://i.imgur.com/srf1dOA.jpeg"],chart:null},
-{img:"https://i.imgur.com/ty9cyvl.png",name:"COZY HOODIE BLACK",price:1200,images:["https://i.imgur.com/ty9cyvl.png","https://i.imgur.com/IWqEKkJ.jpeg"],chart:null},
-{img:"https://i.imgur.com/HOqhErH.png",name:"COZY HOODIE WHITE",price:1200,images:["https://i.imgur.com/HOqhErH.png","https://i.imgur.com/o1UOJrQ.jpeg"],chart:"https://i.imgur.com/qT2BtWm.jpeg"},
+{img:"https://i.imgur.com/rM9FnTG.png",name:"COZY TEE BLACK",price:900,images:["https://i.imgur.com/rM9FnTG.png","https://i.imgur.com/IW3vnNm.jpeg"],chart:"https://i.imgur.com/0y5JNJr.jpeg",soldout:false},
+{img:"https://i.imgur.com/y1bwuFF.png",name:"COZY TEE WHITE",price:900,images:["https://i.imgur.com/y1bwuFF.png","https://i.imgur.com/ch2Pxg3.jpeg"],chart:"https://i.imgur.com/sd2QwtY.jpeg",soldout:false},
+{img:"https://i.imgur.com/TYSYmj1.png",name:"COZY SHORTS BLACK",price:900,images:["https://i.imgur.com/TYSYmj1.png","https://i.imgur.com/f0rMVGu.jpeg"],chart:"https://i.imgur.com/VPjDjjM.jpeg",soldout:false},
+{img:"https://i.imgur.com/7tNmDFO.png",name:"COZY SHORTS WHITE",price:900,images:["https://i.imgur.com/7tNmDFO.png","https://i.imgur.com/X4A2kot.jpeg"],chart:"https://i.imgur.com/2HEDqwe.jpeg",soldout:false},
+{img:"https://i.imgur.com/CDKuXxt.png",name:"COZY TEE GREY",price:900,images:["https://i.imgur.com/CDKuXxt.png","https://i.imgur.com/Hbr1wFd.jpeg"],chart:"https://i.imgur.com/AUSAh7R.jpeg",soldout:false},
+{img:"https://i.imgur.com/e6rIBlV.png",name:"COZY TEE CREAM",price:900,images:["https://i.imgur.com/e6rIBlV.png","https://i.imgur.com/srf1dOA.jpeg"],chart:null,soldout:false},
+{img:"https://i.imgur.com/ty9cyvl.png",name:"COZY HOODIE BLACK",price:1200,images:["https://i.imgur.com/ty9cyvl.png","https://i.imgur.com/IWqEKkJ.jpeg"],chart:null,soldout:true},
+{img:"https://i.imgur.com/HOqhErH.png",name:"COZY HOODIE WHITE",price:1200,images:["https://i.imgur.com/HOqhErH.png","https://i.imgur.com/o1UOJrQ.jpeg"],chart:"https://i.imgur.com/qT2BtWm.jpeg",soldout:false},
 ];
 const galleryPics=["https://i.imgur.com/ZUE63Du.jpeg","https://i.imgur.com/S33CFqt.jpeg","https://i.imgur.com/mrPv4Lg.jpeg","https://i.imgur.com/385oIll.jpeg","https://i.imgur.com/mk4Xksn.jpeg","https://i.imgur.com/zX2LkBM.jpeg","https://i.imgur.com/YpA5yF8.jpeg","https://i.imgur.com/rHxWn1O.jpeg","https://i.imgur.com/hRAzh46.jpeg","https://i.imgur.com/jk0Tq8L.jpeg","https://i.imgur.com/3RptbR7.jpeg","https://i.imgur.com/FwGlaZ4.jpeg"];
 let current=null,currentIdx=0,cart=[],q=1;
-document.getElementById('storeGrid').innerHTML=tees.map((t,i)=>`<div class="card" onclick="openProduct(${i})"><img src="${t.img}"><p>${t.name}</p></div>`).join("");
+document.getElementById('storeGrid').innerHTML=tees.map((t,i)=>`<div class="card" onclick="openProduct(${i})"><img src="${t.img}"><p>${t.name}</p>${t.soldout?'<div class="soldout-pill">Sold out</div>':''}</div>`).join("");
 document.getElementById('galleryGrid').innerHTML=galleryPics.map(p=>`<div class="gallery-card" onclick="openGallery('${p}')"><img src="${p}"></div>`).join("");
 function openProduct(i){current=tees[i];currentIdx=0;q=1;document.getElementById('qty').innerText=q;document.getElementById('pName').innerText=current.name;document.getElementById('pImg').src=current.images[0];document.getElementById('thumbs').innerHTML=current.images.map((im,idx)=>`<div class="thumb ${idx===0?'active':''}" onclick="goToImg(${idx})"><img src="${im}"></div>`).join("");if(current.chart){document.getElementById('sizeChartImg').src=current.chart;document.getElementById('chartBtn').style.display='block';}else{document.getElementById('chartBtn').style.display='none';}document.getElementById('productPage').classList.add('show');}
 function goToImg(idx){currentIdx=idx;document.getElementById('pImg').src=current.images[currentIdx];document.querySelectorAll('.thumb').forEach((t,i)=>t.classList.toggle('active',i===currentIdx));}
@@ -166,7 +154,7 @@ function closeProduct(){document.getElementById('productPage').classList.remove(
 function openGallery(p){document.getElementById('modalImg').src=p;document.getElementById('modal').style.display='flex';}
 function pickSize(el){document.querySelectorAll('.size').forEach(s=>s.classList.remove('active'));el.classList.add('active');}
 function changeQty(d){q=Math.max(1,q+d);document.getElementById('qty').innerText=q;}
-function addToCart(){let size=document.querySelector('.size.active').innerText;let exist=cart.find(c=>c.name===current.name && c.size===size);if(exist){exist.qty+=q;}else{cart.push({img:current.images[0],name:current.name,size:size,qty:q,price:current.price});}renderCart();closeProduct();openCart();}
+function addToCart(){if(current.soldout){alert('Sold out na boss!');return;}let size=document.querySelector('.size.active').innerText;let exist=cart.find(c=>c.name===current.name && c.size===size);if(exist){exist.qty+=q;}else{cart.push({img:current.images[0],name:current.name,size:size,qty:q,price:current.price});}renderCart();closeProduct();openCart();}
 function renderCart(){let html='',total=0;cart.forEach((c,i)=>{total+=c.price*c.qty;html+=`<div class="cart-item" style="display:grid;grid-template-columns:60px 1fr auto;gap:12px;padding:18px 0;border-bottom:1px solid #eee;align-items:center"><img src="${c.img}" style="width:60px;height:70px;object-fit:contain;background:#fff"><div><div style="font-size:12px;font-weight:800">${c.name}</div><div style="font-size:11px;opacity:.7">₱${c.price}.00<br>Size: ${c.size}</div></div><div style="font-weight:700;font-size:12px">₱${c.price*c.qty}.00</div></div>`;});document.getElementById('cartItems').innerHTML=html||'<p style="text-align:center;padding:40px;opacity:.5">Empty</p>';document.getElementById('subtotal').innerText='₱'+total+'.00 PHP';let count=cart.reduce((a,b)=>a+b.qty,0);document.getElementById('badge').style.display=count?'flex':'none';document.getElementById('badge').innerText=count;document.getElementById('badge2').style.display=count?'flex':'none';document.getElementById('badge2').innerText=count;}
 function openCart(){document.getElementById('cartDrawer').classList.add('show');document.getElementById('cartOverlay').classList.add('show');}
 function closeCart(){document.getElementById('cartDrawer').classList.remove('show');document.getElementById('cartOverlay').classList.remove('show');}
