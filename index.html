@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>COZYSWAG</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#000;color:#fff;font-family:Helvetica;overflow:hidden}
+#gate{position:fixed;inset:0;z-index:999;display:flex;align-items:center;justify-content:center;background:#000;cursor:pointer}
+#gate img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#gate::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.5)}
+.menu{position:relative;z-index:2;text-align:center}
+.menu div{font-family:serif;font-size:82px;font-weight:900;margin:14px 0}
+.menu div:hover{letter-spacing:10px}
+#gate.out{transform:translateY(-100%);transition:.8s}
+#main{display:none;background:#f7f5f2;color:#111;min-height:100vh}
+#main.show{display:block}
+header{padding:22px 40px;background:#fff;display:flex;justify-content:space-between;position:sticky;top:0}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:20px}
+.card{background:#fff;height:420px;display:flex;align-items:center;justify-content:center;position:relative}
+.card img{width:100%;height:100%;object-fit:contain}
+.card span{position:absolute;bottom:10px;left:10px;font-size:10px;background:#000;color:#fff;padding:4px 8px;letter-spacing:2px}
+#musicBtn{position:fixed;bottom:20px;right:20px;padding:12px 22px;border-radius:30px;border:0;background:#000;color:#fff;font-weight:900;cursor:pointer;z-index:99}
+</style>
+</head>
+<body>
+
+<div id="gate" onclick="enterSite('store')">
+<img src="https://i.imgur.com/wIQrNXl.gif">
+<div class="menu">
+<div onclick="event.stopPropagation();enterSite('store')">STORE</div>
+<div onclick="event.stopPropagation();enterSite('collection')">COLLECTION</div>
+<div onclick="event.stopPropagation();enterSite('gallery')">GALLERY</div>
+<p style="font-size:11px;letter-spacing:4px;margin-top:20px">COZYSWAG.PH — CLICK TO ENTER</p>
+</div>
+</div>
+
+<div id="main">
+<header><b style="letter-spacing:8px">COZYSWAG</b><nav><a onclick="goTo('store')">STORE</a> <a onclick="goTo('collection')">COLLECTION</a> <a onclick="goTo('gallery')">GALLERY</a></nav></header>
+<section style="padding:60px 40px"><h1 style="font-family:serif;font-size:50px">STORE — 8 TEES</h1><div class="grid" id="storeGrid"></div></section>
+<section id="collection" style="padding:60px 40px;background:#fff"><h1 style="font-family:serif;font-size:50px">COLLECTION</h1><div class="grid" id="collGrid"></div></section>
+<section id="gallery" style="padding:60px 40px;background:#111;color:#fff"><h1 style="font-family:serif;font-size:50px">GALLERY</h1><div class="grid" id="galGrid"></div></section>
+
+<button id="musicBtn" onclick="toggleMusic()">♪ PLAY SORRY</button>
+<!-- SORRY.MP3 NA GAMIT NATIN -->
+<audio id="audio" loop preload="auto">
+<source src="./sorry.mp3" type="audio/mpeg">
+<source src="https://cdn.jsdelivr.net/gh/rafstunnerz/cozyswag@main/sorry.mp3" type="audio/mpeg">
+</audio>
+</div>
+
+<script>
+const tees=[
+{img:"https://i.imgur.com/rM9FnTG.png",name:"TEE 01"},
+{img:"https://i.imgur.com/y1bwuFF.png",name:"TEE 02"},
+{img:"https://i.imgur.com/TYSYmj1.png",name:"TEE 03"},
+{img:"https://i.imgur.com/7tNmDFO.png",name:"TEE 04"},
+{img:"https://i.imgur.com/CDKuXxt.png",name:"TEE 05"},
+{img:"https://i.imgur.com/e6rIBlV.png",name:"TEE 06"},
+{img:"https://i.imgur.com/ty9cyvl.png",name:"TEE 07"},
+{img:"https://i.imgur.com/HOqhErH.png",name:"TEE 08"},
+];
+const html=tees.map(t=>`<div class="card"><img src="${t.img}"><span>${t.name}</span></div>`).join("");
+document.getElementById('storeGrid').innerHTML=html;
+document.getElementById('collGrid').innerHTML=html;
+document.getElementById('galGrid').innerHTML=html;
+
+let playing=false;
+function enterSite(id){
+document.getElementById('gate').classList.add('out');
+document.getElementById('main').classList.add('show');
+document.body.style.overflow='auto';
+setTimeout(()=>document.getElementById(id).scrollIntoView({behavior:'smooth'}),700);
+let a=document.getElementById('audio');
+a.volume=1;
+a.play().then(()=>{playing=true;document.getElementById('musicBtn').innerText="II PAUSE SORRY";}).catch(()=>{});
+}
+function goTo(id){document.getElementById(id).scrollIntoView({behavior:'smooth'})}
+function toggleMusic(){
+let a=document.getElementById('audio');
+if(!playing){a.play();playing=true;document.getElementById('musicBtn').innerText="II PAUSE SORRY";}
+else{a.pause();playing=false;document.getElementById('musicBtn').innerText="♪ PLAY SORRY";}
+}
+</script>
+</body>
+</html>
