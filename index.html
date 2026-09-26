@@ -11,54 +11,57 @@ body{background:#f2f2f2;color:#111;font-family:Helvetica;overflow:hidden}
 #gate video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 #gate::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.55)}
 .menu{position:relative;z-index:2;text-align:center;color:#fff;display:flex;flex-direction:column;align-items:center}
-.menu .top-logo{width:320px;max-width:80vw;margin-bottom:18px}
+.menu.top-logo{width:320px;max-width:80vw;margin-bottom:18px}
 .menu div.link{font-family:serif;font-size:72px;font-weight:900;margin:10px 0;cursor:pointer}
-.menu div.link:hover{letter-spacing:10px}
 #gate.out{transform:translateY(-100%);transition:.7s}
 #main{display:none;background:#f2f2f2;min-height:100vh}
 #main.show{display:block}
-.page{display:none}
-.page.active{display:block}
-header{padding:16px 18px;background:#f2f2f2;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:20;border-bottom:1px solid #e5e5e5}
+.page{display:none}.page.active{display:block}
+header{padding:12px 18px;background:#f2f2f2;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:20;border-bottom:1px solid #e5e5e5}
 .back{cursor:pointer;font-size:11px;letter-spacing:3px;font-weight:900;padding:8px 14px;border:1px solid #111;border-radius:20px}
+.header-logo{height:28px;cursor:pointer}
 .title{text-align:center;font-size:18px;font-weight:900;letter-spacing:4px;margin:24px 0 12px}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#e5e5e5}
 .card{background:#f2f2f2;padding:16px;display:flex;flex-direction:column;align-items:center;cursor:pointer}
-.card img{width:100%;max-width:100%;height:180px;object-fit:contain}
+.card img{width:100%;height:180px;object-fit:contain}
 .card p{font-size:10px;letter-spacing:1.5px;margin-top:10px;font-weight:700;text-align:center}
 .gallery-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#e5e5e5}
 .gallery-card{aspect-ratio:4/5;background:#000;overflow:hidden;cursor:pointer}
 .gallery-card img{width:100%;height:100%;object-fit:cover}
-
-/* PRODUCT PAGE - TULAD NG DOSMIL */
 #productPage{position:fixed;inset:0;z-index:90;background:#f2f2f2;display:none;overflow:auto}
 #productPage.show{display:block}
-.p-header{padding:18px 22px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e5e5e5;background:#f2f2f2;position:sticky;top:0}
-.p-body{display:grid;grid-template-columns:1.1fr .9fr;min-height:calc(100vh - 60px)}
-.p-img{padding:40px;display:flex;align-items:center;justify-content:center;background:#efefef}
-.p-img img{width:100%;max-width:520px;height:auto;object-fit:contain}
-.p-info{padding:40px 36px}
-.p-info h1{font-size:32px;font-weight:800;line-height:1.1;margin-bottom:14px}
-.p-info .price{font-size:13px;opacity:.7;margin-bottom:22px;letter-spacing:1px}
-.p-info .label{font-size:12px;font-weight:700;margin:18px 0 8px;letter-spacing:1px}
+.p-header{padding:12px 22px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e5e5e5;position:sticky;top:0;background:#f2f2f2;z-index:5}
+.p-body{display:grid;grid-template-columns:1.2fr.8fr;min-height:calc(100vh - 60px)}
+.p-img-side{background:#efefef;display:flex;flex-direction:column}
+.p-img-main{flex:1;padding:40px;display:flex;align-items:center;justify-content:center;min-height:520px}
+.p-img-main img{width:100%;max-width:520px;height:auto;object-fit:contain}
+.thumbs{display:flex;gap:8px;padding:12px 20px;background:#f2f2f2;border-top:1px solid #e5e5e5;overflow:auto}
+.thumb{width:86px;height:86px;min-width:86px;border:2px solid transparent;background:#fff;cursor:pointer;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.thumb.active{border-color:#111}
+.thumb img{width:100%;height:100%;object-fit:cover}
+.p-info{padding:36px 32px}
+.p-info h1{font-size:30px;font-weight:800;line-height:1.1;margin-bottom:10px}
+.price{font-size:13px;opacity:.7;margin-bottom:20px}
+.label{font-size:12px;font-weight:700;margin:18px 0 8px}
 .sizes{display:flex;gap:8px;flex-wrap:wrap}
 .size{border:1px solid #111;border-radius:20px;padding:8px 16px;font-size:12px;cursor:pointer;min-width:44px;text-align:center}
 .size.active{background:#111;color:#fff}
-.qty{display:flex;align-items:center;border:1px solid #ccc;border-radius:8px;width:fit-content;overflow:hidden;margin-top:6px}
+.qty{display:flex;align-items:center;border:1px solid #ccc;border-radius:8px;width:fit-content;margin-top:6px;overflow:hidden}
 .qty button{width:40px;height:38px;border:0;background:#fff;cursor:pointer;font-size:16px}
 .qty span{width:40px;text-align:center;font-size:13px}
 .btn{width:100%;padding:14px;border-radius:30px;border:0;font-weight:900;letter-spacing:1px;cursor:pointer;margin-top:14px;font-size:13px}
 .btn-black{background:#111;color:#fff}
 .btn-black2{background:#111;color:#fff;display:flex;align-items:center;justify-content:center;gap:10px}
-#modal{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center}
-#modal.show{display:flex}
-@media(max-width:700px){
-.p-body{grid-template-columns:1fr}
-.p-img{padding:20px}
-.p-info{padding:24px 18px}
-.p-info h1{font-size:24px}
-.menu div.link{font-size:52px}
-}
+#cartOverlay{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:200;display:none}
+#cartOverlay.show{display:block}
+#cartDrawer{position:fixed;top:0;right:0;width:420px;max-width:92vw;height:100%;background:#f2f2f2;z-index:201;transform:translateX(100%);transition:.4s;display:flex;flex-direction:column}
+#cartDrawer.show{transform:translateX(0)}
+.cart-head{padding:22px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e5e5e5}
+.cart-items{flex:1;overflow:auto;padding:0 22px}
+.cart-item{display:grid;grid-template-columns:60px 1fr auto;gap:12px;padding:18px 0;border-bottom:1px solid #eee;align-items:center}
+.cart-foot{padding:22px;border-top:1px solid #e5e5e5}
+.cart-badge{position:absolute;top:-6px;right:-6px;background:#111;color:#fff;font-size:9px;width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+@media(max-width:800px){.p-body{grid-template-columns:1fr}.p-img-main{min-height:400px;padding:24px}.p-info{padding:22px 18px}.menu div.link{font-size:52px}.header-logo{height:22px}}
 </style>
 </head>
 <body>
@@ -75,67 +78,99 @@ header{padding:16px 18px;background:#f2f2f2;display:flex;justify-content:space-b
 <div id="main">
 <header>
 <div class="back" onclick="goHome()">← BACK</div>
-<div style="font-weight:900;letter-spacing:5px;font-size:14px">COZYSWAG</div>
-<div>🛒</div>
+<img class="header-logo" src="https://i.imgur.com/cvLNJry.gif" onclick="goHome()">
+<div style="position:relative;cursor:pointer" onclick="openCart()">🛒<div id="badge" class="cart-badge" style="display:none">0</div></div>
 </header>
 <div id="storePage" class="page"><div class="title">NEW COLLECTION</div><div class="grid2" id="storeGrid"></div></div>
 <div id="galleryPage" class="page"><div class="title">GALLERY — COZYSWAG FAM</div><div class="gallery-grid" id="galleryGrid"></div></div>
 <audio id="audio" loop preload="auto"><source src="./sorry.mp3" type="audio/mpeg"></audio>
 </div>
 
-<!-- PRODUCT DETAIL PAGE - GAYA NG PIC MO -->
 <div id="productPage">
 <div class="p-header">
 <div class="back" onclick="closeProduct()">← BACK</div>
-<div style="font-weight:900;letter-spacing:5px">COZYSWAG</div>
-<div>🛒</div>
+<img class="header-logo" src="https://i.imgur.com/cvLNJry.gif" onclick="closeProduct()">
+<div style="position:relative;cursor:pointer" onclick="openCart()">🛒<div class="cart-badge" id="badge2" style="display:none">0</div></div>
 </div>
 <div class="p-body">
-<div class="p-img"><img id="pImg" src=""></div>
+<div class="p-img-side">
+<div class="p-img-main"><img id="pImg" src=""></div>
+<div class="thumbs" id="thumbs"></div>
+</div>
 <div class="p-info">
 <h1 id="pName">COZY TEE</h1>
 <div class="price">₱900.00 PHP</div>
 <div class="label">Size</div>
-<div class="sizes" id="sizeBox">
-<div class="size active" onclick="pickSize(this)">S</div>
-<div class="size" onclick="pickSize(this)">M</div>
-<div class="size" onclick="pickSize(this)">L</div>
-<div class="size" onclick="pickSize(this)">XL</div>
-<div class="size" onclick="pickSize(this)">2XL</div>
-</div>
+<div class="sizes"><div class="size active" onclick="pickSize(this)">S</div><div class="size" onclick="pickSize(this)">M</div><div class="size" onclick="pickSize(this)">L</div><div class="size" onclick="pickSize(this)">XL</div><div class="size" onclick="pickSize(this)">2XL</div></div>
 <div class="label">Quantity</div>
 <div class="qty"><button onclick="changeQty(-1)">−</button><span id="qty">1</span><button onclick="changeQty(1)">+</button></div>
-<button class="btn btn-black" onclick="addCart()">ADD TO CART</button>
-<button class="btn btn-black2" onclick="addCart()">🛒 BUY WITH CASH ON DELIVERY</button>
-<div style="margin-top:28px;font-size:12px;opacity:.7">• White Tee<br>• 100% Cotton<br>• Cozyswag Original</div>
+<button class="btn btn-black" onclick="addToCart()">ADD TO CART</button>
+<button class="btn btn-black2" onclick="addToCart()">🛒 BUY WITH CASH ON DELIVERY</button>
 </div>
 </div>
 </div>
 
-<div id="modal" onclick="this.classList.remove('show')"><img id="modalImg" style="max-width:95%;max-height:90vh"></div>
+<div id="cartOverlay" onclick="closeCart()"></div>
+<div id="cartDrawer">
+<div class="cart-head"><h2>Your cart</h2><span onclick="closeCart()" style="cursor:pointer">X</span></div>
+<div style="padding:10px 22px;display:flex;justify-content:space-between;font-size:10px;letter-spacing:2px;opacity:.6;border-bottom:1px solid #e5e5e5"><span>PRODUCT</span><span>TOTAL</span></div>
+<div class="cart-items" id="cartItems"></div>
+<div class="cart-foot"><div style="display:flex;justify-content:space-between;font-weight:800;font-size:13px"><span>Subtotal</span><span id="subtotal">₱0.00 PHP</span></div><div style="font-size:10px;opacity:.6;margin:6px 0 14px">Taxes and shipping calculated at checkout</div><button class="btn btn-black2">🛒 BUY WITH CASH ON DELIVERY</button><button class="btn btn-black" style="margin-top:8px">CHECK OUT</button></div>
+</div>
+
+<div id="modal" onclick="this.style.display='none'" style="position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center"><img id="modalImg" style="max-width:95%;max-height:90vh"></div>
 
 <script>
+const SIZE_CHART="https://i.imgur.com/0y5JNJr.jpeg";
 const tees=[
-{img:"https://i.imgur.com/rM9FnTG.png",name:"COZY TEE BLACK"},
-{img:"https://i.imgur.com/y1bwuFF.png",name:"COZY TEE WHITE"},
-{img:"https://i.imgur.com/TYSYmj1.png",name:"COZY SHORTS BLACK"},
-{img:"https://i.imgur.com/7tNmDFO.png",name:"COZY SHORTS WHITE"},
-{img:"https://i.imgur.com/CDKuXxt.png",name:"COZY TEE GREY"},
-{img:"https://i.imgur.com/e6rIBlV.png",name:"COZY TEE CREAM"},
-{img:"https://i.imgur.com/ty9cyvl.png",name:"COZY HOODIE BLACK"},
-{img:"https://i.imgur.com/HOqhErH.png",name:"COZY HOODIE WHITE"},
+{img:"https://i.imgur.com/rM9FnTG.png",name:"COZY TEE BLACK",price:900,images:["https://i.imgur.com/rM9FnTG.png","https://i.imgur.com/IW3vnNm.jpeg",SIZE_CHART]},
+{img:"https://i.imgur.com/y1bwuFF.png",name:"COZY TEE WHITE",price:900,images:["https://i.imgur.com/y1bwuFF.png","https://i.imgur.com/ZUE63Du.jpeg",SIZE_CHART]},
+{img:"https://i.imgur.com/TYSYmj1.png",name:"COZY SHORTS BLACK",price:900,images:["https://i.imgur.com/TYSYmj1.png",SIZE_CHART]},
+{img:"https://i.imgur.com/7tNmDFO.png",name:"COZY SHORTS WHITE",price:900,images:["https://i.imgur.com/7tNmDFO.png",SIZE_CHART]},
+{img:"https://i.imgur.com/CDKuXxt.png",name:"COZY TEE GREY",price:900,images:["https://i.imgur.com/CDKuXxt.png",SIZE_CHART]},
+{img:"https://i.imgur.com/e6rIBlV.png",name:"COZY TEE CREAM",price:900,images:["https://i.imgur.com/e6rIBlV.png",SIZE_CHART]},
+{img:"https://i.imgur.com/ty9cyvl.png",name:"COZY HOODIE BLACK",price:1200,images:["https://i.imgur.com/ty9cyvl.png",SIZE_CHART]},
+{img:"https://i.imgur.com/HOqhErH.png",name:"COZY HOODIE WHITE",price:1200,images:["https://i.imgur.com/HOqhErH.png",SIZE_CHART]},
 ];
 const galleryPics=["https://i.imgur.com/ZUE63Du.jpeg","https://i.imgur.com/S33CFqt.jpeg","https://i.imgur.com/mrPv4Lg.jpeg","https://i.imgur.com/385oIll.jpeg","https://i.imgur.com/mk4Xksn.jpeg","https://i.imgur.com/zX2LkBM.jpeg","https://i.imgur.com/YpA5yF8.jpeg","https://i.imgur.com/rHxWn1O.jpeg","https://i.imgur.com/hRAzh46.jpeg","https://i.imgur.com/jk0Tq8L.jpeg","https://i.imgur.com/3RptbR7.jpeg","https://i.imgur.com/FwGlaZ4.jpeg"];
 
-document.getElementById('storeGrid').innerHTML=tees.map(t=>`<div class="card" onclick="openProduct('${t.img}','${t.name}')"><img src="${t.img}" loading="lazy"><p>${t.name}</p></div>`).join("");
-document.getElementById('galleryGrid').innerHTML=galleryPics.map(p=>`<div class="gallery-card" onclick="openGallery('${p}')"><img src="${p}" loading="lazy"></div>`).join("");
+let current=null,cart=[],q=1;
+document.getElementById('storeGrid').innerHTML=tees.map((t,i)=>`<div class="card" onclick="openProduct(${i})"><img src="${t.img}"><p>${t.name}</p></div>`).join("");
+document.getElementById('galleryGrid').innerHTML=galleryPics.map(p=>`<div class="gallery-card" onclick="openGallery('${p}')"><img src="${p}"></div>`).join("");
 
-function openProduct(img,name){document.getElementById('pImg').src=img;document.getElementById('pName').innerText=name;document.getElementById('productPage').classList.add('show');document.body.style.overflow='hidden';}
-function closeProduct(){document.getElementById('productPage').classList.remove('show');document.body.style.overflow='auto';}
-function openGallery(p){document.getElementById('modalImg').src=p;document.getElementById('modal').classList.add('show');}
+function openProduct(i){
+current=tees[i];q=1;document.getElementById('qty').innerText=q;
+document.getElementById('pName').innerText=current.name;
+document.getElementById('pImg').src=current.images[0];
+document.getElementById('thumbs').innerHTML=current.images.map((im,idx)=>`<div class="thumb ${idx===0?'active':''}" onclick="switchImg(this,'${im}')"><img src="${im}" style="${im===SIZE_CHART?'object-fit:contain':''}"></div>`).join("");
+document.getElementById('productPage').classList.add('show');
+}
+function switchImg(el,src){document.getElementById('pImg').src=src;document.querySelectorAll('.thumb').forEach(t=>t.classList.remove('active'));el.classList.add('active');}
+function closeProduct(){document.getElementById('productPage').classList.remove('show');}
+function openGallery(p){document.getElementById('modalImg').src=p;document.getElementById('modal').style.display='flex';}
 function pickSize(el){document.querySelectorAll('.size').forEach(s=>s.classList.remove('active'));el.classList.add('active');}
-let q=1;function changeQty(d){q=Math.max(1,q+d);document.getElementById('qty').innerText=q;}
-function addCart(){alert('Added to cart! — Size: '+document.querySelector('.size.active').innerText+' Qty: '+q);}
+function changeQty(d){q=Math.max(1,q+d);document.getElementById('qty').innerText=q;}
+function addToCart(){
+let size=document.querySelector('.size.active').innerText;
+let exist=cart.find(c=>c.name===current.name && c.size===size);
+if(exist){exist.qty+=q;}else{cart.push({img:current.images[0],name:current.name,size:size,qty:q,price:current.price});}
+renderCart();closeProduct();openCart();
+}
+function renderCart(){
+let html='',total=0;
+cart.forEach((c,i)=>{
+total+=c.price*c.qty;
+html+=`<div class="cart-item"><img src="${c.img}"><div><div style="font-size:12px;font-weight:800">${c.name}</div><div style="font-size:11px;opacity:.7">₱${c.price}.00<br>Size: ${c.size}</div><div style="display:flex;border:1px solid #ccc;border-radius:6px;width:fit-content;margin-top:6px"><button onclick="updateCart(${i},-1)" style="width:28px;height:24px;border:0;background:#fff">−</button><span style="width:24px;text-align:center;font-size:11px;line-height:24px">${c.qty}</span><button onclick="updateCart(${i},1)" style="width:28px;height:24px;border:0;background:#fff">+</button></div></div><div style="font-weight:700;font-size:12px">₱${c.price*c.qty}.00</div></div>`;
+});
+document.getElementById('cartItems').innerHTML=html||'<p style="text-align:center;padding:40px;opacity:.5;font-size:12px">Empty</p>';
+document.getElementById('subtotal').innerText='₱'+total+'.00 PHP';
+let count=cart.reduce((a,b)=>a+b.qty,0);
+document.getElementById('badge').style.display=count?'flex':'none';document.getElementById('badge').innerText=count;
+document.getElementById('badge2').style.display=count?'flex':'none';document.getElementById('badge2').innerText=count;
+}
+function updateCart(i,d){cart[i].qty+=d;if(cart[i].qty<=0)cart.splice(i,1);renderCart();}
+function openCart(){document.getElementById('cartDrawer').classList.add('show');document.getElementById('cartOverlay').classList.add('show');}
+function closeCart(){document.getElementById('cartDrawer').classList.remove('show');document.getElementById('cartOverlay').classList.remove('show');}
 function playMusic(){let a=document.getElementById('audio');a.volume=1;a.play().catch(()=>{});}
 function enterStore(){document.getElementById('gate').classList.add('out');document.getElementById('main').classList.add('show');document.getElementById('storePage').classList.add('active');document.getElementById('galleryPage').classList.remove('active');document.body.style.overflow='auto';playMusic();}
 function enterGallery(){document.getElementById('gate').classList.add('out');document.getElementById('main').classList.add('show');document.getElementById('galleryPage').classList.add('active');document.getElementById('storePage').classList.remove('active');document.body.style.overflow='auto';playMusic();}
