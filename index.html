@@ -1,118 +1,114 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>COZYSWAG</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@800&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>COZYSWAG®</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-html,body{width:100%;overflow-x:hidden;overflow-y:auto;background:#f2f2f2}
-body{color:#111}
-#gate{position:fixed;inset:0;z-index:999;background:#000;display:flex;align-items:center;justify-content:center;transition:.8s}
-#gate video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.6;pointer-events:none}
-.menu{position:relative;z-index:10;text-align:center;color:#fff;display:flex;flex-direction:column;align-items:center}
-.menu-gif{width:360px;max-width:70vw}
-.link{font-family:'Bebas Neue';font-size:78px;line-height:.9;letter-spacing:2px;cursor:pointer}
-#gate.out{transform:translateY(-100%)}
-#main{display:none;min-height:100vh}#main.show{display:block}
-.page{display:none}.page.active{display:block}
-header{padding:14px 20px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:rgba(242,242,242,.97);border-bottom:1px solid #e5e5e5;z-index:30}
-.header-center{position:absolute;left:50%;transform:translateX(-50%)}
-.nav-link{font-family:'Space Grotesk';font-size:10px;letter-spacing:3px;font-weight:700;opacity:.4;cursor:pointer}
-.nav-link.active{opacity:1;border-bottom:1px solid #111}
-.back{font-family:'Space Grotesk';font-size:10px;font-weight:700;padding:8px 16px;border:1px solid #111;border-radius:20px;cursor:pointer}
-.header-logo{height:48px;cursor:pointer}
-.title{font-family:'Syne';font-size:20px;font-weight:800;letter-spacing:2px;text-align:center;padding:28px 0 12px}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#e5e5e5}
-.card{background:#f2f2f2;padding:0 0 26px;display:flex;flex-direction:column;align-items:center;cursor:pointer;position:relative}
-/* TAMA NA HOVER - MAY SPACE NA LAHAT */
-.img-wrap{position:relative;width:100%;height:360px;background:#f2f2f2;overflow:hidden}
-.img-wrap.img-main{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:1;z-index:1;transition:opacity.4s ease, transform.6s ease}
-.img-wrap.img-hover{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;z-index:2;transition:opacity.4s ease, transform.6s ease}
-.card:hover.img-main{opacity:0;transform:scale(1.06)}
-.card:hover.img-hover{opacity:1;transform:scale(1.06)}
-.card p{font-family:'Space Grotesk';font-size:11px;font-weight:700;margin-top:14px;text-transform:uppercase}
-.soldout-pill{position:absolute;bottom:58px;left:50%;transform:translateX(-50%);border:1px solid #111;background:#fff;border-radius:20px;padding:5px 14px;font-size:9px;font-weight:800}
-.gallery-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#e5e5e5}
-.gallery-card{aspect-ratio:4/5;background:#000;overflow:hidden;cursor:pointer}
-.gallery-card img{width:100%;height:100%;object-fit:cover}
-#productPage{position:fixed;inset:0;z-index:90;background:#f2f2f2;display:none;overflow:auto}
-#productPage.show{display:block}
-.p-header{padding:14px 20px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:#f2f2f2;border-bottom:1px solid #e5e5e5}
-.p-body{display:grid;grid-template-columns:1.2fr.8fr;min-height:calc(100vh - 56px)}
-.p-img-side{background:#ececec;display:flex;flex-direction:column}
-.p-img-main{flex:1;padding:30px;display:flex;align-items:center;justify-content:center;min-height:540px;position:relative}
-.p-img-main img{width:100%;max-width:520px;object-fit:contain}
-.arrow{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;background:#fff;border:1px solid #111;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:22px;font-weight:900;z-index:3}
-.arrow.left{left:14px}.arrow.right{right:14px}
-.thumbs{display:flex;gap:8px;padding:12px;overflow:auto;background:#ececec;border-top:1px solid #ddd}
-.thumb{width:80px;height:80px;min-width:80px;background:#fff;border:1.5px solid transparent;cursor:pointer}
-.thumb.active{border-color:#111}
-.thumb img{width:100%;height:100%;object-fit:cover}
-.p-info{padding:32px 28px}
-.p-info h1{font-family:'Syne';font-size:28px}
-.sizes{display:flex;gap:8px;margin-top:14px}
-.size{width:36px;height:36px;border:1px solid #111;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;cursor:pointer}
-.size.active{background:#111;color:#fff}
-.btn{width:100%;padding:14px;border-radius:30px;border:0;font-weight:900;margin-top:12px;cursor:pointer;font-family:'Space Grotesk';font-size:11px}
-.btn-black{background:#111;color:#fff}
-#cartOverlay{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:200;display:none}
-#cartOverlay.show{display:block}
-#cartDrawer{position:fixed;top:0;right:0;width:440px;max-width:94vw;height:100%;background:#fff;z-index:201;transform:translateX(100%);transition:.45s;display:flex;flex-direction:column}
-#cartDrawer.show{transform:translateX(0)}
-.cart-head{padding:20px 24px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eee}
-.cart-items{flex:1;overflow:auto;padding:0 24px}
-.cart-badge{position:absolute;top:-6px;right:-8px;background:#111;color:#fff;font-size:9px;min-width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800}
-@media(max-width:800px){.link{font-size:56px}.p-body{grid-template-columns:1fr}.img-wrap{height:260px}}
+body{background:#080808;color:#fff;font-family:'Inter',sans-serif;overflow-x:hidden}
+#gate{position:fixed;inset:0;z-index:999;display:flex;align-items:center;justify-content:center;background:#000}
+#gate video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.6}
+#gate.out{transform:translateY(-100%);transition:transform .9s cubic-bezier(.86,0,.07,1)}
+.menu{position:relative;z-index:10;display:flex;flex-direction:column;align-items:center;gap:10px}
+.menu-gif{width:310px;max-width:82vw;margin-bottom:12px}
+.menu .link{font-family:'Anton',sans-serif;font-size:64px;line-height:.85;letter-spacing:1px;cursor:pointer;transition:.25s}
+.menu .link:hover{transform:scale(1.06);-webkit-text-stroke:1px #fff;color:transparent}
+#main{display:none;min-height:100vh;background:#070707}
+#main.show{display:block}
+header{padding:16px 24px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:40;background:rgba(8,8,8,.9);backdrop-filter:blur(16px);border-bottom:1px solid #151515}
+.header-left,.header-right{display:flex;align-items:center;gap:20px}
+.header-logo{height:36px;cursor:pointer}
+.nav-link{font-size:10px;letter-spacing:3px;font-weight:900;opacity:.5;cursor:pointer;padding-bottom:4px;border-bottom:1px solid transparent;transition:.3s}
+.nav-link.active{opacity:1;border-bottom:1px solid #fff}
+.icon-btn{width:20px;height:20px;cursor:pointer;opacity:.8;transition:.2s;stroke:#fff;fill:none}
+.icon-btn:hover{opacity:1;transform:scale(1.1)}
+.title{font-family:'Anton',sans-serif;font-size:56px;letter-spacing:-1px;padding:60px 24px 20px}
+.grid2{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#151515;border:1px solid #151515}
+.card{background:#0c0c0c;cursor:pointer;position:relative;overflow:hidden}
+.card img{width:100%;aspect-ratio:1;object-fit:cover;transition:.7s}
+.card:hover img{transform:scale(1.07)}
+.card p{font-size:10px;letter-spacing:2px;font-weight:800;text-align:center;padding:14px}
+.soldout-pill{position:absolute;top:10px;left:10px;background:#fff;color:#000;font-size:9px;font-weight:900;padding:5px 9px}
+#loader{position:fixed;inset:0;z-index:9999;background:#070707;display:none;align-items:center;justify-content:center;flex-direction:column;gap:14px}
+#loader.show{display:flex}
+#loader img{width:64px;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media(max-width:900px){.grid2{grid-template-columns:1fr 1fr}.menu .link{font-size:42px}.title{font-size:34px}}
 </style>
 </head>
 <body>
-<div id="gate"><video autoplay loop muted playsinline><source src="https://i.imgur.com/ML8T7V0.mp4" type="video/mp4"></video><div class="menu"><img class="menu-gif" src="https://i.imgur.com/cvLNJry.gif"><div class="link" onclick="enterStore()">COLLECTION</div><div class="link" onclick="enterGallery()">GALLERY</div></div></div>
-<div id="main">
-<header><div><div class="back" onclick="handleBack()">← BACK</div></div><div class="header-center"><img class="header-logo" src="https://i.imgur.com/cvLNJry.gif"></div><div style="display:flex;gap:18px;align-items:center"><span id="navStore" class="nav-link active" onclick="showStoreTab()">STORE</span><span id="navGallery" class="nav-link" onclick="showGalleryTab()">GALLERY</span><div style="position:relative;cursor:pointer" onclick="openCart()">🛒<div id="badge" class="cart-badge" style="display:none">0</div></div></div></header>
-<div id="storePage" class="page"><div class="title">NEW COLLECTION</div><div class="grid2" id="storeGrid"></div></div>
-<div id="galleryPage" class="page"><div class="title">GALLERY</div><div class="gallery-grid" id="galleryGrid"></div></div>
-<audio id="audio" loop><source src="./sorry.mp3"></audio>
+
+<!-- INTRO GATE WITH VIDEO -->
+<div id="gate">
+<video id="gateVideo" autoplay loop muted playsinline>
+<source src="https://i.imgur.com/Mx1b6R2.mp4" type="video/mp4">
+</video>
+<div class="menu">
+<img class="menu-gif" src="https://i.imgur.com/cvMDrYf.gif">
+<div class="link" onclick="enterStore()">COLLECTION</div>
+<div class="link" onclick="enterGallery()">GALLERY</div>
+<div class="link" onclick="window.open('https://www.facebook.com/cozyswag','_blank')">STORY</div>
 </div>
-<div id="productPage"><div class="p-header"><div class="back" onclick="backFromProduct()">← BACK</div><img class="header-logo" src="https://i.imgur.com/cvLNJry.gif"><div></div></div><div class="p-body"><div class="p-img-side"><div class="p-img-main"><div class="arrow left" onclick="prevImg()">‹</div><img id="pImg"><div class="arrow right" onclick="nextImg()">›</div></div><div class="thumbs" id="thumbs"></div></div><div class="p-info"><h1 id="pName"></h1><div class="sizes"><div class="size active" onclick="pickSize(this)">S</div><div class="size" onclick="pickSize(this)">M</div><div class="size" onclick="pickSize(this)">L</div><div class="size" onclick="pickSize(this)">XL</div></div><button class="btn btn-black" onclick="addToCart()">ADD TO CART</button><button class="btn btn-black" onclick="addToCart()">🛒 BUY WITH CASH ON DELIVERY</button></div></div></div>
-<div id="cartOverlay" onclick="closeCart()"></div>
-<div id="cartDrawer"><div class="cart-head"><h2>Your cart</h2><div onclick="closeCart()" style="cursor:pointer">✕</div></div><div style="display:flex;justify-content:space-between;padding:12px 24px 0;font-size:10px;opacity:.5;font-weight:700"><span>PRODUCT</span><span>TOTAL</span></div><div class="cart-items" id="cartItems"></div><div style="padding:20px 24px;border-top:1px solid #eee"><div style="display:flex;justify-content:space-between;font-weight:800"><span>Subtotal</span><span id="subtotal">₱0.00 PHP</span></div><button style="width:100%;padding:14px;border-radius:30px;border:0;background:#111;color:#fff;font-weight:800;margin-top:12px">🛒 BUY WITH CASH ON DELIVERY</button><button style="width:100%;padding:14px;border-radius:30px;border:0;background:#111;color:#fff;font-weight:800;margin-top:8px">CHECK OUT</button></div></div>
-<div id="modal" onclick="this.style.display='none'" style="position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center"><img id="modalImg" style="max-width:95%;max-height:90vh"></div>
+</div>
+
+<!-- MAIN -->
+<div id="main">
+<header>
+<div class="header-left">
+<img class="header-logo" src="https://i.imgur.com/8Km9tLL.png" onclick="goHome()">
+<div class="nav-link active" id="storeLink" onclick="showStoreTab()">STORE</div>
+<div class="nav-link" id="galleryLink" onclick="showGalleryTab()">GALLERY</div>
+<div class="nav-link" onclick="window.open('https://www.facebook.com/cozyswag','_blank')">STORY</div>
+</div>
+<div class="header-right">
+<!-- 3 ICONS - SEARCH, ACCOUNT, BAG -->
+<svg class="icon-btn" viewBox="0 0 24 24" stroke-width="1.5"><circle cx="11" cy="11" r="6"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+<svg class="icon-btn" viewBox="0 0 24 24" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+<svg class="icon-btn" viewBox="0 0 24 24" stroke-width="1.5" onclick="openCart()"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+<span style="font-size:10px;opacity:.6" id="cartCount">0</span>
+</div>
+</header>
+
+<div id="storePage">
+<div class="title">STORE</div>
+<div class="grid2" id="storeGrid"></div>
+</div>
+
+<div id="galleryPage" style="display:none">
+<div class="title">GALLERY</div>
+<div class="grid2" id="galleryGrid"></div>
+</div>
+</div>
+
+<div id="loader"><img src="https://i.imgur.com/8Km9tLL.png"><div style="font-family:Anton;letter-spacing:3px">LOADING</div></div>
+
+<audio id="sorryAudio" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+
 <script>
-const tees=[
-{name:"COZY TEE BLACK",price:900,images:["https://i.imgur.com/rM9FnTG.png","https://i.imgur.com/IW3vnNm.jpeg"],soldout:true},
-{name:"COZY TEE WHITE",price:900,images:["https://i.imgur.com/y1bwuFF.png","https://i.imgur.com/ch2Pxg3.jpeg"],soldout:false},
-{name:"COZY SHORTS BLACK",price:900,images:["https://i.imgur.com/TYSYmj1.png","https://i.imgur.com/f0rMVGu.jpeg"],soldout:false},
-{name:"COZY SHORTS WHITE",price:900,images:["https://i.imgur.com/7tNmDFO.png","https://i.imgur.com/X4A2kot.jpeg"],soldout:false},
-{name:"COZY TEE GREY",price:900,images:["https://i.imgur.com/CDKuXxt.png","https://i.imgur.com/Hbr1wFd.jpeg"],soldout:false},
-{name:"COZY TEE CREAM",price:900,images:["https://i.imgur.com/e6rIBlV.png","https://i.imgur.com/srf1dOA.jpeg"],soldout:false},
-{name:"COZY HOODIE BLACK",price:1200,images:["https://i.imgur.com/ty9cyvl.png","https://i.imgur.com/IWqEKkJ.jpeg"],soldout:false},
-{name:"COZY HOODIE WHITE",price:1200,images:["https://i.imgur.com/HOqhErH.png","https://i.imgur.com/o1UOJrQ.jpeg"],soldout:false},
+const tees = [
+{name:"CS MESH LONGSLEEVE",price:900,images:["https://i.imgur.com/CfZQ0pB.jpeg"],soldout:false},
+{name:"CS SWEATSHORT",price:850,images:["https://i.imgur.com/8Km9tLL.png"],soldout:false},
+{name:"CS ALLOVER TEE",price:680,images:["https://i.imgur.com/3Wn6K4q.jpeg"],soldout:false},
+{name:"CS EMBLEM TEE BLACK",price:600,images:["https://i.imgur.com/4d6aG8p.jpeg"],soldout:false},
+{name:"CS EMBLEM TEE WHITE",price:600,images:["https://i.imgur.com/4d6aG8p.jpeg"],soldout:false},
+{name:"CS SKULLCAP",price:400,images:["https://i.imgur.com/8Km9tLL.png"],soldout:false},
+{name:"CS EMBLEM CHAIN",price:600,images:["https://i.imgur.com/CfZQ0pB.jpeg"],soldout:true},
+{name:"CS GLITTERS CROP TOP",price:550,images:["https://i.imgur.com/3Wn6K4q.jpeg"],soldout:false}
 ];
-const galleryPics=["https://i.imgur.com/ZUE63Du.jpeg","https://i.imgur.com/S33CFqt.jpeg","https://i.imgur.com/mrPv4Lg.jpeg","https://i.imgur.com/385oIll.jpeg","https://i.imgur.com/mk4Xksn.jpeg","https://i.imgur.com/zX2LkBM.jpeg","https://i.imgur.com/YpA5yF8.jpeg","https://i.imgur.com/rHxWn1O.jpeg","https://i.imgur.com/hRAzh46.jpeg","https://i.imgur.com/jk0Tq8L.jpeg","https://i.imgur.com/3RptbR7.jpeg","https://i.imgur.com/FwGlaZ4.jpeg"];
-let current=null,currentIdx=0,cart=[],q=1,currentPage='store';
-function renderStore(){
-document.getElementById('storeGrid').innerHTML=tees.map((t,i)=>`<div class="card" onclick="openProduct(${i})"><div class="img-wrap"><img class="img-main" src="${t.images[0]}"><img class="img-hover" src="${t.images[1]}"></div><p>${t.name}</p>${t.soldout?'<div class="soldout-pill">Sold out</div>':''}</div>`).join("");
-document.getElementById('galleryGrid').innerHTML=galleryPics.map(p=>`<div class="gallery-card" onclick="document.getElementById('modalImg').src='${p}';document.getElementById('modal').style.display='flex'"><img src="${p}"></div>`).join("");
-}
-renderStore();
-function showStoreTab(){currentPage='store';document.getElementById('storePage').classList.add('active');document.getElementById('galleryPage').classList.remove('active');document.getElementById('navStore').classList.add('active');document.getElementById('navGallery').classList.remove('active');window.scrollTo(0,0)}
-function showGalleryTab(){currentPage='gallery';document.getElementById('galleryPage').classList.add('active');document.getElementById('storePage').classList.remove('active');document.getElementById('navGallery').classList.add('active');document.getElementById('navStore').classList.remove('active');window.scrollTo(0,0)}
-function handleBack(){if(currentPage==='store'){goToIntro()}else{showStoreTab()}}
-function backFromProduct(){document.getElementById('productPage').classList.remove('show');document.body.style.overflow='auto'}
-function goToIntro(){let g=document.getElementById('gate');g.style.display='flex';void g.offsetWidth;g.classList.remove('out');document.getElementById('main').classList.remove('show')}
-function openProduct(i){current=tees[i];currentIdx=0;document.getElementById('pName').innerText=current.name;document.getElementById('pImg').src=current.images[0];document.getElementById('thumbs').innerHTML=current.images.map((im,idx)=>`<div class="thumb ${idx===0?'active':''}" onclick="goToImg(${idx})"><img src="${im}"></div>`).join("");document.getElementById('productPage').classList.add('show')}
-function goToImg(idx){currentIdx=idx;document.getElementById('pImg').src=current.images[currentIdx];document.querySelectorAll('.thumb').forEach((t,i)=>t.classList.toggle('active',i===currentIdx))}
-function nextImg(){currentIdx=(currentIdx+1)%current.images.length;goToImg(currentIdx)}
-function prevImg(){currentIdx=(currentIdx-1+current.images.length)%current.images.length;goToImg(currentIdx)}
-function pickSize(el){document.querySelectorAll('.size').forEach(s=>s.classList.remove('active'));el.classList.add('active')}
-function addToCart(){if(current.soldout){alert('Sold out');return}let size=document.querySelector('.size.active').innerText;let ex=cart.find(c=>c.name===current.name&&c.size===size);if(ex)ex.qty+=1;else cart.push({img:current.images[0],name:current.name,size,qty:1,price:current.price});renderCart();document.getElementById('productPage').classList.remove('show');openCart()}
-function renderCart(){let html='',total=0;cart.forEach(c=>{total+=c.price*c.qty;html+=`<div style="display:grid;grid-template-columns:72px 1fr auto;gap:12px;padding:18px 0;border-bottom:1px solid #f0f0f0"><img src="${c.img}" style="width:72px;height:84px;object-fit:contain;background:#f7f7f7"><div><div style="font-size:13px;font-weight:800">${c.name}</div><div style="font-size:11px;opacity:.6">Size: ${c.size}</div><div style="display:flex;border:1px solid #ddd;border-radius:8px;width:fit-content;margin-top:8px"><button style="width:32px;height:30px;border:0;background:#fff" onclick="event.stopPropagation();c.qty=Math.max(1,c.qty-1);renderCart()">−</button><span style="width:32px;text-align:center;line-height:30px;font-size:12px">${c.qty}</span><button style="width:32px;height:30px;border:0;background:#fff" onclick="event.stopPropagation();c.qty++;renderCart()">+</button></div></div><div style="font-size:12px;font-weight:800">₱${c.price*c.qty}.00</div></div>`});document.getElementById('cartItems').innerHTML=html||'<p style="text-align:center;padding:60px 0;opacity:.4">Empty</p>';document.getElementById('subtotal').innerText='₱'+total+'.00 PHP';let ct=cart.reduce((a,b)=>a+b.qty,0);document.getElementById('badge').style.display=ct?'flex':'none';document.getElementById('badge').innerText=ct}
-function openCart(){document.getElementById('cartDrawer').classList.add('show');document.getElementById('cartOverlay').classList.add('show')}
-function closeCart(){document.getElementById('cartDrawer').classList.remove('show');document.getElementById('cartOverlay').classList.remove('show')}
-function enterStore(){let g=document.getElementById('gate');g.classList.add('out');setTimeout(()=>{g.style.display='none';document.getElementById('main').classList.add('show');showStoreTab();document.body.style.overflow='auto'},700);try{document.getElementById('audio').play()}catch(e){}}
-function enterGallery(){let g=document.getElementById('gate');g.classList.add('out');setTimeout(()=>{g.style.display='none';document.getElementById('main').classList.add('show');showGalleryTab();document.body.style.overflow='auto'},700);try{document.getElementById('audio').play()}catch(e){}}
+const galleryPics = ["https://i.imgur.com/3Wn6K4q.jpeg","https://i.imgur.com/4d6aG8p.jpeg","https://i.imgur.com/CfZQ0pB.jpeg","https://i.imgur.com/8Km9tLL.png"];
+
+function showLoaderThen(cb){const l=document.getElementById('loader');l.classList.add('show');setTimeout(()=>{l.classList.remove('show');cb();},800);}
+function renderStore(){const g=document.getElementById('storeGrid');g.innerHTML='';tees.forEach(t=>{const d=document.createElement('div');d.className='card';d.innerHTML=`${t.soldout?'<div class=soldout-pill>SOLD OUT</div>':''}<img src="${t.images[0]}"><p>${t.name} — ₱${t.price}</p>`;g.appendChild(d);});}
+function renderGallery(){const g=document.getElementById('galleryGrid');g.innerHTML='';galleryPics.forEach(s=>{const d=document.createElement('div');d.className='card';d.innerHTML=`<img src="${s}">`;g.appendChild(d);});}
+function enterStore(){showLoaderThen(()=>{document.getElementById('gate').classList.add('out');document.getElementById('main').classList.add('show');showStoreTab();});}
+function enterGallery(){showLoaderThen(()=>{document.getElementById('gate').classList.add('out');document.getElementById('main').classList.add('show');showGalleryTab();});}
+function showStoreTab(){document.getElementById('storePage').style.display='block';document.getElementById('galleryPage').style.display='none';document.getElementById('storeLink').classList.add('active');document.getElementById('galleryLink').classList.remove('active');renderStore();}
+function showGalleryTab(){document.getElementById('galleryPage').style.display='block';document.getElementById('storePage').style.display='none';document.getElementById('galleryLink').classList.add('active');document.getElementById('storeLink').classList.remove('active');renderGallery();}
+function goHome(){document.getElementById('gate').classList.remove('out');document.getElementById('main').classList.remove('show');}
+function openCart(){alert('DM IG @cozyswag to order!')}
+renderStore();renderGallery();
 </script>
 </body>
 </html>
