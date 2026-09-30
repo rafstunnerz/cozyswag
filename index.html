@@ -11,14 +11,14 @@
 html,body{width:100%;overflow-x:hidden;overflow-y:auto;background:#f2f2f2;color:#111}
 #gate{position:fixed;inset:0;z-index:999;background:#000;display:flex;align-items:center;justify-content:center;transition:.8s}
 #gate video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.6;pointer-events:none}
-.menu{position:relative;z-index:10;text-align:center;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;width:100%}
+.menu{position:relative;z-index:10;text-align:center;color:#fff;display:flex;flex-direction:column;align-items:center}
 .menu-gif{width:380px;max-width:70vw;margin-bottom:12px}
 .menu-link{font-family:'Bebas Neue';font-size:76px;line-height:.9;letter-spacing:2px;cursor:pointer}
 .menu-link:hover{-webkit-text-stroke:1px #fff;color:transparent}
 .social-row{display:flex;gap:22px;margin-top:26px;font-size:22px}
-.social-row a{color:#fff;opacity:.9}.social-row a:hover{opacity:1;transform:scale(1.1)}
+.social-row a{color:#fff;opacity:.9}
 #gate.out{transform:translateY(-100%)}
-#main{display:none;min-height:100vh}#main.show{display:block}
+#main{display:none;min-height:100vh;background:#f2f2f2}#main.show{display:block}
 .page{display:none}.page.active{display:block}
 header{padding:12px 18px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:rgba(242,242,242,.98);border-bottom:1px solid #e5e5e5;z-index:30}
 .header-center{position:absolute;left:50%;transform:translateX(-50%)}
@@ -28,14 +28,14 @@ header{padding:12px 18px;display:flex;justify-content:space-between;align-items:
 .back{font-family:'Space Grotesk';font-size:10px;font-weight:700;padding:7px 14px;border:1px solid #111;border-radius:20px;cursor:pointer}
 .title{font-family:'Syne';font-size:20px;font-weight:800;letter-spacing:2px;text-align:center;padding:28px 0 12px}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#e5e5e5}
-.card{background:#f2f2f2;padding:0 0 24px;display:flex;flex-direction:column;align-items:center;cursor:pointer;position:relative}
-/* TAMA NA HOVER - MAY SPACE */
-.img-wrap{position:relative;width:100%;height:360px;background:#f2f2f2;overflow:hidden}
-.img-wrap.img-main{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:contain;opacity:1;z-index:1;transition:opacity.4s ease, transform.6s ease}
-.img-wrap.img-hover{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:contain;opacity:0;z-index:2;transition:opacity.4s ease, transform.6s ease}
-.card:hover.img-main{opacity:0;transform:scale(1.06)}
-.card:hover.img-hover{opacity:1;transform:scale(1.06)}
-.card p{font-family:'Space Grotesk';font-size:11px;font-weight:700;margin-top:14px}
+.card{background:#f2f2f2;padding:16px 0 24px;display:flex;flex-direction:column;align-items:center;cursor:pointer;position:relative}
+/* DITO BOSS - DALAWA MAGKATABI TULAD SA SCREENSHOT MO */
+.img-wrap{position:relative;width:100%;height:360px;background:#f2f2f2;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:6px;padding:0 12px}
+.img-wrap.img-main{width:49%;height:100%;object-fit:contain;transition:transform.6s ease}
+.img-wrap.img-hover{width:49%;height:100%;object-fit:contain;transition:transform.6s ease}
+.card:hover.img-main{transform:scale(1.05)}
+.card:hover.img-hover{transform:scale(1.05)}
+.card p{font-family:'Space Grotesk';font-size:11px;font-weight:700;margin-top:14px;text-transform:uppercase;letter-spacing:1px}
 .soldout-pill{position:absolute;bottom:58px;left:50%;transform:translateX(-50%);border:1px solid #111;background:#fff;border-radius:20px;padding:5px 14px;font-size:9px;font-weight:800}
 .gallery-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#e5e5e5}
 .gallery-card{aspect-ratio:4/5;background:#000;overflow:hidden;cursor:pointer}
@@ -54,16 +54,17 @@ header{padding:12px 18px;display:flex;justify-content:space-between;align-items:
 .thumb.active{border-color:#111}
 .thumb img{width:100%;height:100%;object-fit:cover}
 .p-info{padding:28px 24px}
+.p-info h1{font-family:'Syne';font-size:28px;line-height:.9}
 .sizes{display:flex;gap:8px;margin-top:14px}
 .size{width:36px;height:36px;border:1px solid #111;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;cursor:pointer}
 .size.active{background:#111;color:#fff}
-.btn{width:100%;padding:14px;border-radius:30px;border:0;font-weight:900;margin-top:12px;cursor:pointer}
+.btn{width:100%;padding:14px;border-radius:30px;border:0;font-weight:900;margin-top:12px;cursor:pointer;font-family:'Space Grotesk';font-size:11px}
 .btn-black{background:#111;color:#fff}
 #cartOverlay{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:200;display:none}
 #cartOverlay.show{display:block}
 #cartDrawer{position:fixed;top:0;right:0;width:440px;max-width:94vw;height:100%;background:#fff;z-index:201;transform:translateX(100%);transition:.45s;display:flex;flex-direction:column}
 #cartDrawer.show{transform:translateX(0)}
-.cart-badge{position:absolute;top:-6px;right:-8px;background:#111;color:#fff;font-size:9px;min-width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.cart-badge{position:absolute;top:-6px;right:-8px;background:#111;color:#fff;font-size:9px;min-width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800}
 @media(max-width:800px){.menu-link{font-size:54px}.p-body{grid-template-columns:1fr}.img-wrap{height:280px}}
 </style>
 </head>
@@ -77,7 +78,7 @@ header{padding:12px 18px;display:flex;justify-content:space-between;align-items:
 <div class="menu-link" onclick="window.open('https://www.facebook.com/profile.php?id=61553410621994','_blank')">STORY</div>
 <div class="social-row">
 <a href="https://www.instagram.com/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-<a href="https://www.facebook.com/profile.php?id=61553410621994" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+<a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
 <a href="https://www.tiktok.com/" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
 </div>
 </div>
@@ -94,20 +95,27 @@ header{padding:12px 18px;display:flex;justify-content:space-between;align-items:
 </div>
 </header>
 <div id="storePage" class="page"><div class="title">NEW COLLECTION</div><div class="grid2" id="storeGrid"></div></div>
-<div id="galleryPage" class="page"><div class="title">GALLERY</div><div class="gallery-grid" id="galleryGrid"></div></div>
+<div id="galleryPage" class="page"><div class="title">GALLERY — COZYSWAG FAM</div><div class="gallery-grid" id="galleryGrid"></div></div>
 <audio id="audio" loop><source src="./sorry.mp3" type="audio/mpeg"></audio>
 </div>
 
 <div id="productPage">
-<div class="p-header"><div class="back" onclick="backFromProduct()">← BACK</div><img class="header-logo" src="https://i.imgur.com/cvLNJry.gif"><div style="position:relative;cursor:pointer" onclick="openCart()">🛒<div id="badge2" class="cart-badge" style="display:none">0</div></div></div>
+<div class="p-header"><div class="back" onclick="backFromProduct()">← BACK</div><img class="header-logo" src="https://i.imgur.com/cvLNJry.gif" onclick="backFromProduct()"><div style="position:relative;cursor:pointer" onclick="openCart()">🛒<div id="badge2" class="cart-badge" style="display:none">0</div></div></div>
 <div class="p-body">
 <div class="p-img-side"><div class="p-img-main"><div class="arrow left" onclick="prevImg()">‹</div><img id="pImg"><div class="arrow right" onclick="nextImg()">›</div></div><div class="thumbs" id="thumbs"></div></div>
-<div class="p-info"><h1 id="pName" style="font-family:'Syne';font-size:28px"></h1><div class="sizes"><div class="size active" onclick="pickSize(this)">S</div><div class="size" onclick="pickSize(this)">M</div><div class="size" onclick="pickSize(this)">L</div><div class="size" onclick="pickSize(this)">XL</div><div class="size" onclick="pickSize(this)">2XL</div></div><button class="btn btn-black" onclick="addToCart()">ADD TO CART</button><button class="btn btn-black" onclick="addToCart()">🛒 BUY WITH CASH ON DELIVERY</button></div>
+<div class="p-info"><h1 id="pName"></h1><div style="margin-top:6px">₱900.00 PHP</div><div style="margin-top:14px;font-size:11px;opacity:.7;letter-spacing:1px;font-weight:700">Size</div><div class="sizes"><div class="size active" onclick="pickSize(this)">S</div><div class="size" onclick="pickSize(this)">M</div><div class="size" onclick="pickSize(this)">L</div><div class="size" onclick="pickSize(this)">XL</div><div class="size" onclick="pickSize(this)">2XL</div></div><button class="btn btn-black" onclick="addToCart()">ADD TO CART</button><button class="btn btn-black" onclick="addToCart()">🛒 BUY WITH CASH ON DELIVERY</button></div>
 </div>
 </div>
 
 <div id="cartOverlay" onclick="closeCart()"></div>
-<div id="cartDrawer"><div style="padding:20px 24px;display:flex;justify-content:space-between;border-bottom:1px solid #eee"><h2 style="font-family:'Syne'">Your cart</h2><div onclick="closeCart()" style="cursor:pointer;font-size:22px">✕</div></div><div style="display:flex;justify-content:space-between;padding:10px 24px 0;font-size:10px;opacity:.5;font-weight:700"><span>PRODUCT</span><span>TOTAL</span></div><div id="cartItems" style="flex:1;overflow:auto;padding:0 24px"></div><div style="padding:20px 24px;border-top:1px solid #eee"><div style="display:flex;justify-content:space-between;font-weight:800"><span>Subtotal</span><span id="subtotal">₱0.00</span></div><button class="btn btn-black" style="margin-top:12px;padding:16px">🛒 BUY WITH CASH ON DELIVERY</button><button class="btn btn-black" style="margin-top:8px;padding:16px">CHECK OUT</button></div></div>
+<div id="cartDrawer">
+<div style="padding:20px 24px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eee"><h2 style="font-family:'Syne';font-size:18px">Your cart</h2><div onclick="closeCart()" style="cursor:pointer;font-size:22px">✕</div></div>
+<div style="display:flex;justify-content:space-between;padding:10px 24px 0;font-size:10px;opacity:.5;font-weight:700"><span>PRODUCT</span><span>TOTAL</span></div>
+<div id="cartItems" style="flex:1;overflow:auto;padding:0 24px"></div>
+<div style="padding:20px 24px;border-top:1px solid #eee"><div style="display:flex;justify-content:space-between;font-weight:800"><span>Subtotal</span><span id="subtotal">₱0.00 PHP</span></div><button class="btn btn-black" style="padding:16px;margin-top:12px">🛒 BUY WITH CASH ON DELIVERY</button><button class="btn btn-black" style="padding:16px;margin-top:10px">CHECK OUT</button></div>
+</div>
+
+<div id="modal" onclick="this.classList.remove('show')" style="position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center"><img id="modalImg" style="max-width:95%;max-height:90vh"></div>
 
 <script>
 const tees=[
@@ -124,7 +132,7 @@ const galleryPics=["https://i.imgur.com/ZUE63Du.jpeg","https://i.imgur.com/S33CF
 let current=null,currentIdx=0,cart=[],currentPage='store';
 function renderStore(){
 document.getElementById('storeGrid').innerHTML=tees.map((t,i)=>`<div class="card" onclick="openProduct(${i})"><div class="img-wrap"><img class="img-main" src="${t.images[0]}"><img class="img-hover" src="${t.images[1]}"></div><p>${t.name}</p>${t.soldout?'<div class="soldout-pill">Sold out</div>':''}</div>`).join("");
-document.getElementById('galleryGrid').innerHTML=galleryPics.map(p=>`<div class="gallery-card" onclick="document.getElementById('modalImg').src='${p}';document.getElementById('modal').classList.add('show')"><img src="${p}"></div>`).join("");
+document.getElementById('galleryGrid').innerHTML=galleryPics.map(p=>`<div class="gallery-card" onclick="openGallery('${p}')"><img src="${p}"></div>`).join("");
 }
 renderStore();
 function showStoreTab(){currentPage='store';document.getElementById('storePage').classList.add('active');document.getElementById('galleryPage').classList.remove('active');document.getElementById('navStore').classList.add('active');document.getElementById('navGallery').classList.remove('active');window.scrollTo(0,0)}
@@ -132,18 +140,18 @@ function showGalleryTab(){currentPage='gallery';document.getElementById('gallery
 function handleBack(){if(currentPage==='store'){goToIntro()}else{showStoreTab()}}
 function backFromProduct(){document.getElementById('productPage').classList.remove('show');document.body.style.overflow='auto'}
 function goToIntro(){let g=document.getElementById('gate');g.style.display='flex';void g.offsetWidth;g.classList.remove('out');document.getElementById('main').classList.remove('show')}
-function openProduct(i){current=tees[i];currentIdx=0;document.getElementById('pName').innerText=current.name;document.getElementById('pImg').src=current.images[0];document.getElementById('thumbs').innerHTML=current.images.map((im,idx)=>`<div class="thumb ${idx===0?'active':''}" onclick="goToImg(${idx})"><img src="${im}"></div>`).join("");document.getElementById('productPage').classList.add('show')}
+function openProduct(i){current=tees[i];currentIdx=0;document.getElementById('pName').innerText=current.name;document.getElementById('pImg').src=current.images[0];document.getElementById('thumbs').innerHTML=current.images.map((im,idx)=>`<div class="thumb ${idx===0?'active':''}" onclick="goToImg(${idx})"><img src="${im}"></div>`).join("");document.getElementById('productPage').classList.add('show');document.body.style.overflow='hidden'}
 function goToImg(idx){currentIdx=idx;document.getElementById('pImg').src=current.images[currentIdx];document.querySelectorAll('.thumb').forEach((t,i)=>t.classList.toggle('active',i===currentIdx))}
 function nextImg(){currentIdx=(currentIdx+1)%current.images.length;goToImg(currentIdx)}
 function prevImg(){currentIdx=(currentIdx-1+current.images.length)%current.images.length;goToImg(currentIdx)}
 function pickSize(el){document.querySelectorAll('.size').forEach(s=>s.classList.remove('active'));el.classList.add('active')}
-function addToCart(){if(current.soldout){alert('Sold out');return}let size=document.querySelector('.size.active').innerText;let ex=cart.find(c=>c.name===current.name&&c.size===size);if(ex)ex.qty++;else cart.push({img:current.images[0],name:current.name,size,qty:1,price:current.price});renderCart();document.getElementById('productPage').classList.remove('show');openCart()}
-function renderCart(){let h='',t=0;cart.forEach(c=>{t+=c.price*c.qty;h+=`<div style="display:grid;grid-template-columns:72px 1fr auto;gap:12px;padding:18px 0;border-bottom:1px solid #f0f0f0"><img src="${c.img}" style="width:72px;height:84px;object-fit:contain;background:#f7f7f7"><div><div style="font-weight:800;font-size:13px">${c.name}</div><div style="font-size:11px;opacity:.6">Size: ${c.size}</div></div><div style="font-weight:800">₱${c.price*c.qty}</div></div>`});document.getElementById('cartItems').innerHTML=h||'<p style="padding:40px;text-align:center;opacity:.4">Empty</p>';document.getElementById('subtotal').innerText='₱'+t+'.00';let ct=cart.reduce((a,b)=>a+b.qty,0);document.getElementById('badge').style.display=ct?'flex':'none';document.getElementById('badge').innerText=ct;document.getElementById('badge2').style.display=ct?'flex':'none';document.getElementById('badge2').innerText=ct}
+function addToCart(){if(current.soldout){alert('Sold out');return}let size=document.querySelector('.size.active').innerText;let ex=cart.find(c=>c.name===current.name&&c.size===size);if(ex)ex.qty++;else cart.push({img:current.images[0],name:current.name,size,qty:1,price:current.price});renderCart();document.getElementById('productPage').classList.remove('show');document.body.style.overflow='auto';openCart()}
+function renderCart(){let h='',t=0;cart.forEach(c=>{t+=c.price*c.qty;h+=`<div style="display:grid;grid-template-columns:72px 1fr auto;gap:12px;padding:18px 0;border-bottom:1px solid #f0f0f0"><img src="${c.img}" style="width:72px;height:84px;object-fit:contain;background:#f7f7f7;border-radius:6px"><div><div style="font-size:13px;font-weight:800">${c.name}</div><div style="font-size:11px;opacity:.6">Size: ${c.size} • Qty: ${c.qty}</div></div><div style="font-size:12px;font-weight:800">₱${c.price*c.qty}.00</div></div>`});document.getElementById('cartItems').innerHTML=h||'<p style="text-align:center;padding:60px 0;opacity:.4">Cart is empty</p>';document.getElementById('subtotal').innerText='₱'+t+'.00 PHP';let ct=cart.reduce((a,b)=>a+b.qty,0);document.getElementById('badge').style.display=ct?'flex':'none';document.getElementById('badge').innerText=ct;document.getElementById('badge2').style.display=ct?'flex':'none';document.getElementById('badge2').innerText=ct}
 function openCart(){document.getElementById('cartDrawer').classList.add('show');document.getElementById('cartOverlay').classList.add('show')}
 function closeCart(){document.getElementById('cartDrawer').classList.remove('show');document.getElementById('cartOverlay').classList.remove('show')}
+function openGallery(p){document.getElementById('modalImg').src=p;document.getElementById('modal').classList.add('show')}
 function enterStore(){let g=document.getElementById('gate');g.classList.add('out');setTimeout(()=>{g.style.display='none';document.getElementById('main').classList.add('show');showStoreTab()},600);try{document.getElementById('audio').play()}catch(e){}}
 function enterGallery(){let g=document.getElementById('gate');g.classList.add('out');setTimeout(()=>{g.style.display='none';document.getElementById('main').classList.add('show');showGalleryTab()},600);try{document.getElementById('audio').play()}catch(e){}}
 </script>
-<div id="modal" onclick="this.classList.remove('show')" style="position:fixed;inset:0;z-index:400;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center"><img id="modalImg" style="max-width:95%;max-height:90vh"></div>
 </body>
 </html>
