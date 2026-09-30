@@ -1,21 +1,17 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>COZYSWAG®</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#fff;color:#111;font-family:'Inter',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body{background:#fff;color:#111;font-family:'Inter',sans-serif;overflow-x:hidden}
 #gate{position:fixed;inset:0;z-index:999;background:#000;display:flex;align-items:center;justify-content:center;transition:transform.9s cubic-bezier(.77,0,.18,1)}
 #gate video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55}
 .menu{position:relative;z-index:2;color:#fff;display:flex;flex-direction:column;align-items:center;text-align:center}
 .menu-gif{width:340px;max-width:62vw;margin-bottom:18px}
-.menu-link{font-family:'Syne';font-weight:800;font-size:84px;line-height:.85;letter-spacing:-2px;cursor:pointer;transition:.2s}
+.menu-link{font-family:'Syne';font-weight:800;font-size:84px;line-height:.85;letter-spacing:-2px;cursor:pointer}
 .menu-link:hover{opacity:.4}
-.menu-sub{margin-top:28px;display:flex;gap:22px;font-size:18px}.menu-sub a{color:#fff;opacity:.7}
 #gate.out{transform:translateY(-100%)}
 #main{display:none;background:#fff}#main.show{display:block}
 .page{display:none}.page.active{display:block}
@@ -28,19 +24,18 @@ header{height:64px;padding:0 28px;display:flex;justify-content:space-between;ali
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,.55) 0%, transparent 60%)}
 .hero-text{position:relative;z-index:2;padding:40px 28px;color:#fff;width:100%;display:flex;justify-content:space-between;align-items:flex-end}
 .hero-text h1{font-family:'Syne';font-size:64px;font-weight:800;letter-spacing:-2.5px;line-height:.85;text-transform:lowercase}
-.hero-text p{font-size:11px;letter-spacing:2px;opacity:.8;margin-top:8px;text-transform:uppercase}
-.hero-scroll{font-size:11px;letter-spacing:2px;border:1px solid #fff;border-radius:100px;padding:8px 16px;cursor:pointer}
-.title{font-family:'Syne';font-size:20px;font-weight:800;letter-spacing:-.5px;text-align:left;padding:40px 28px 16px;text-transform:uppercase}
+.title{font-family:'Syne';font-size:20px;font-weight:800;text-align:left;padding:40px 28px 16px;text-transform:uppercase}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:0;background:#fff;padding:0 28px 60px}
 .card{background:#fff;padding:0 0 36px;cursor:pointer;position:relative}
 .img-wrap{width:100%;aspect-ratio:1/1.1;position:relative;display:flex;align-items:center;justify-content:center;background:#fff;overflow:hidden}
-.img-wrap img{width:82%;height:82%;object-fit:contain}
-.card-arrow{position:absolute;top:50%;transform:translateY(-50%);width:28px;height:28px;background:#fff;border:1px solid #111;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:5;opacity:0;transition:.2s;font-size:14px}
+.img-wrap img{width:86%;height:86%;object-fit:contain}
+.card-arrow{position:absolute;top:50%;transform:translateY(-50%);width:28px;height:28px;background:#fff;border:1px solid #111;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:5;opacity:0;transition:.2s}
 .card:hover.card-arrow{opacity:1}.card-arrow.left{left:10px}.card-arrow.right{right:10px}
 .card-info{padding:12px 12px 0;display:flex;justify-content:space-between}
 .card-name{font-size:11px;font-weight:600;letter-spacing:.8px;text-transform:uppercase}
 .card-price{font-size:11px;opacity:.5}
-.soldout-pill{position:absolute;top:12px;left:12px;background:#111;color:#fff;font-size:8px;font-weight:800;padding:6px 10px;border-radius:100px;letter-spacing:1px}
+.new-badge{position:absolute;top:12px;left:12px;background:#111;color:#fff;font-size:8px;font-weight:800;padding:6px 10px;border-radius:100px;letter-spacing:1px}
+.soldout-pill{position:absolute;top:12px;right:12px;background:#111;color:#fff;font-size:8px;font-weight:800;padding:6px 10px;border-radius:100px}
 .gallery-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:#fff;padding:0 28px 60px}
 .gallery-card{aspect-ratio:4/5;background:#f6f6f6;overflow:hidden;cursor:pointer}.gallery-card img{width:100%;height:100%;object-fit:cover}
 #productPage{position:fixed;inset:0;z-index:90;background:#fff;display:none;overflow:auto}#productPage.show{display:block}
@@ -62,10 +57,8 @@ header{height:64px;padding:0 28px;display:flex;justify-content:space-between;ali
 .cart-badge{position:absolute;top:-6px;right:-8px;background:#111;color:#fff;font-size:9px;min-width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800}
 #sizeModal{position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;padding:24px}#sizeModal.show{display:flex}
 #modal{position:fixed;inset:0;z-index:400;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center}#modal.show{display:flex}
-@media(max-width:900px){.menu-link{font-size:54px}.hero-text h1{font-size:40px}.grid2{padding:0 12px}.title{padding-left:12px}.p-body{grid-template-columns:1fr}.p-info{border-left:0}}
-</style>
-</head>
-<body>
+@media(max-width:900px){.menu-link{font-size:54px}.hero-text h1{font-size:40px}.grid2{padding:0 12px}.title{padding-left:12px}.p-body{grid-template-columns:1fr}}
+</style></head><body>
 
 <div id="gate">
 <video autoplay loop muted playsinline><source src="https://i.imgur.com/ML8T7V0.mp4" type="video/mp4"></video>
@@ -73,8 +66,7 @@ header{height:64px;padding:0 28px;display:flex;justify-content:space-between;ali
 <img class="menu-gif" src="https://i.imgur.com/cvLNJry.gif">
 <div class="menu-link" onclick="enterStore()">COLLECTION</div>
 <div class="menu-link" onclick="enterGallery()">GALLERY</div>
-<div class="menu-link" onclick="window.open('https://www.facebook.com/profile.php?id=61553410621994','_blank')">STORY</div>
-<div class="menu-sub">
+<div class="menu-sub" style="margin-top:28px;display:flex;gap:22px;font-size:18px">
 <a href="https://www.instagram.com/cozyswag" target="_blank"><i class="fa-brands fa-instagram"></i></a>
 <a href="https://www.facebook.com/profile.php?id=61553410621994" target="_blank"><i class="fa-brands fa-facebook"></i></a>
 <a href="https://www.tiktok.com/@cozyswag" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
@@ -83,26 +75,13 @@ header{height:64px;padding:0 28px;display:flex;justify-content:space-between;ali
 </div>
 
 <div id="main">
-<header>
-<div class="back" onclick="handleBack()">← BACK</div>
-<img class="header-logo" src="https://i.imgur.com/cvLNJry.gif" onclick="handleBack()">
-<div class="nav">
-<span id="navStore" class="nav-link active" onclick="showStoreTab()">STORE</span>
-<span id="navGallery" class="nav-link" onclick="showGalleryTab()">GALLERY</span>
-<div style="position:relative;cursor:pointer" onclick="openCart()"><i class="fa-solid fa-bag-shopping"></i><div id="badge" class="cart-badge" style="display:none">0</div></div>
-</div>
+<header><div class="back" onclick="handleBack()">← BACK</div><img class="header-logo" src="https://i.imgur.com/cvLNJry.gif" onclick="handleBack()">
+<div class="nav"><span id="navStore" class="nav-link active" onclick="showStoreTab()">STORE</span><span id="navGallery" class="nav-link" onclick="showGalleryTab()">GALLERY</span><div style="position:relative;cursor:pointer" onclick="openCart()"><i class="fa-solid fa-bag-shopping"></i><div id="badge" class="cart-badge" style="display:none">0</div></div></div>
 </header>
 
 <div id="storePage" class="page active">
-<div class="hero">
-<img src="https://i.imgur.com/JDUxGIN.jpeg">
-<div class="hero-overlay"></div>
-<div class="hero-text">
-<div><h1>cozyswag.ph</h1><p>Official Store — Manila, PH</p></div>
-<div class="hero-scroll" onclick="document.getElementById('storeGrid').scrollIntoView({behavior:'smooth'})">SHOP NOW ↓</div>
-</div>
-</div>
-<div class="title">Shop All</div>
+<div class="hero"><img src="https://i.imgur.com/JDUxGIN.jpeg"><div class="hero-overlay"></div><div class="hero-text"><div><h1>cozyswag.ph</h1><p style="font-size:11px;letter-spacing:2px;opacity:.8;margin-top:6px">NEW COLLECTION FALL '25</p></div><div style="font-size:11px;letter-spacing:2px;border:1px solid #fff;border-radius:100px;padding:8px 16px;cursor:pointer;color:#fff" onclick="document.getElementById('storeGrid').scrollIntoView({behavior:'smooth'})">SHOP NOW ↓</div></div></div>
+<div class="title">New Collection</div>
 <div class="grid2" id="storeGrid"></div>
 </div>
 
@@ -114,39 +93,34 @@ header{height:64px;padding:0 28px;display:flex;justify-content:space-between;ali
 <div class="p-header"><div class="back" onclick="backFromProduct()">← BACK</div><img class="header-logo" src="https://i.imgur.com/cvLNJry.gif" onclick="backFromProduct()"><div style="position:relative;cursor:pointer" onclick="openCart()"><i class="fa-solid fa-bag-shopping"></i><div id="badge2" class="cart-badge" style="display:none">0</div></div></div>
 <div class="p-body">
 <div class="p-img-side"><div class="p-img-main"><div class="arrow left" onclick="prevImg()">‹</div><img id="pImg"><div class="arrow right" onclick="nextImg()">›</div></div><div class="thumbs" id="thumbs"></div></div>
-<div class="p-info">
-<h1 id="pName">COZY TEE</h1>
-<div style="margin-top:8px;font-size:13px;font-weight:600">₱900.00 PHP</div>
-<div class="label">Size</div>
-<div class="sizes"><div class="size active" onclick="pickSize(this)">S</div><div class="size" onclick="pickSize(this)">M</div><div class="size" onclick="pickSize(this)">L</div><div class="size" onclick="pickSize(this)">XL</div><div class="size" onclick="pickSize(this)">2XL</div></div>
-<div class="chart-btn" onclick="openSize()">VIEW SIZE CHART →</div>
-<button class="btn btn-black" onclick="addToCart()">ADD TO CART</button>
-<button class="btn" style="background:#fff" onclick="addToCart()">BUY WITH COD</button>
-</div>
+<div class="p-info"><h1 id="pName"></h1><div id="pPrice" style="margin-top:8px;font-size:13px;font-weight:600"></div><div class="label">Size</div><div class="sizes" id="sizeContainer"></div><div class="chart-btn" onclick="openSize()">VIEW SIZE CHART →</div><button class="btn btn-black" onclick="addToCart()">ADD TO CART</button><button class="btn" style="background:#fff" onclick="addToCart()">BUY WITH COD</button></div>
 </div>
 </div>
 
 <div id="cartOverlay" onclick="closeCart()"></div>
-<div id="cartDrawer">
-<div style="padding:22px 24px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #f0f0f0"><b style="font-family:'Syne'">YOUR CART</b><div style="cursor:pointer" onclick="closeCart()">✕</div></div>
-<div id="cartItems" style="flex:1;overflow:auto;padding:0 24px"></div>
-<div style="padding:22px 24px;border-top:1px solid #f0f0f0"><div style="display:flex;justify-content:space-between;font-weight:800"><span>Subtotal</span><span id="subtotal">₱0.00</span></div><button class="btn btn-black" style="margin-top:14px">CHECKOUT</button></div>
-</div>
-
+<div id="cartDrawer"><div style="padding:22px 24px;display:flex;justify-content:space-between;border-bottom:1px solid #f0f0f0"><b style="font-family:'Syne'">YOUR CART</b><div style="cursor:pointer" onclick="closeCart()">✕</div></div><div id="cartItems" style="flex:1;overflow:auto;padding:0 24px"></div><div style="padding:22px 24px;border-top:1px solid #f0f0f0"><div style="display:flex;justify-content:space-between;font-weight:800"><span>Subtotal</span><span id="subtotal">₱0.00</span></div><button class="btn btn-black" style="margin-top:14px">CHECKOUT</button></div></div>
 <div id="modal" onclick="this.classList.remove('show')"><img id="modalImg" style="max-width:92vw;max-height:88vh"></div>
-<div id="sizeModal" onclick="closeSize()"><div style="background:#fff;width:520px;max-width:95vw;border-radius:16px;overflow:hidden" onclick="event.stopPropagation()"><div style="padding:16px 20px;display:flex;justify-content:space-between;border-bottom:1px solid #f0f0f0"><b style="font-family:'Syne'">SIZE CHART</b><div style="cursor:pointer" onclick="closeSize()">✕</div></div><img id="sizeImg" src="https://i.imgur.com/0y5JNJr.jpeg" style="width:100%;display:block"></div></div>
+<div id="sizeModal" onclick="closeSize()"><div style="background:#fff;width:520px;max-width:95vw;border-radius:16px;overflow:hidden" onclick="event.stopPropagation()"><div style="padding:16px 20px;display:flex;justify-content:space-between;border-bottom:1px solid #f0f0f0"><b style="font-family:'Syne'">SIZE CHART</b><div style="cursor:pointer" onclick="closeSize()">✕</div></div><img id="sizeImg" src="" style="width:100%;display:block"></div></div>
 
 <script>
 const tees=[
-{name:"COZY TEE BLACK",price:900,images:["https://i.imgur.com/rM9FnTG.png","https://i.imgur.com/IW3vnNm.jpeg"],sizeChart:"https://i.imgur.com/0y5JNJr.jpeg",soldout:true},
-{name:"COZY TEE WHITE",price:900,images:["https://i.imgur.com/y1bwuFF.png","https://i.imgur.com/ch2Pxg3.jpeg"],sizeChart:"https://i.imgur.com/0y5JNJr.jpeg"},
-{name:"COZY SHORTS BLACK",price:900,images:["https://i.imgur.com/TYSYmj1.png","https://i.imgur.com/f0rMVGu.jpeg"],sizeChart:"https://i.imgur.com/0y5JNJr.jpeg"},
-{name:"COZY SHORTS WHITE",price:900,images:["https://i.imgur.com/7tNmDFO.png","https://i.imgur.com/X4A2kot.jpeg"],sizeChart:"https://i.imgur.com/0y5JNJr.jpeg"},
-{name:"COZY TEE GREY",price:900,images:["https://i.imgur.com/CDKuXxt.png","https://i.imgur.com/Hbr1wFd.jpeg"],sizeChart:"https://i.imgur.com/0y5JNJr.jpeg"},
-{name:"COZY TEE CREAM",price:900,images:["https://i.imgur.com/e6rIBlV.png","https://i.imgur.com/srf1dOA.jpeg"],sizeChart:"https://i.imgur.com/0y5JNJr.jpeg"}
+{
+name:"CS CAMO CARPENTER JORTS",
+price:1250,
+images:["https://i.imgur.com/Ug6NUOj.png","https://i.imgur.com/MN65xR1.png"],
+sizeChart:"https://i.imgur.com/1pq7WaK.jpeg",
+sizes:["L","XL"],
+isNew:true
+},
+{name:"COZY TEE BLACK",price:900,images:["https://i.imgur.com/rM9FnTG.png","https://i.imgur.com/IW3vnNm.jpeg"],sizeChart:"https://i.imgur.com/0y5JNJr.jpeg",sizes:["S","M","L","XL","2XL"],soldout:true},
+{name:"COZY TEE WHITE",price:900,images:["https://i.imgur.com/y1bwuFF.png","https://i.imgur.com/ch2Pxg3.jpeg"],sizeChart:"https://i.imgur.com/0y5JNJr.jpeg",sizes:["S","M","L","XL","2XL"]},
+{name:"COZY SHORTS BLACK",price:900,images:["https://i.imgur.com/TYSYmj1.png","https://i.imgur.com/f0rMVGu.jpeg"],sizeChart:"https://i.imgur.com/0y5JNJr.jpeg",sizes:["S","M","L","XL","2XL"]},
+{name:"COZY SHORTS WHITE",price:900,images:["https://i.imgur.com/7tNmDFO.png","https://i.imgur.com/X4A2kot.jpeg"],sizeChart:"https://i.imgur.com/0y5JNJr.jpeg",sizes:["S","M","L","XL","2XL"]},
+{name:"COZY TEE GREY",price:900,images:["https://i.imgur.com/CDKuXxt.png","https://i.imgur.com/Hbr1wFd.jpeg"],sizeChart:"https://i.imgur.com/0y5JNJr.jpeg",sizes:["S","M","L","XL","2XL"]},
+{name:"COZY TEE CREAM",price:900,images:["https://i.imgur.com/e6rIBlV.png","https://i.imgur.com/srf1dOA.jpeg"],sizeChart:"https://i.imgur.com/0y5JNJr.jpeg",sizes:["S","M","L","XL","2XL"]}
 ];
 const galleryPics=["https://i.imgur.com/ZUE63Du.jpeg","https://i.imgur.com/S33CFqt.jpeg","https://i.imgur.com/mrPv4Lg.jpeg","https://i.imgur.com/385oIll.jpeg","https://i.imgur.com/mk4Xksn.jpeg","https://i.imgur.com/zX2LkBM.jpeg"];
-let current=null,currentIdx=0,cart=[],currentPage='store',cardIdx=[0,0,0,0,0,0];
+let current=null,currentIdx=0,cart=[],currentPage='store',cardIdx=[0,0,0,0,0,0,0];
 function renderStore(){
 document.getElementById('storeGrid').innerHTML=tees.map((t,i)=>`
 <div class="card">
@@ -154,11 +128,12 @@ document.getElementById('storeGrid').innerHTML=tees.map((t,i)=>`
 <div class="card-arrow left" onclick="event.stopPropagation();prevCard(${i})">‹</div>
 <img id="cimg-${i}" src="${t.images[0]}" loading="lazy">
 <div class="card-arrow right" onclick="event.stopPropagation();nextCard(${i})">›</div>
+${t.isNew?'<div class="new-badge">NEW COLLECTION</div>':''}
 ${t.soldout?'<div class="soldout-pill">SOLD OUT</div>':''}
 </div>
 <div class="card-info"><div class="card-name">${t.name}</div><div class="card-price">₱${t.price}</div></div>
 </div>`).join("");
-document.getElementById('galleryGrid').innerHTML=galleryPics.map(p=>`<div class="gallery-card" onclick="openGallery('${p}')"><img src="${p}" loading="lazy"></div>`).join("");
+document.getElementById('galleryGrid').innerHTML=galleryPics.map(p=>`<div class="gallery-card" onclick="openGallery('${p}')"><img src="${p}"></div>`).join("");
 }
 renderStore();
 function prevCard(i){cardIdx[i]=(cardIdx[i]-1+tees[i].images.length)%tees[i].images.length;document.getElementById('cimg-'+i).src=tees[i].images[cardIdx[i]]}
@@ -168,13 +143,22 @@ function showGalleryTab(){currentPage='gallery';document.getElementById('gallery
 function handleBack(){if(currentPage==='store'){goToIntro()}else{showStoreTab()}}
 function backFromProduct(){document.getElementById('productPage').classList.remove('show')}
 function goToIntro(){let g=document.getElementById('gate');g.style.display='flex';void g.offsetWidth;g.classList.remove('out');document.getElementById('main').classList.remove('show')}
-function openProduct(i){current=tees[i];currentIdx=cardIdx[i];document.getElementById('pName').innerText=current.name;document.getElementById('pImg').src=current.images[currentIdx];document.getElementById('sizeImg').src=current.sizeChart;document.getElementById('thumbs').innerHTML=current.images.map((im,idx)=>`<div class="thumb ${idx===currentIdx?'active':''}" onclick="goToImg(${idx})"><img src="${im}"></div>`).join("");document.getElementById('productPage').classList.add('show');window.scrollTo(0,0)}
+function openProduct(i){
+current=tees[i];currentIdx=cardIdx[i];
+document.getElementById('pName').innerText=current.name;
+document.getElementById('pPrice').innerText='₱'+current.price+'.00 PHP';
+document.getElementById('pImg').src=current.images[currentIdx];
+document.getElementById('sizeImg').src=current.sizeChart;
+document.getElementById('sizeContainer').innerHTML=current.sizes.map((s,idx)=>`<div class="size ${idx===0?'active':''}" onclick="pickSize(this)">${s}</div>`).join("");
+document.getElementById('thumbs').innerHTML=current.images.map((im,idx)=>`<div class="thumb ${idx===currentIdx?'active':''}" onclick="goToImg(${idx})"><img src="${im}"></div>`).join("");
+document.getElementById('productPage').classList.add('show');
+}
 function goToImg(idx){currentIdx=idx;document.getElementById('pImg').src=current.images[currentIdx];document.querySelectorAll('.thumb').forEach((t,i)=>t.classList.toggle('active',i===currentIdx))}
 function nextImg(){currentIdx=(currentIdx+1)%current.images.length;goToImg(currentIdx)}
 function prevImg(){currentIdx=(currentIdx-1+current.images.length)%current.images.length;goToImg(currentIdx)}
-function pickSize(el){document.querySelectorAll('.size').forEach(s=>s.classList.remove('active'));el.classList.add('active')}
-function addToCart(){if(current.soldout){alert('Sold out');return}let size=document.querySelector('.size.active').innerText;let ex=cart.find(c=>c.name===current.name&&c.size===size);if(ex)ex.qty++;else cart.push({img:current.images[0],name:current.name,size,qty:1,price:current.price});renderCart();document.getElementById('productPage').classList.remove('show');openCart()}
-function renderCart(){let h='',t=0;cart.forEach(c=>{t+=c.price*c.qty;h+=`<div style="display:grid;grid-template-columns:68px 1fr auto;gap:14px;padding:18px 0;border-bottom:1px solid #f0f0f0"><img src="${c.img}" style="width:68px;height:80px;object-fit:contain"><div><div style="font-size:12px;font-weight:700">${c.name}</div><div style="font-size:11px;opacity:.5">Size: ${c.size}</div></div><div style="font-size:12px;font-weight:800">₱${c.price*c.qty}</div></div>`});document.getElementById('cartItems').innerHTML=h||'<p style="text-align:center;padding:80px 0;opacity:.3;font-size:12px">Cart is empty</p>';document.getElementById('subtotal').innerText='₱'+t+'.00 PHP';let ct=cart.reduce((a,b)=>a+b.qty,0);document.getElementById('badge').style.display=ct?'flex':'none';document.getElementById('badge').innerText=ct;document.getElementById('badge2').style.display=ct?'flex':'none';document.getElementById('badge2').innerText=ct}
+function pickSize(el){document.querySelectorAll('#sizeContainer.size').forEach(s=>s.classList.remove('active'));el.classList.add('active')}
+function addToCart(){if(current.soldout){alert('Sold out');return}let sizeEl=document.querySelector('#sizeContainer.size.active');let size=sizeEl?sizeEl.innerText:current.sizes[0];let ex=cart.find(c=>c.name===current.name&&c.size===size);if(ex)ex.qty++;else cart.push({img:current.images[0],name:current.name,size,qty:1,price:current.price});renderCart();document.getElementById('productPage').classList.remove('show');openCart()}
+function renderCart(){let h='',t=0;cart.forEach(c=>{t+=c.price*c.qty;h+=`<div style="display:grid;grid-template-columns:68px 1fr auto;gap:14px;padding:18px 0;border-bottom:1px solid #f0f0f0"><img src="${c.img}" style="width:68px;height:80px;object-fit:contain"><div><div style="font-size:12px;font-weight:700">${c.name}</div><div style="font-size:11px;opacity:.5">Size: ${c.size}</div></div><div style="font-size:12px;font-weight:800">₱${c.price*c.qty}</div></div>`});document.getElementById('cartItems').innerHTML=h||'<p style="text-align:center;padding:80px 0;opacity:.3">Cart is empty</p>';document.getElementById('subtotal').innerText='₱'+t+'.00 PHP';let ct=cart.reduce((a,b)=>a+b.qty,0);document.getElementById('badge').style.display=ct?'flex':'none';document.getElementById('badge').innerText=ct;document.getElementById('badge2').style.display=ct?'flex':'none';document.getElementById('badge2').innerText=ct}
 function openCart(){document.getElementById('cartDrawer').classList.add('show');document.getElementById('cartOverlay').classList.add('show')}
 function closeCart(){document.getElementById('cartDrawer').classList.remove('show');document.getElementById('cartOverlay').classList.remove('show')}
 function openGallery(p){document.getElementById('modalImg').src=p;document.getElementById('modal').classList.add('show')}
