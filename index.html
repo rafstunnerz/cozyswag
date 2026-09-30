@@ -30,7 +30,7 @@ header{height:64px;padding:0 28px;display:flex;justify-content:space-between;ali
 .grid-featured{display:grid;grid-template-columns:1fr;gap:0;background:#fff;padding:0 28px 20px;max-width:700px;margin:0 auto}
 .card{background:#fff;padding:0 0 36px;cursor:pointer;position:relative}
 .img-wrap{width:100%;aspect-ratio:1/1.1;position:relative;display:flex;align-items:center;justify-content:center;background:#fff;overflow:hidden}
-.img-wrap img{width:86%;height:86%;object-fit:contain;transition:opacity.35s ease}
+.img-wrap img{width:86%;height:86%;object-fit:contain;transition:opacity.3s}
 .card-arrow{position:absolute;top:50%;transform:translateY(-50%);width:28px;height:28px;background:#fff;border:1px solid #111;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:5;opacity:0;transition:.2s}
 .card:hover.card-arrow{opacity:1}.card-arrow.left{left:10px}.card-arrow.right{right:10px}
 .card-info{padding:12px 12px 0;display:flex;justify-content:space-between}
@@ -130,8 +130,8 @@ const tees=[
 {name:"COZY SHORTS WHITE",price:900,images:["https://i.imgur.com/7tNmDFO.png","https://i.imgur.com/X4A2kot.jpeg"],sizeChart:"https://i.imgur.com/0y5JNJr.jpeg",sizes:["S","M","L","XL","2XL"]},
 {name:"COZY TEE GREY",price:900,images:["https://i.imgur.com/CDKuXxt.png","https://i.imgur.com/Hbr1wFd.jpeg"],sizeChart:"https://i.imgur.com/0y5JNJr.jpeg",sizes:["S","M","L","XL","2XL"]},
 {name:"COZY TEE CREAM",price:900,images:["https://i.imgur.com/e6rIBlV.png","https://i.imgur.com/srf1dOA.jpeg"],sizeChart:"https://i.imgur.com/0y5JNJr.jpeg",sizes:["S","M","L","XL","2XL"]},
-{name:"COZY HOODIE BLACK",price:1200,images:["https://i.imgur.com/ty9cyvl.png","https://i.imgur.com/HOqhErH.png"],sizeChart:"https://i.imgur.com/0y5JNJr.jpeg",sizes:["S","M","L","XL","2XL"]},
-{name:"COZY HOODIE WHITE",price:1200,images:["https://i.imgur.com/HOqhErH.png","https://i.imgur.com/ty9cyvl.png"],sizeChart:"https://i.imgur.com/0y5JNJr.jpeg",sizes:["S","M","L","XL","2XL"]}
+{name:"COZY HOODIE BLACK",price:1200,images:["https://i.imgur.com/ty9cyvl.png","https://i.imgur.com/9yQicBl.jpeg"],sizeChart:"https://i.imgur.com/0y5JNJr.jpeg",sizes:["S","M","L","XL","2XL"]},
+{name:"COZY HOODIE WHITE",price:1200,images:["https://i.imgur.com/HOqhErH.png","https://i.imgur.com/5A5WKTH.jpeg"],sizeChart:"https://i.imgur.com/0y5JNJr.jpeg",sizes:["S","M","L","XL","2XL"]}
 ];
 const allProducts=[newDrop,...tees];
 const galleryPics=["https://i.imgur.com/ZUE63Du.jpeg","https://i.imgur.com/S33CFqt.jpeg","https://i.imgur.com/mrPv4Lg.jpeg","https://i.imgur.com/385oIll.jpeg","https://i.imgur.com/mk4Xksn.jpeg","https://i.imgur.com/zX2LkBM.jpeg"];
@@ -154,14 +154,13 @@ document.getElementById('storeGrid').innerHTML=tees.map((t,i)=>`
 <div class="card-arrow left" onclick="event.stopPropagation();prevCard(${i})">‹</div>
 <img id="cimg-${i}" src="${t.images[0]}">
 <div class="card-arrow right" onclick="event.stopPropagation();nextCard(${i})">›</div>
-${t.soldout?'<div class="new-badge" style="right:12px;left:auto;background:#111">SOLD OUT</div>':''}
+${t.soldout?'<div class="soldout-pill">SOLD OUT</div>':''}
 </div>
 <div class="card-info"><div class="card-name">${t.name}</div><div class="card-price">₱${t.price}</div></div>
 </div>`).join("");
 document.getElementById('galleryGrid').innerHTML=galleryPics.map(p=>`<div class="gallery-card" onclick="openGallery('${p}')"><img src="${p}"></div>`).join("");
 }
 renderStore();
-// HOVER PREF LOGIC
 function hoverNewDrop(){if(newDrop.images[1])document.getElementById('cimg-new').src=newDrop.images[1]}
 function leaveNewDrop(){document.getElementById('cimg-new').src=newDrop.images[newDropIdx]}
 function hoverCard(i){if(tees[i].images[1])document.getElementById('cimg-'+i).src=tees[i].images[1]}
