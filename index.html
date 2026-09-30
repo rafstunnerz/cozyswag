@@ -45,7 +45,7 @@ header{padding:12px 18px;display:flex;justify-content:space-between;align-items:
 #cartOverlay{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:200;display:none}#cartOverlay.show{display:block}
 #cartDrawer{position:fixed;top:0;right:0;width:440px;max-width:94vw;height:100%;background:#fff;z-index:201;transform:translateX(100%);transition:.45s;display:flex;flex-direction:column}#cartDrawer.show{transform:translateX(0)}
 .cart-badge{position:absolute;top:-6px;right:-8px;background:#111;color:#fff;font-size:9px;min-width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800}
-#sizeModal{position:fixed;inset:0;z-index:400;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;padding:20px}
+#sizeModal{position:fixed;inset:0;z-index:400;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;padding:20px}
 #sizeModal.show{display:flex}
 @media(max-width:800px){.menu-link{font-size:54px}.p-body{grid-template-columns:1fr}.img-wrap{height:300px}}
 </style></head><body>
@@ -80,7 +80,7 @@ header{padding:12px 18px;display:flex;justify-content:space-between;align-items:
 <div class="p-info"><h1 id="pName"></h1><div style="margin-top:6px">₱900.00 PHP</div>
 <div style="margin-top:14px;font-size:11px;opacity:.7;font-weight:700">Size</div>
 <div class="sizes"><div class="size active" onclick="pickSize(this)">S</div><div class="size" onclick="pickSize(this)">M</div><div class="size" onclick="pickSize(this)">L</div><div class="size" onclick="pickSize(this)">XL</div><div class="size" onclick="pickSize(this)">2XL</div></div>
-<div class="chart-btn" onclick="openSize()">VIEW SIZE CHART</div>
+<div class="chart-btn" onclick="openSize()">VIEW SIZE CHART →</div>
 <button class="btn btn-black" onclick="addToCart()">ADD TO CART</button>
 <button class="btn btn-black" onclick="addToCart()">🛒 BUY WITH CASH ON DELIVERY</button>
 </div></div></div>
@@ -90,10 +90,9 @@ header{padding:12px 18px;display:flex;justify-content:space-between;align-items:
 
 <div id="modal" onclick="this.style.display='none'" style="position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center"><img id="modalImg" style="max-width:95%;max-height:90vh"></div>
 
-<div id="sizeModal" onclick="closeSize()"><div style="background:#fff;max-width:500px;width:100%;border-radius:12px;overflow:hidden" onclick="event.stopPropagation()">
+<div id="sizeModal" onclick="closeSize()"><div style="background:#fff;max-width:520px;width:100%;border-radius:12px;overflow:hidden;position:relative" onclick="event.stopPropagation()">
 <div style="padding:16px 20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eee"><b style="font-family:'Syne'">SIZE CHART</b><div style="cursor:pointer;font-size:20px" onclick="closeSize()">✕</div></div>
-<img src="https://i.imgur.com/8Km9tLL.png" style="width:100%;display:block" id="sizeImg">
-<div style="padding:12px;font-family:'Space Grotesk';font-size:10px;text-align:center;opacity:.6">Palitan mo lang yung link ng size chart pic mo dito boss - yung sinend mo dati</div>
+<img src="https://i.imgur.com/0y5JNJr.jpeg" style="width:100%;display:block">
 </div></div>
 
 <script>
@@ -108,7 +107,6 @@ const tees=[
 const galleryPics=["https://i.imgur.com/ZUE63Du.jpeg","https://i.imgur.com/S33CFqt.jpeg","https://i.imgur.com/mrPv4Lg.jpeg","https://i.imgur.com/385oIll.jpeg","https://i.imgur.com/mk4Xksn.jpeg","https://i.imgur.com/zX2LkBM.jpeg"];
 let current=null,currentIdx=0,cart=[],currentPage='store';
 let cardIdx=[0,0,0,0,0,0];
-
 function renderStore(){
 document.getElementById('storeGrid').innerHTML=tees.map((t,i)=>`
 <div class="card">
