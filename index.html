@@ -10,7 +10,7 @@ body{background:#fff;color:#111;font-family:'Inter',sans-serif;overflow-x:hidden
 #gate video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55}
 .menu{position:relative;z-index:2;color:#fff;display:flex;flex-direction:column;align-items:center;text-align:center}
 .menu-gif{width:340px;max-width:62vw;margin-bottom:18px}
-.menu-link{font-family:'Syne';font-weight:800;font-size:84px;line-height:.85;letter-spacing:-2px;cursor:pointer;transition:.2s}
+.menu-link{font-family:'Syne';font-weight:800;font-size:84px;line-height:.85;letter-spacing:-2px;cursor:pointer}
 .menu-link:hover{opacity:.4}
 .menu-sub{margin-top:28px;display:flex;gap:22px;font-size:18px}.menu-sub a{color:#fff;opacity:.7}
 #gate.out{transform:translateY(-100%)}
@@ -30,7 +30,7 @@ header{height:64px;padding:0 28px;display:flex;justify-content:space-between;ali
 .grid-featured{display:grid;grid-template-columns:1fr;gap:0;background:#fff;padding:0 28px 20px;max-width:700px;margin:0 auto}
 .card{background:#fff;padding:0 0 36px;cursor:pointer;position:relative}
 .img-wrap{width:100%;aspect-ratio:1/1.1;position:relative;display:flex;align-items:center;justify-content:center;background:#fff;overflow:hidden}
-.img-wrap img{width:86%;height:86%;object-fit:contain}
+.img-wrap img{width:86%;height:86%;object-fit:contain;transition:opacity.35s ease}
 .card-arrow{position:absolute;top:50%;transform:translateY(-50%);width:28px;height:28px;background:#fff;border:1px solid #111;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:5;opacity:0;transition:.2s}
 .card:hover.card-arrow{opacity:1}.card-arrow.left{left:10px}.card-arrow.right{right:10px}
 .card-info{padding:12px 12px 0;display:flex;justify-content:space-between}
@@ -85,7 +85,6 @@ header{height:64px;padding:0 28px;display:flex;justify-content:space-between;ali
 <div id="storePage" class="page active">
 <div class="hero"><img src="https://i.imgur.com/JDUxGIN.jpeg"><div class="hero-overlay"></div><div class="hero-text"><div><h1>cozyswag.ph</h1><p style="font-size:11px;letter-spacing:2px;opacity:.8;margin-top:6px">NEW COLLECTION FALL '25</p></div><div style="font-size:11px;letter-spacing:2px;border:1px solid #fff;border-radius:100px;padding:8px 16px;cursor:pointer;color:#fff" onclick="document.getElementById('newDropGrid').scrollIntoView({behavior:'smooth'})">SHOP NOW ↓</div></div></div>
 
-<!-- NEW DROP - SYA LANG MAG ISA SA TAAS -->
 <div style="background:#fff">
 <div class="title" style="text-align:center;padding-top:60px;font-size:28px">NEW DROP — JUST RELEASED</div>
 <p style="text-align:center;font-size:11px;letter-spacing:2px;opacity:.5;margin-top:-8px;margin-bottom:20px">CS CAMO CARPENTER JORTS — LIMITED STOCK</p>
@@ -130,17 +129,18 @@ const tees=[
 {name:"COZY SHORTS BLACK",price:900,images:["https://i.imgur.com/TYSYmj1.png","https://i.imgur.com/f0rMVGu.jpeg"],sizeChart:"https://i.imgur.com/0y5JNJr.jpeg",sizes:["S","M","L","XL","2XL"]},
 {name:"COZY SHORTS WHITE",price:900,images:["https://i.imgur.com/7tNmDFO.png","https://i.imgur.com/X4A2kot.jpeg"],sizeChart:"https://i.imgur.com/0y5JNJr.jpeg",sizes:["S","M","L","XL","2XL"]},
 {name:"COZY TEE GREY",price:900,images:["https://i.imgur.com/CDKuXxt.png","https://i.imgur.com/Hbr1wFd.jpeg"],sizeChart:"https://i.imgur.com/0y5JNJr.jpeg",sizes:["S","M","L","XL","2XL"]},
-{name:"COZY TEE CREAM",price:900,images:["https://i.imgur.com/e6rIBlV.png","https://i.imgur.com/srf1dOA.jpeg"],sizeChart:"https://i.imgur.com/0y5JNJr.jpeg",sizes:["S","M","L","XL","2XL"]}
+{name:"COZY TEE CREAM",price:900,images:["https://i.imgur.com/e6rIBlV.png","https://i.imgur.com/srf1dOA.jpeg"],sizeChart:"https://i.imgur.com/0y5JNJr.jpeg",sizes:["S","M","L","XL","2XL"]},
+{name:"COZY HOODIE BLACK",price:1200,images:["https://i.imgur.com/ty9cyvl.png","https://i.imgur.com/HOqhErH.png"],sizeChart:"https://i.imgur.com/0y5JNJr.jpeg",sizes:["S","M","L","XL","2XL"]},
+{name:"COZY HOODIE WHITE",price:1200,images:["https://i.imgur.com/HOqhErH.png","https://i.imgur.com/ty9cyvl.png"],sizeChart:"https://i.imgur.com/0y5JNJr.jpeg",sizes:["S","M","L","XL","2XL"]}
 ];
 const allProducts=[newDrop,...tees];
 const galleryPics=["https://i.imgur.com/ZUE63Du.jpeg","https://i.imgur.com/S33CFqt.jpeg","https://i.imgur.com/mrPv4Lg.jpeg","https://i.imgur.com/385oIll.jpeg","https://i.imgur.com/mk4Xksn.jpeg","https://i.imgur.com/zX2LkBM.jpeg"];
 let current=null,currentIdx=0,cart=[],currentPage='store',cardIdx={},newDropIdx=0;
 
 function renderStore(){
-// NEW DROP SYA LANG MAG ISA
 document.getElementById('newDropGrid').innerHTML=`
-<div class="card" style="padding-bottom:20px">
-<div class="img-wrap" style="aspect-ratio:1/1.1" onclick="openProduct(0,true)">
+<div class="card" style="padding-bottom:20px" onmouseenter="hoverNewDrop()" onmouseleave="leaveNewDrop()">
+<div class="img-wrap" onclick="openProduct(0,true)">
 <div class="card-arrow left" onclick="event.stopPropagation();prevNewDrop()">‹</div>
 <img id="cimg-new" src="${newDrop.images[0]}">
 <div class="card-arrow right" onclick="event.stopPropagation();nextNewDrop()">›</div>
@@ -148,24 +148,28 @@ document.getElementById('newDropGrid').innerHTML=`
 </div>
 <div class="card-info"><div class="card-name">${newDrop.name}</div><div class="card-price">₱${newDrop.price}</div></div>
 </div>`;
-// LUMANG COLLECTION SA BABA
 document.getElementById('storeGrid').innerHTML=tees.map((t,i)=>`
-<div class="card">
+<div class="card" onmouseenter="hoverCard(${i})" onmouseleave="leaveCard(${i})">
 <div class="img-wrap" onclick="openProduct(${i+1},false)">
 <div class="card-arrow left" onclick="event.stopPropagation();prevCard(${i})">‹</div>
 <img id="cimg-${i}" src="${t.images[0]}">
 <div class="card-arrow right" onclick="event.stopPropagation();nextCard(${i})">›</div>
-${t.soldout?'<div class="soldout-pill">SOLD OUT</div>':''}
+${t.soldout?'<div class="new-badge" style="right:12px;left:auto;background:#111">SOLD OUT</div>':''}
 </div>
 <div class="card-info"><div class="card-name">${t.name}</div><div class="card-price">₱${t.price}</div></div>
 </div>`).join("");
 document.getElementById('galleryGrid').innerHTML=galleryPics.map(p=>`<div class="gallery-card" onclick="openGallery('${p}')"><img src="${p}"></div>`).join("");
 }
 renderStore();
+// HOVER PREF LOGIC
+function hoverNewDrop(){if(newDrop.images[1])document.getElementById('cimg-new').src=newDrop.images[1]}
+function leaveNewDrop(){document.getElementById('cimg-new').src=newDrop.images[newDropIdx]}
+function hoverCard(i){if(tees[i].images[1])document.getElementById('cimg-'+i).src=tees[i].images[1]}
+function leaveCard(i){let idx=cardIdx[i]||0;document.getElementById('cimg-'+i).src=tees[i].images[idx]}
 function prevNewDrop(){newDropIdx=(newDropIdx-1+newDrop.images.length)%newDrop.images.length;document.getElementById('cimg-new').src=newDrop.images[newDropIdx]}
 function nextNewDrop(){newDropIdx=(newDropIdx+1)%newDrop.images.length;document.getElementById('cimg-new').src=newDrop.images[newDropIdx]}
-function prevCard(i){cardIdx[i]=(cardIdx[i]||0);cardIdx[i]=(cardIdx[i]-1+tees[i].images.length)%tees[i].images.length;document.getElementById('cimg-'+i).src=tees[i].images[cardIdx[i]]}
-function nextCard(i){cardIdx[i]=(cardIdx[i]||0);cardIdx[i]=(cardIdx[i]+1)%tees[i].images.length;document.getElementById('cimg-'+i).src=tees[i].images[cardIdx[i]]}
+function prevCard(i){cardIdx[i]=cardIdx[i]||0;cardIdx[i]=(cardIdx[i]-1+tees[i].images.length)%tees[i].images.length;document.getElementById('cimg-'+i).src=tees[i].images[cardIdx[i]]}
+function nextCard(i){cardIdx[i]=cardIdx[i]||0;cardIdx[i]=(cardIdx[i]+1)%tees[i].images.length;document.getElementById('cimg-'+i).src=tees[i].images[cardIdx[i]]}
 function showStoreTab(){currentPage='store';document.getElementById('storePage').classList.add('active');document.getElementById('galleryPage').classList.remove('active');document.getElementById('navStore').classList.add('active');document.getElementById('navGallery').classList.remove('active');window.scrollTo(0,0)}
 function showGalleryTab(){currentPage='gallery';document.getElementById('galleryPage').classList.add('active');document.getElementById('storePage').classList.remove('active');document.getElementById('navGallery').classList.add('active');document.getElementById('navStore').classList.remove('active');window.scrollTo(0,0)}
 function handleBack(){if(currentPage==='store'){goToIntro()}else{showStoreTab()}}
