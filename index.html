@@ -10,8 +10,9 @@ body{background:#fff;color:#111;font-family:'Inter',sans-serif;overflow-x:hidden
 #gate video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55}
 .menu{position:relative;z-index:2;color:#fff;display:flex;flex-direction:column;align-items:center;text-align:center}
 .menu-gif{width:340px;max-width:62vw;margin-bottom:18px}
-.menu-link{font-family:'Syne';font-weight:800;font-size:84px;line-height:.85;letter-spacing:-2px;cursor:pointer}
+.menu-link{font-family:'Syne';font-weight:800;font-size:84px;line-height:.85;letter-spacing:-2px;cursor:pointer;transition:.2s}
 .menu-link:hover{opacity:.4}
+.menu-sub{margin-top:28px;display:flex;gap:22px;font-size:18px}.menu-sub a{color:#fff;opacity:.7}
 #gate.out{transform:translateY(-100%)}
 #main{display:none;background:#fff}#main.show{display:block}
 .page{display:none}.page.active{display:block}
@@ -26,6 +27,7 @@ header{height:64px;padding:0 28px;display:flex;justify-content:space-between;ali
 .hero-text h1{font-family:'Syne';font-size:64px;font-weight:800;letter-spacing:-2.5px;line-height:.85;text-transform:lowercase}
 .title{font-family:'Syne';font-size:20px;font-weight:800;text-align:left;padding:40px 28px 16px;text-transform:uppercase}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:0;background:#fff;padding:0 28px 60px}
+.grid-featured{display:grid;grid-template-columns:1fr;gap:0;background:#fff;padding:0 28px 20px;max-width:700px;margin:0 auto}
 .card{background:#fff;padding:0 0 36px;cursor:pointer;position:relative}
 .img-wrap{width:100%;aspect-ratio:1/1.1;position:relative;display:flex;align-items:center;justify-content:center;background:#fff;overflow:hidden}
 .img-wrap img{width:86%;height:86%;object-fit:contain}
@@ -34,7 +36,7 @@ header{height:64px;padding:0 28px;display:flex;justify-content:space-between;ali
 .card-info{padding:12px 12px 0;display:flex;justify-content:space-between}
 .card-name{font-size:11px;font-weight:600;letter-spacing:.8px;text-transform:uppercase}
 .card-price{font-size:11px;opacity:.5}
-.new-badge{position:absolute;top:12px;left:12px;background:#111;color:#fff;font-size:8px;font-weight:800;padding:6px 10px;border-radius:100px;letter-spacing:1px}
+.new-badge{position:absolute;top:12px;left:12px;background:#111;color:#fff;font-size:9px;font-weight:800;padding:7px 12px;border-radius:100px;letter-spacing:1px}
 .soldout-pill{position:absolute;top:12px;right:12px;background:#111;color:#fff;font-size:8px;font-weight:800;padding:6px 10px;border-radius:100px}
 .gallery-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:#fff;padding:0 28px 60px}
 .gallery-card{aspect-ratio:4/5;background:#f6f6f6;overflow:hidden;cursor:pointer}.gallery-card img{width:100%;height:100%;object-fit:cover}
@@ -57,7 +59,7 @@ header{height:64px;padding:0 28px;display:flex;justify-content:space-between;ali
 .cart-badge{position:absolute;top:-6px;right:-8px;background:#111;color:#fff;font-size:9px;min-width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800}
 #sizeModal{position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;padding:24px}#sizeModal.show{display:flex}
 #modal{position:fixed;inset:0;z-index:400;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center}#modal.show{display:flex}
-@media(max-width:900px){.menu-link{font-size:54px}.hero-text h1{font-size:40px}.grid2{padding:0 12px}.title{padding-left:12px}.p-body{grid-template-columns:1fr}}
+@media(max-width:900px){.menu-link{font-size:54px}.hero-text h1{font-size:40px}.grid2{padding:0 12px}.grid-featured{padding:0 12px}.title{padding-left:12px}.p-body{grid-template-columns:1fr}}
 </style></head><body>
 
 <div id="gate">
@@ -66,6 +68,7 @@ header{height:64px;padding:0 28px;display:flex;justify-content:space-between;ali
 <img class="menu-gif" src="https://i.imgur.com/cvLNJry.gif">
 <div class="menu-link" onclick="enterStore()">COLLECTION</div>
 <div class="menu-link" onclick="enterGallery()">GALLERY</div>
+<div class="menu-link" onclick="window.open('https://www.facebook.com/profile.php?id=61553410621994','_blank')">STORY</div>
 <div class="menu-sub" style="margin-top:28px;display:flex;gap:22px;font-size:18px">
 <a href="https://www.instagram.com/cozyswag" target="_blank"><i class="fa-brands fa-instagram"></i></a>
 <a href="https://www.facebook.com/profile.php?id=61553410621994" target="_blank"><i class="fa-brands fa-facebook"></i></a>
@@ -80,8 +83,18 @@ header{height:64px;padding:0 28px;display:flex;justify-content:space-between;ali
 </header>
 
 <div id="storePage" class="page active">
-<div class="hero"><img src="https://i.imgur.com/JDUxGIN.jpeg"><div class="hero-overlay"></div><div class="hero-text"><div><h1>cozyswag.ph</h1><p style="font-size:11px;letter-spacing:2px;opacity:.8;margin-top:6px">NEW COLLECTION FALL '25</p></div><div style="font-size:11px;letter-spacing:2px;border:1px solid #fff;border-radius:100px;padding:8px 16px;cursor:pointer;color:#fff" onclick="document.getElementById('storeGrid').scrollIntoView({behavior:'smooth'})">SHOP NOW ↓</div></div></div>
-<div class="title">New Collection</div>
+<div class="hero"><img src="https://i.imgur.com/JDUxGIN.jpeg"><div class="hero-overlay"></div><div class="hero-text"><div><h1>cozyswag.ph</h1><p style="font-size:11px;letter-spacing:2px;opacity:.8;margin-top:6px">NEW COLLECTION FALL '25</p></div><div style="font-size:11px;letter-spacing:2px;border:1px solid #fff;border-radius:100px;padding:8px 16px;cursor:pointer;color:#fff" onclick="document.getElementById('newDropGrid').scrollIntoView({behavior:'smooth'})">SHOP NOW ↓</div></div></div>
+
+<!-- NEW DROP - SYA LANG MAG ISA SA TAAS -->
+<div style="background:#fff">
+<div class="title" style="text-align:center;padding-top:60px;font-size:28px">NEW DROP — JUST RELEASED</div>
+<p style="text-align:center;font-size:11px;letter-spacing:2px;opacity:.5;margin-top:-8px;margin-bottom:20px">CS CAMO CARPENTER JORTS — LIMITED STOCK</p>
+<div class="grid-featured" id="newDropGrid"></div>
+</div>
+
+<div style="height:1px;background:#f0f0f0;margin:20px 28px"></div>
+
+<div class="title">Shop All — Previous Collection</div>
 <div class="grid2" id="storeGrid"></div>
 </div>
 
@@ -103,15 +116,15 @@ header{height:64px;padding:0 28px;display:flex;justify-content:space-between;ali
 <div id="sizeModal" onclick="closeSize()"><div style="background:#fff;width:520px;max-width:95vw;border-radius:16px;overflow:hidden" onclick="event.stopPropagation()"><div style="padding:16px 20px;display:flex;justify-content:space-between;border-bottom:1px solid #f0f0f0"><b style="font-family:'Syne'">SIZE CHART</b><div style="cursor:pointer" onclick="closeSize()">✕</div></div><img id="sizeImg" src="" style="width:100%;display:block"></div></div>
 
 <script>
-const tees=[
-{
+const newDrop={
 name:"CS CAMO CARPENTER JORTS",
 price:1250,
 images:["https://i.imgur.com/Ug6NUOj.png","https://i.imgur.com/MN65xR1.png"],
 sizeChart:"https://i.imgur.com/1pq7WaK.jpeg",
 sizes:["L","XL"],
 isNew:true
-},
+};
+const tees=[
 {name:"COZY TEE BLACK",price:900,images:["https://i.imgur.com/rM9FnTG.png","https://i.imgur.com/IW3vnNm.jpeg"],sizeChart:"https://i.imgur.com/0y5JNJr.jpeg",sizes:["S","M","L","XL","2XL"],soldout:true},
 {name:"COZY TEE WHITE",price:900,images:["https://i.imgur.com/y1bwuFF.png","https://i.imgur.com/ch2Pxg3.jpeg"],sizeChart:"https://i.imgur.com/0y5JNJr.jpeg",sizes:["S","M","L","XL","2XL"]},
 {name:"COZY SHORTS BLACK",price:900,images:["https://i.imgur.com/TYSYmj1.png","https://i.imgur.com/f0rMVGu.jpeg"],sizeChart:"https://i.imgur.com/0y5JNJr.jpeg",sizes:["S","M","L","XL","2XL"]},
@@ -119,16 +132,29 @@ isNew:true
 {name:"COZY TEE GREY",price:900,images:["https://i.imgur.com/CDKuXxt.png","https://i.imgur.com/Hbr1wFd.jpeg"],sizeChart:"https://i.imgur.com/0y5JNJr.jpeg",sizes:["S","M","L","XL","2XL"]},
 {name:"COZY TEE CREAM",price:900,images:["https://i.imgur.com/e6rIBlV.png","https://i.imgur.com/srf1dOA.jpeg"],sizeChart:"https://i.imgur.com/0y5JNJr.jpeg",sizes:["S","M","L","XL","2XL"]}
 ];
+const allProducts=[newDrop,...tees];
 const galleryPics=["https://i.imgur.com/ZUE63Du.jpeg","https://i.imgur.com/S33CFqt.jpeg","https://i.imgur.com/mrPv4Lg.jpeg","https://i.imgur.com/385oIll.jpeg","https://i.imgur.com/mk4Xksn.jpeg","https://i.imgur.com/zX2LkBM.jpeg"];
-let current=null,currentIdx=0,cart=[],currentPage='store',cardIdx=[0,0,0,0,0,0,0];
+let current=null,currentIdx=0,cart=[],currentPage='store',cardIdx={},newDropIdx=0;
+
 function renderStore(){
+// NEW DROP SYA LANG MAG ISA
+document.getElementById('newDropGrid').innerHTML=`
+<div class="card" style="padding-bottom:20px">
+<div class="img-wrap" style="aspect-ratio:1/1.1" onclick="openProduct(0,true)">
+<div class="card-arrow left" onclick="event.stopPropagation();prevNewDrop()">‹</div>
+<img id="cimg-new" src="${newDrop.images[0]}">
+<div class="card-arrow right" onclick="event.stopPropagation();nextNewDrop()">›</div>
+<div class="new-badge">NEW DROP — JUST RELEASED</div>
+</div>
+<div class="card-info"><div class="card-name">${newDrop.name}</div><div class="card-price">₱${newDrop.price}</div></div>
+</div>`;
+// LUMANG COLLECTION SA BABA
 document.getElementById('storeGrid').innerHTML=tees.map((t,i)=>`
 <div class="card">
-<div class="img-wrap" onclick="openProduct(${i})">
+<div class="img-wrap" onclick="openProduct(${i+1},false)">
 <div class="card-arrow left" onclick="event.stopPropagation();prevCard(${i})">‹</div>
-<img id="cimg-${i}" src="${t.images[0]}" loading="lazy">
+<img id="cimg-${i}" src="${t.images[0]}">
 <div class="card-arrow right" onclick="event.stopPropagation();nextCard(${i})">›</div>
-${t.isNew?'<div class="new-badge">NEW COLLECTION</div>':''}
 ${t.soldout?'<div class="soldout-pill">SOLD OUT</div>':''}
 </div>
 <div class="card-info"><div class="card-name">${t.name}</div><div class="card-price">₱${t.price}</div></div>
@@ -136,15 +162,17 @@ ${t.soldout?'<div class="soldout-pill">SOLD OUT</div>':''}
 document.getElementById('galleryGrid').innerHTML=galleryPics.map(p=>`<div class="gallery-card" onclick="openGallery('${p}')"><img src="${p}"></div>`).join("");
 }
 renderStore();
-function prevCard(i){cardIdx[i]=(cardIdx[i]-1+tees[i].images.length)%tees[i].images.length;document.getElementById('cimg-'+i).src=tees[i].images[cardIdx[i]]}
-function nextCard(i){cardIdx[i]=(cardIdx[i]+1)%tees[i].images.length;document.getElementById('cimg-'+i).src=tees[i].images[cardIdx[i]]}
+function prevNewDrop(){newDropIdx=(newDropIdx-1+newDrop.images.length)%newDrop.images.length;document.getElementById('cimg-new').src=newDrop.images[newDropIdx]}
+function nextNewDrop(){newDropIdx=(newDropIdx+1)%newDrop.images.length;document.getElementById('cimg-new').src=newDrop.images[newDropIdx]}
+function prevCard(i){cardIdx[i]=(cardIdx[i]||0);cardIdx[i]=(cardIdx[i]-1+tees[i].images.length)%tees[i].images.length;document.getElementById('cimg-'+i).src=tees[i].images[cardIdx[i]]}
+function nextCard(i){cardIdx[i]=(cardIdx[i]||0);cardIdx[i]=(cardIdx[i]+1)%tees[i].images.length;document.getElementById('cimg-'+i).src=tees[i].images[cardIdx[i]]}
 function showStoreTab(){currentPage='store';document.getElementById('storePage').classList.add('active');document.getElementById('galleryPage').classList.remove('active');document.getElementById('navStore').classList.add('active');document.getElementById('navGallery').classList.remove('active');window.scrollTo(0,0)}
 function showGalleryTab(){currentPage='gallery';document.getElementById('galleryPage').classList.add('active');document.getElementById('storePage').classList.remove('active');document.getElementById('navGallery').classList.add('active');document.getElementById('navStore').classList.remove('active');window.scrollTo(0,0)}
 function handleBack(){if(currentPage==='store'){goToIntro()}else{showStoreTab()}}
 function backFromProduct(){document.getElementById('productPage').classList.remove('show')}
 function goToIntro(){let g=document.getElementById('gate');g.style.display='flex';void g.offsetWidth;g.classList.remove('out');document.getElementById('main').classList.remove('show')}
-function openProduct(i){
-current=tees[i];currentIdx=cardIdx[i];
+function openProduct(i,isNew){
+current=allProducts[i];currentIdx=isNew?newDropIdx:(cardIdx[i-1]||0);
 document.getElementById('pName').innerText=current.name;
 document.getElementById('pPrice').innerText='₱'+current.price+'.00 PHP';
 document.getElementById('pImg').src=current.images[currentIdx];
